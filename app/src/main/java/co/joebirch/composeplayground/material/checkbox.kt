@@ -1,32 +1,33 @@
-package co.joebirch.composeplayground
+package co.joebirch.composeplayground.material
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.compose.Model
+import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
-import androidx.ui.core.setContent
 import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.selection.ToggleableState
-import androidx.ui.layout.Row
-import androidx.ui.layout.padding
+import androidx.ui.layout.*
 import androidx.ui.material.Checkbox
-import androidx.ui.material.MaterialTheme
 import androidx.ui.material.TriStateCheckbox
-import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
+import co.joebirch.composeplayground.ComposableLayout
 
-class CheckboxActivity : AppCompatActivity() {
+object CheckboxView: ComposableLayout {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MaterialTheme {
-                TriStateCheckboxComponent(TriStateFormState())
-            }
+    @Composable
+    override fun build() {
+        Column(
+            modifier = Modifier.fillMaxSize().padding(32.dp),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalGravity = Alignment.CenterHorizontally
+        ) {
+            TriStateCheckboxComponent(
+                TriStateFormState()
+            )
         }
     }
+
 }
 
 @Model
@@ -85,12 +86,4 @@ fun TriStateCheckboxComponent(formState: TriStateFormState) {
             }
         }
     )
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    MaterialTheme {
-        CheckboxWithLabel(FormState())
-    }
 }

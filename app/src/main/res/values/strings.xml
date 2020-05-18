@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Compose Playground</string>
+    <string name="app_name_formatting">This is %s</string>
+
+    <string-array name="sample_array">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+    </string-array>
 </resources>

@@ -24,9 +24,7 @@ class ColumnActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-                //MinimalCardComponentTop()
                 MinimalCardComponentBottom()
-                Spacer(modifier = Modifier.preferredHeight(32.dp))
             }
         }
     }

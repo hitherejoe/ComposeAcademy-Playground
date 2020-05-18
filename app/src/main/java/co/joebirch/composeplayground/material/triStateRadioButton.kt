@@ -1,55 +1,54 @@
-package co.joebirch.composeplayground
+package co.joebirch.composeplayground.material
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.compose.Model
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
-import androidx.ui.core.setContent
-import androidx.ui.foundation.Clickable
-import androidx.ui.foundation.Icon
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
-import androidx.ui.foundation.selection.ToggleableState
-import androidx.ui.foundation.shape.corner.CircleShape
 import androidx.ui.graphics.Color
-import androidx.ui.graphics.imageFromResource
 import androidx.ui.layout.*
-import androidx.ui.material.*
-import androidx.ui.res.imageResource
+import androidx.ui.material.RadioButton
+import androidx.ui.material.RadioGroup
 import androidx.ui.res.vectorResource
 import androidx.ui.text.TextStyle
 import androidx.ui.text.font.FontWeight
-import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
+import co.joebirch.composeplayground.ComposableLayout
+import co.joebirch.composeplayground.R
 
-class RadioButtonActivity : AppCompatActivity() {
+object TriStateRadioButtonView: ComposableLayout {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MaterialTheme {
-                Column(modifier = Modifier.wrapContentSize(align = Alignment.Center)) {
-                    SimpleRadioGroupTextItemComponent(RadioState())
-                }
-            }
+    @Composable
+    override fun build() {
+        Column(
+            modifier = Modifier.fillMaxSize().padding(32.dp),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalGravity = Alignment.CenterHorizontally
+        ) {
+            SimpleRadioGroupTextItemComponent(
+                RadioState()
+            )
         }
     }
+
 }
 
 @Model
-class RadioState(var selectedOption: String? = null)
+class TriRadioState(var selectedOption: String? = null)
 
 
 @Composable
-fun SimpleRadioGroupComponent(formState: RadioState) {
+fun SimpleTriRadioGroupComponent(formState: RadioState) {
     val options = listOf("one", "two", "three")
     RadioGroup {
         RadioGroupItem(selected = options[0] == formState.selectedOption, onSelect = {
             formState.selectedOption = options[0]
         }) {
-            RadioButtonWithLabel(formState = formState, text = options[0])
+            RadioButtonWithLabel(
+                formState = formState,
+                text = options[0]
+            )
         }
         RadioGroupTextItem(selected = options[1] == formState.selectedOption, onSelect = {
             formState.selectedOption = options[1]
@@ -58,7 +57,7 @@ fun SimpleRadioGroupComponent(formState: RadioState) {
 }
 
 @Composable
-fun SimpleRadioGroupTextItemComponentTwo(formState: RadioState) {
+fun SimpleTriRadioGroupTextItemComponentTwo(formState: RadioState) {
     val options = listOf("one", "two", "three")
     RadioGroup {
         RadioGroupTextItem(selected = options[0] == formState.selectedOption, onSelect = {
@@ -71,7 +70,7 @@ fun SimpleRadioGroupTextItemComponentTwo(formState: RadioState) {
 }
 
 @Composable
-fun SimpleRadioGroupTextItemComponent(formState: RadioState) {
+fun SimpleTriRadioGroupTextItemComponent(formState: RadioState) {
     val options = listOf("one", "two", "three")
     RadioGroup {
         RadioGroupItem(selected = options[0] == formState.selectedOption, onSelect = {
@@ -84,8 +83,8 @@ fun SimpleRadioGroupTextItemComponent(formState: RadioState) {
                     Image(asset = vectorResource(id = R.drawable.ic_android_gray_24dp))
                 }
                 Text(
-                        text = options[0],
-                        modifier = Modifier.padding(start = 18.dp)
+                    text = options[0],
+                    modifier = Modifier.padding(start = 18.dp)
                 )
             }
         }
@@ -99,8 +98,8 @@ fun SimpleRadioGroupTextItemComponent(formState: RadioState) {
                     Image(asset = vectorResource(id = R.drawable.ic_android_gray_24dp))
                 }
                 Text(
-                        text = options[1],
-                        modifier = Modifier.padding(start = 18.dp)
+                    text = options[1],
+                    modifier = Modifier.padding(start = 18.dp)
                 )
             }
         }
@@ -113,9 +112,9 @@ fun SimpleRadioGroupTextItemComponent(formState: RadioState) {
                 } else {
                     Image(asset = vectorResource(id = R.drawable.ic_android_gray_24dp))
                 }
-                    Text(
-                        text = options[2],
-                        modifier = Modifier.padding(start = 18.dp)
+                Text(
+                    text = options[2],
+                    modifier = Modifier.padding(start = 18.dp)
                 )
             }
         }
@@ -123,48 +122,48 @@ fun SimpleRadioGroupTextItemComponent(formState: RadioState) {
 }
 
 @Composable
-fun SimpleGroupComponent(formState: RadioState) {
+fun SimpleTriGroupComponent(formState: RadioState) {
     val options = listOf("one", "two", "three")
     RadioGroup(
-            options = options,
-            selectedOption = formState.selectedOption ?: options[0],
-            onSelectedChange = {
-                formState.selectedOption = it
-            },
-            radioColor = Color.Red,
-            textStyle = TextStyle(fontWeight = FontWeight.Bold)
+        options = options,
+        selectedOption = formState.selectedOption ?: options[0],
+        onSelectedChange = {
+            formState.selectedOption = it
+        },
+        radioColor = Color.Red,
+        textStyle = TextStyle(fontWeight = FontWeight.Bold)
     )
 }
 
 @Composable
-fun RadioGroupComponent(formState: RadioState) {
+fun TriRadioGroupComponent(formState: RadioState) {
     val options = listOf("one", "two", "three")
     RadioGroup(
-            options = options,
-            selectedOption = formState.selectedOption ?: options[0],
-            onSelectedChange = {
-                formState.selectedOption = it
-            },
-            radioColor = Color.Red,
-            textStyle = TextStyle(fontWeight = FontWeight.Bold)
+        options = options,
+        selectedOption = formState.selectedOption ?: options[0],
+        onSelectedChange = {
+            formState.selectedOption = it
+        },
+        radioColor = Color.Red,
+        textStyle = TextStyle(fontWeight = FontWeight.Bold)
     )
 }
 
 @Composable
-fun RadioButtonWithLabel(
-        text: String,
-        formState: RadioState
+fun TriRadioButtonWithLabel(
+    text: String,
+    formState: RadioState
 ) {
     Row(modifier = Modifier.padding(10.dp)) {
         RadioButton(
-                selected = formState.selectedOption == text,
-                onSelect = {
-                    formState.selectedOption = text
-                }
+            selected = formState.selectedOption == text,
+            onSelect = {
+                formState.selectedOption = text
+            }
         )
         Text(
-                text = text,
-                modifier = Modifier.padding(start = 18.dp)
+            text = text,
+            modifier = Modifier.padding(start = 18.dp)
         )
     }
 }

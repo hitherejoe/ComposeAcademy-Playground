@@ -1,33 +1,41 @@
-package co.joebirch.composeplayground
+package co.joebirch.composeplayground.material
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
-import androidx.ui.core.setContent
+import androidx.ui.foundation.Box
 import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Text
-import androidx.ui.layout.*
-import androidx.ui.material.*
+import androidx.ui.graphics.Color
+import androidx.ui.layout.Arrangement
+import androidx.ui.layout.Column
+import androidx.ui.layout.fillMaxSize
+import androidx.ui.layout.padding
+import androidx.ui.material.MaterialTheme
+import androidx.ui.material.Snackbar
+import androidx.ui.material.ripple.ripple
+import androidx.ui.material.snackbarPrimaryColorFor
 import androidx.ui.text.TextStyle
 import androidx.ui.text.font.FontWeight
 import androidx.ui.unit.dp
+import co.joebirch.composeplayground.ComposableLayout
 
-class SnackbarActivity : AppCompatActivity() {
+object SnackbarView: ComposableLayout {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MaterialTheme {
-                Column(modifier = Modifier.wrapContentSize(align = Alignment.Center)
-                    .padding(32.dp)) {
-                    MinimalSnackbarComponent()
-                    Spacer(modifier = Modifier.preferredHeight(120.dp))
-                    ActionSnackbarComponent()
-                    Spacer(modifier = Modifier.preferredHeight(120.dp))
-                    ActionOnNewLineSnackbarComponent()
-                }
+    @Composable
+    override fun build() {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            backgroundColor = Color.LightGray
+        ) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceEvenly,
+                horizontalGravity = Alignment.CenterHorizontally
+            ) {
+                MinimalSnackbarComponent()
+                ActionSnackbarComponent()
+                ActionOnNewLineSnackbarComponent()
             }
         }
     }
@@ -49,7 +57,7 @@ class SnackbarActivity : AppCompatActivity() {
                 }) {
                     Text(
                         text = "Undo",
-                        modifier = Modifier.padding(end = 16.dp),
+                        modifier = Modifier.padding(end = 16.dp).ripple(),
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = snackbarPrimaryColorFor(MaterialTheme.colors)
@@ -70,7 +78,7 @@ class SnackbarActivity : AppCompatActivity() {
                 }) {
                     Text(
                         text = "Undo",
-                        modifier = Modifier.padding(end = 16.dp),
+                        modifier = Modifier.padding(end = 16.dp).ripple(),
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = snackbarPrimaryColorFor(MaterialTheme.colors)
