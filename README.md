@@ -4,16 +4,16 @@ Compose Academy Playground is a free resource that provides snippets and practic
 
 The project is split up by API, with the intention of removing friction when trying to find the sample that you want to explore. Some Links if they are helpful:
 
-[Animation]()
+[Animation](app/src/main/java/co/joebirch/composeplayground/animation)
 
-    * [Animated Values]()
-    * [Crossfade Animation]()
-    * [Growing Shape]()
-    * [Interation Animation]()
-    * [Rotating Shape]()
-    * [Single Value Color Animation]()
-    * [Single Value Float Animation]()
-    * [Transition Animations]()
+  * [Animated Values]()
+  * [Crossfade Animation]()
+  * [Growing Shape]()
+  * [Interation Animation]()
+  * [Rotating Shape]()
+  * [Single Value Color Animation]()
+  * [Single Value Float Animation]()
+  * [Transition Animations]()
 
 [Core]()
 
