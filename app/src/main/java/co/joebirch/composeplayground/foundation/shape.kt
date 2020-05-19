@@ -11,6 +11,7 @@ import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.geometry.Rect
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
+import androidx.ui.text.style.TextAlign
 import androidx.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
@@ -37,11 +38,12 @@ object ShapeView : ComposableLayout {
 fun CutCornerShapeComponent() {
     Box(
         shape = CutCornerShape(12.dp),
-        backgroundColor = Color.White
+        backgroundColor = Color.Blue
     ) {
         Text(
             text = "Cut corner shape",
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
+            color = Color.White
         )
     }
 }
@@ -50,11 +52,12 @@ fun CutCornerShapeComponent() {
 fun AlternateCutCornerShapeComponent() {
     Box(
         shape = CutCornerShape(12.dp, 4.dp, 12.dp, 4.dp),
-        backgroundColor = Color.White
+        backgroundColor = Color.Blue
     ) {
         Text(
             text = "Cut corner shape",
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
+            color = Color.White
         )
     }
 }
@@ -63,11 +66,12 @@ fun AlternateCutCornerShapeComponent() {
 fun RoundedCornerShapeComponent() {
     Box(
         shape = RoundedCornerShape(12.dp),
-        backgroundColor = Color.White
+        backgroundColor = Color.Blue
     ) {
         Text(
             text = "Rounded corner shape",
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
+            color = Color.White
         )
     }
 }
@@ -76,11 +80,12 @@ fun RoundedCornerShapeComponent() {
 fun AlternateRoundedCornerShapeComponent() {
     Box(
         shape = RoundedCornerShape(12.dp, 0.dp, 12.dp, 0.dp),
-        backgroundColor = Color.White
+        backgroundColor = Color.Blue
     ) {
         Text(
             text = "Rounded corner shape",
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
+            color = Color.White
         )
     }
 }
@@ -92,17 +97,12 @@ fun CustomShapeComponent() {
             this.addOval(
                 Rect(
                     top = 0f,
-                    bottom = 25.dp.value,
-                    left = 0f,
-                    right = 25.dp.value
+                    bottom = 175f,
+                    left = -50f,
+                    right = 320f
                 )
             )
         }),
-        backgroundColor = Color.White
-    ) {
-        Text(
-            text = "Rounded corner shape",
-            modifier = Modifier.padding(16.dp)
-        )
-    }
+        backgroundColor = Color.Blue
+    )
 }

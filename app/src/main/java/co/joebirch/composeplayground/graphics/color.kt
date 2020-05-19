@@ -26,11 +26,11 @@ object ColorView : ComposableLayout {
                 horizontalGravity = Alignment.CenterHorizontally
             ) {
                 ColorObject()
-                Divider()
+                Spacer(modifier = Modifier.height(48.dp))
                 ColorFromLong()
-                Divider()
+                Spacer(modifier = Modifier.height(48.dp))
                 ColorFromFloats()
-                Divider()
+                Spacer(modifier = Modifier.height(48.dp))
                 ColorFromIntRange()
             }
         }
