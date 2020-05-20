@@ -15,7 +15,7 @@ The project is split up by API, with the intention of removing friction when try
   * [Single Value Float Animation]()
   * [Transition Animations]()
 
-[Core]()
+[Core](app/src/main/java/co/joebirch/composeplayground/core)
 
   * [Gestures]()
 
@@ -27,11 +27,11 @@ The project is split up by API, with the intention of removing friction when try
   * [Text]()
   * [Text Style]()
 
-[Graphics]()
+[Graphics](app/src/main/java/co/joebirch/composeplayground/graphics)
 
   * [Color]()
 
-[Layout]()
+[Layout](app/src/main/java/co/joebirch/composeplayground/layout)
 
   * [Column]()
   * [Horizontal Arrangement]()
@@ -39,7 +39,7 @@ The project is split up by API, with the intention of removing friction when try
   * [Spacer]()
   * [Vertical Arrangement]()
 
-[Material]()
+[Material](app/src/main/java/co/joebirch/composeplayground/material)
 
   * [Alert Dialog]()
   * [Bottom App Bar]()
@@ -58,12 +58,24 @@ The project is split up by API, with the intention of removing friction when try
   * [Top App Bar]()
   * [Tri-State Radio Button]()
 
-[Resource]()
+[Resource](app/src/main/java/co/joebirch/composeplayground/resource)
 
   * [Color]()
   * [Drawable]()
   * [Primitive]()
   * [String]()
+
+[Test](app/src/androidTest/java/co/joebirch/composeplayground)
+
+  * [Perform Click Gesture](app/src/androidTest/java/co/joebirch/composeplayground/action/ClickTests)
+  * [Perform Horizontal Swipe Gesture](app/src/androidTest/java/co/joebirch/composeplayground/action/HorizontalSwipeTests)
+  * [Perform Vertical Swipe Gesture](app/src/androidTest/java/co/joebirch/composeplayground/action/VerticalSwipeTests)
+  * [Click Assertion](app/src/androidTest/java/co/joebirch/composeplayground/assertions/AssertClickActionTests)
+  * [Displayed Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertDisplayedActionTests)
+  * [Exists Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertExistsTests)
+  * [On/Off Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertOnOffTests)
+  * [Toggleable Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertToggleableTests)
+  * [Find Composables in Tests](app/src/androidTest/java/co/joebirch/composeplayground/FindByTests)
 
 ## Jetpack Compose is still changing 🚧
 
