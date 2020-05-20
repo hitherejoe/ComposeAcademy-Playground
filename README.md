@@ -76,10 +76,10 @@ The project is split up by API, with the intention of removing friction when try
   * [Perform Horizontal Swipe Gesture](app/src/androidTest/java/co/joebirch/composeplayground/action/HorizontalSwipeTests.kt)
   * [Perform Vertical Swipe Gesture](app/src/androidTest/java/co/joebirch/composeplayground/action/VerticalSwipeTests.kt)
   * [Click Assertion](app/src/androidTest/java/co/joebirch/composeplayground/assertions/AssertClickActionTests.kt)
-  * [Displayed Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertDisplayedTests.kt)
-  * [Exists Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertExistsTests.kt)
-  * [On/Off Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertOnOffTests.kt)
-  * [Toggleable Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertToggleableTests.kt)
+  * [Displayed Assertion](app/src/androidTest/java/co/joebirch/composeplayground/assertions/AssertDisplayedTests.kt)
+  * [Exists Assertion](app/src/androidTest/java/co/joebirch/composeplayground/assertions/AssertExistsTests.kt)
+  * [On/Off Assertion](app/src/androidTest/java/co/joebirch/composeplayground/assertions/AssertOnOffTests.kt)
+  * [Toggleable Assertion](app/src/androidTest/java/co/joebirch/composeplayground/assertions/AssertToggleableTests.kt)
   * [Find Composables in Tests](app/src/androidTest/java/co/joebirch/composeplayground/FindByTests.kt)
 
 ## Jetpack Compose is still changing 🚧
