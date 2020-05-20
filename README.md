@@ -6,7 +6,7 @@ The project is split up by API, with the intention of removing friction when try
 
 ### [Animation](app/src/main/java/co/joebirch/composeplayground/animation)
 
-  * [Animated Values](app/src/main/java/co/joebirch/composeplayground/animation/animateValues.kt)
+  * [Animated Values](app/src/main/java/co/joebirch/composeplayground/animation/animatedValues.kt)
   * [Crossfade Animation](app/src/main/java/co/joebirch/composeplayground/animation/crossfadeAnimation.kt)
   * [Growing Shape](app/src/main/java/co/joebirch/composeplayground/animation/growingCircle.kt)
   * [Interation Animation](app/src/main/java/co/joebirch/composeplayground/animation/interactionAnimation.kt)
@@ -17,7 +17,7 @@ The project is split up by API, with the intention of removing friction when try
 
 ### [Core](app/src/main/java/co/joebirch/composeplayground/core)
 
-  * [Gestures](app/src/main/java/co/joebirch/composeplayground/core/gestures.kt)
+  * [Gestures](app/src/main/java/co/joebirch/composeplayground/core/gesture.kt)
   * [Popup](app/src/main/java/co/joebirch/composeplayground/core/popup.kt)
   * [Shadow](app/src/main/java/co/joebirch/composeplayground/core/shadow.kt)
 
@@ -76,7 +76,7 @@ The project is split up by API, with the intention of removing friction when try
   * [Perform Horizontal Swipe Gesture](app/src/androidTest/java/co/joebirch/composeplayground/action/HorizontalSwipeTests.kt)
   * [Perform Vertical Swipe Gesture](app/src/androidTest/java/co/joebirch/composeplayground/action/VerticalSwipeTests.kt)
   * [Click Assertion](app/src/androidTest/java/co/joebirch/composeplayground/assertions/AssertClickActionTests.kt)
-  * [Displayed Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertDisplayedActionTests.kt)
+  * [Displayed Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertDisplayedTests.kt)
   * [Exists Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertExistsTests.kt)
   * [On/Off Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertOnOffTests.kt)
   * [Toggleable Assertion](app/src/androidTest/java/co/joebirch/composeplayground/action/AssertToggleableTests.kt)

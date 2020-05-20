@@ -10,6 +10,7 @@ sealed class Core(
 
     object Heading : Core("Core")
     object Gesture : Core("Gesture", GestureView)
+    object Opacity : Core("Opacity", OpacityView)
     object Popup : Core("Popup", PopupView)
     object Shadow : Core("Shadow", ShadowView)
 

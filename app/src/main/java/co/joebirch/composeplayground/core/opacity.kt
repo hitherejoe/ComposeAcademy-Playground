@@ -6,13 +6,12 @@ import androidx.ui.core.*
 import androidx.ui.foundation.Box
 import androidx.ui.foundation.Text
 import androidx.ui.graphics.Color
-import androidx.ui.graphics.RectangleShape
 import androidx.ui.layout.*
 import androidx.ui.material.Button
 import androidx.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
-object ShadowView : ComposableLayout {
+object OpacityView : ComposableLayout {
 
     @Composable
     override fun build() {
@@ -24,7 +23,7 @@ object ShadowView : ComposableLayout {
         ) {
 
             val modifier = if (showShadow.value) {
-                Modifier.preferredSize(100.dp, 100.dp).drawShadow(12.dp, RectangleShape)
+                Modifier.preferredSize(100.dp, 100.dp).drawOpacity(0.2f)
             } else {
                 Modifier.preferredSize(100.dp, 100.dp)
             }
@@ -39,7 +38,7 @@ object ShadowView : ComposableLayout {
                 showShadow.value = !showShadow.value
             }) {
                 Text(
-                    text = "Toggle Shadow",
+                    text = "Toggle Opacity",
                     modifier = Modifier.padding(16.dp)
                 )
             }

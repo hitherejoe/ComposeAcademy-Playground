@@ -3,18 +3,13 @@ package co.joebirch.composeplayground.core
 import androidx.compose.Composable
 import androidx.compose.state
 import androidx.ui.core.*
-import androidx.ui.core.gesture.*
 import androidx.ui.foundation.Box
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.material.Button
-import androidx.ui.material.Snackbar
-import androidx.ui.unit.IntPxPosition
-import androidx.ui.unit.PxPosition
 import androidx.ui.unit.dp
-import androidx.ui.unit.ipx
 import co.joebirch.composeplayground.ComposableLayout
 
 object PopupView : ComposableLayout {
