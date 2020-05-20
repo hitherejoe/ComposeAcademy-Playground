@@ -25,6 +25,7 @@ sealed class Material(
     object Snackbar: Material("Snackbar", SnackbarView)
     object Switch: Material("Switch", SwitchView)
     object TabRow: Material("Tab Row", TabBarView)
+    object TextField: Material("Text Field", TextFieldView)
     object TopAppBar: Material("Top App Bar", TopAppBarView)
     object TriStateRadioButton: Material("Tri-state Radio Button", TriStateRadioButtonView)
 

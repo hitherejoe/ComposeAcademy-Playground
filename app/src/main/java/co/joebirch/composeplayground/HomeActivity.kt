@@ -64,6 +64,7 @@ class HomeActivity : AppCompatActivity() {
                 Material.Switch,
                 Material.Snackbar,
                 Material.TabRow,
+                Material.TextField,
                 Material.TopAppBar,
                 Material.TriStateRadioButton)),
             Pair(Layout.Heading, listOf(Layout.Column,

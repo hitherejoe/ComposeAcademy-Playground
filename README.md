@@ -55,6 +55,7 @@ The project is split up by API, with the intention of removing friction when try
   * [Snackbar](app/src/main/java/co/joebirch/composeplayground/material/snackbar.kt)
   * [Switch](app/src/main/java/co/joebirch/composeplayground/material/switch.kt)
   * [Tab Bar](app/src/main/java/co/joebirch/composeplayground/material/tabbar.kt)
+  * [Text Field](app/src/main/java/co/joebirch/composeplayground/material/textfield.kt)
   * [Top App Bar](app/src/main/java/co/joebirch/composeplayground/material/topAppBar.kt)
   * [Tri-State Radio Button](app/src/main/java/co/joebirch/composeplayground/material/triStateRadioButton.kt)
 
