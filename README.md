@@ -43,6 +43,7 @@ The project is split up by API, with the intention of removing friction when try
 
   * [Alert Dialog](app/src/main/java/co/joebirch/composeplayground/material/alertDialog.kt)
   * [Bottom App Bar](app/src/main/java/co/joebirch/composeplayground/material/bottomAppBar.kt)
+  * [Bottom Navigation](app/src/main/java/co/joebirch/composeplayground/material/bottomNavigation.kt)
   * [Button](app/src/main/java/co/joebirch/composeplayground/material/button.kt)
   * [Card](app/src/main/java/co/joebirch/composeplayground/material/card.kt)
   * [Checkbox](app/src/main/java/co/joebirch/composeplayground/material/checkbox.kt)

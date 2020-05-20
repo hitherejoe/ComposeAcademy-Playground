@@ -52,6 +52,7 @@ class HomeActivity : AppCompatActivity() {
                 Material.AlertDialog,
                 Material.Border,
                 Material.BottomAppBar,
+                Material.BottomNavigation,
                 Material.Button,
                 Material.Card,
                 Material.Checkbox,
