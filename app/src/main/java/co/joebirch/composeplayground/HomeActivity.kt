@@ -2,8 +2,7 @@ package co.joebirch.composeplayground
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.Model
-import androidx.compose.state
+import androidx.compose.*
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
 import androidx.ui.foundation.AdapterList
@@ -29,10 +28,11 @@ import co.joebirch.composeplayground.resource.Resource
 
 class HomeActivity : AppCompatActivity() {
 
-    @Model
-    class CurrentSelected(var obj: ComposableLayout? = null)
+    class HomeState(category: Category? = null) {
+        var category by mutableStateOf<Category?>(category)
+    }
 
-    private val currentSelected = CurrentSelected()
+    val currentState = HomeState()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,8 +82,10 @@ class HomeActivity : AppCompatActivity() {
         )
 
         setContent {
+            val state = remember { currentState }
+
             Scaffold(bodyContent = {
-                if (currentSelected.obj == null) {
+                if (state.category == null) {
                     AdapterList(data = mappedData.keys.toList()) {
                         val selected = state { false }
                         Clickable(onClick = {
@@ -99,9 +101,10 @@ class HomeActivity : AppCompatActivity() {
                                 mappedData.getValue(it).toList().forEach {
                                     Clickable(
                                         onClick = {
-                                            currentSelected.obj = it.intent
+                                            state.category = it
                                         },
-                                        modifier = Modifier.padding(16.dp).ripple(bounded = true).fillMaxWidth()
+                                        modifier = Modifier.padding(16.dp).ripple(bounded = true)
+                                            .fillMaxWidth()
                                     ) {
                                         Text(
                                             it.label,
@@ -114,15 +117,15 @@ class HomeActivity : AppCompatActivity() {
                         }
                     }
                 } else {
-                    currentSelected.obj!!.build()
+                    state.category!!.intent!!.build()
                 }
             })
         }
     }
 
     override fun onBackPressed() {
-        if (currentSelected.obj != null) {
-            currentSelected.obj = null
+        if (currentState.category != null) {
+            currentState.category = null
         } else {
             super.onBackPressed()
         }

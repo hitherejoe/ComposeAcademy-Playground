@@ -18,5 +18,4 @@ sealed class Animation(
     object PulsingShape : Animation("Pulsing shape", GrowingCircleAnimationView)
     object InterationAnimation : Animation("Interaction animation", InteractionAnimationView)
 
-
 }
