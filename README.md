@@ -4,7 +4,7 @@ Compose Academy Playground is a free resource that provides snippets and practic
 
 The project is split up by API, with the intention of removing friction when trying to find the sample that you want to explore. Some Links if they are helpful:
 
-[Animation](app/src/main/java/co/joebirch/composeplayground/animation)
+### [Animation](app/src/main/java/co/joebirch/composeplayground/animation)
 
   * [Animated Values](app/src/main/java/co/joebirch/composeplayground/animation/animateValues.kt)
   * [Crossfade Animation](app/src/main/java/co/joebirch/composeplayground/animation/crossfadeAnimation.kt)
@@ -15,11 +15,11 @@ The project is split up by API, with the intention of removing friction when try
   * [Single Value Float Animation](app/src/main/java/co/joebirch/composeplayground/animation/singleValueFloatAnimation.kt)
   * [Transition Animations](app/src/main/java/co/joebirch/composeplayground/animation/transitionAnimationDemos.kt)
 
-[Core](app/src/main/java/co/joebirch/composeplayground/core)
+### [Core](app/src/main/java/co/joebirch/composeplayground/core)
 
   * [Gestures](app/src/main/java/co/joebirch/composeplayground/core/gestures.kt)
 
-[Foundation](app/src/main/java/co/joebirch/composeplayground/foundation)
+### [Foundation](app/src/main/java/co/joebirch/composeplayground/foundation)
 
   * [Border](app/src/main/java/co/joebirch/composeplayground/foundation/border.kt)
   * [Clickable](app/src/main/java/co/joebirch/composeplayground/foundation/clickable.kt)
@@ -27,11 +27,11 @@ The project is split up by API, with the intention of removing friction when try
   * [Text](app/src/main/java/co/joebirch/composeplayground/foundation/text.kt)
   * [Text Style](app/src/main/java/co/joebirch/composeplayground/foundation/textStyle.kt)
 
-[Graphics](app/src/main/java/co/joebirch/composeplayground/graphics)
+### [Graphics](app/src/main/java/co/joebirch/composeplayground/graphics)
 
   * [Color](app/src/main/java/co/joebirch/composeplayground/graphics/color.kt)
 
-[Layout](app/src/main/java/co/joebirch/composeplayground/layout)
+### [Layout](app/src/main/java/co/joebirch/composeplayground/layout)
 
   * [Column](app/src/main/java/co/joebirch/composeplayground/layout/column.kt)
   * [Horizontal Arrangement](app/src/main/java/co/joebirch/composeplayground/layout/horizontalArrangement.kt)
@@ -39,7 +39,7 @@ The project is split up by API, with the intention of removing friction when try
   * [Spacer](app/src/main/java/co/joebirch/composeplayground/layout/spacer.kt)
   * [Vertical Arrangement](app/src/main/java/co/joebirch/composeplayground/layout/verticalArrangement.kt)
 
-[Material](app/src/main/java/co/joebirch/composeplayground/material)
+### [Material](app/src/main/java/co/joebirch/composeplayground/material)
 
   * [Alert Dialog](app/src/main/java/co/joebirch/composeplayground/material/alertDialog.kt)
   * [Bottom App Bar](app/src/main/java/co/joebirch/composeplayground/material/bottomAppBar.kt)
@@ -60,14 +60,14 @@ The project is split up by API, with the intention of removing friction when try
   * [Top App Bar](app/src/main/java/co/joebirch/composeplayground/material/topAppBar.kt)
   * [Tri-State Radio Button](app/src/main/java/co/joebirch/composeplayground/material/triStateRadioButton.kt)
 
-[Resource](app/src/main/java/co/joebirch/composeplayground/resource)
+### [Resource](app/src/main/java/co/joebirch/composeplayground/resource)
 
   * [Color](app/src/main/java/co/joebirch/composeplayground/resource/colorResource.kt)
   * [Drawable](app/src/main/java/co/joebirch/composeplayground/resource/drawableResource.kt)
   * [Primitive](app/src/main/java/co/joebirch/composeplayground/resource/primitiveResource.kt)
   * [String](app/src/main/java/co/joebirch/composeplayground/resource/stringResource.kt)
 
-[Test](app/src/androidTest/java/co/joebirch/composeplayground)
+### [Test](app/src/androidTest/java/co/joebirch/composeplayground)
 
   * [Perform Click Gesture](app/src/androidTest/java/co/joebirch/composeplayground/action/ClickTests.kt)
   * [Perform Horizontal Swipe Gesture](app/src/androidTest/java/co/joebirch/composeplayground/action/HorizontalSwipeTests.kt)
