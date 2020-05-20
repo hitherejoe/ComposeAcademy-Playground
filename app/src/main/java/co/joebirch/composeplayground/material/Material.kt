@@ -18,6 +18,7 @@ sealed class Material(
     object Fab: Material("Floating Action Button", FloatingActionButtonView)
     object Card: Material("Card", CardView)
     object Checkbox: Material("Checkbox", CheckboxView)
+    object IconButton: Material("Icon Button", IconButtonView)
     object Progress: Material("Progress Bar", ProgressView)
     object RadioButton: Material("Radio Button", RadioButtonView)
     object Scaffold: Material("Scaffold", ScaffoldView)

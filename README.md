@@ -48,6 +48,7 @@ The project is split up by API, with the intention of removing friction when try
   * [Checkbox](app/src/main/java/co/joebirch/composeplayground/material/checkbox.kt)
   * [Divider](app/src/main/java/co/joebirch/composeplayground/material/divider.kt)
   * [Floating Action Button](app/src/main/java/co/joebirch/composeplayground/material/floatingActionButton.kt)
+  * [Icon Button](app/src/main/java/co/joebirch/composeplayground/material/iconButton.kt)
   * [Progress](app/src/main/java/co/joebirch/composeplayground/material/progress.kt)
   * [Radio Button](app/src/main/java/co/joebirch/composeplayground/material/radioButton.kt)
   * [Scaffold](app/src/main/java/co/joebirch/composeplayground/material/scaffold.kt)

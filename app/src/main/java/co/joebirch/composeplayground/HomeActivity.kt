@@ -32,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
         var category by mutableStateOf<Category?>(category)
     }
 
-    val currentState = HomeState()
+    private val currentState = HomeState()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +57,7 @@ class HomeActivity : AppCompatActivity() {
                 Material.Checkbox,
                 Material.Divider,
                 Material.Fab,
+                Material.IconButton,
                 Material.Progress,
                 Material.RadioButton,
                 Material.Scaffold,
