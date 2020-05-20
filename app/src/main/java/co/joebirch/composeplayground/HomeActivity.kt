@@ -38,50 +38,75 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val mappedData = mapOf(
-            Pair(Animation.Heading, listOf(Animation.Crossfade,
-                Animation.SingleColor,
-                Animation.SingleFloat,
-                Animation.Transitions,
-                Animation.AnimatedValues,
-                Animation.RotatingShape,
-                Animation.PulsingShape,
-                Animation.InterationAnimation)),
-            Pair(Core.Heading, listOf(Core.Gesture)),
+            Pair(
+                Animation.Heading, listOf(
+                    Animation.Crossfade,
+                    Animation.SingleColor,
+                    Animation.SingleFloat,
+                    Animation.Transitions,
+                    Animation.AnimatedValues,
+                    Animation.RotatingShape,
+                    Animation.PulsingShape,
+                    Animation.InterationAnimation
+                )
+            ),
+            Pair(
+                Core.Heading,
+                listOf(
+                    Core.Gesture,
+                    Core.Popup
+                )
+            ),
             Pair(Graphics.Heading, listOf(Graphics.Color)),
-            Pair(Material.Heading, listOf(
-                Material.AlertDialog,
-                Material.Border,
-                Material.BottomAppBar,
-                Material.BottomNavigation,
-                Material.Button,
-                Material.Card,
-                Material.Checkbox,
-                Material.Divider,
-                Material.Fab,
-                Material.IconButton,
-                Material.Progress,
-                Material.RadioButton,
-                Material.Scaffold,
-                Material.Slider,
-                Material.Switch,
-                Material.Snackbar,
-                Material.TabRow,
-                Material.TextField,
-                Material.TopAppBar,
-                Material.TriStateRadioButton)),
-            Pair(Layout.Heading, listOf(Layout.Column,
-                Layout.HorizontalArrangement,
-                Layout.Row,
-                Layout.Spacer,
-                Layout.VerticalArrangement)),
-            Pair(Foundation.Heading, listOf(Foundation.Border,
-                Foundation.Clickable,
-                Foundation.Shape,
-                Foundation.Text,
-                Foundation.TextStyle)),
-            Pair(Resource.Heading, listOf(Resource.Color,
-                Resource.StringResource,
-                Resource.Primitive))
+            Pair(
+                Material.Heading, listOf(
+                    Material.AlertDialog,
+                    Material.Border,
+                    Material.BottomAppBar,
+                    Material.BottomNavigation,
+                    Material.Button,
+                    Material.Card,
+                    Material.Checkbox,
+                    Material.Divider,
+                    Material.Fab,
+                    Material.IconButton,
+                    Material.Progress,
+                    Material.RadioButton,
+                    Material.Scaffold,
+                    Material.Slider,
+                    Material.Switch,
+                    Material.Snackbar,
+                    Material.TabRow,
+                    Material.TextField,
+                    Material.TopAppBar,
+                    Material.TriStateRadioButton
+                )
+            ),
+            Pair(
+                Layout.Heading, listOf(
+                    Layout.Column,
+                    Layout.HorizontalArrangement,
+                    Layout.Row,
+                    Layout.Spacer,
+                    Layout.VerticalArrangement
+                )
+            ),
+            Pair(
+                Foundation.Heading, listOf(
+                    Foundation.Border,
+                    Foundation.Clickable,
+                    Foundation.Shape,
+                    Foundation.Text,
+                    Foundation.TextStyle
+                )
+            ),
+            Pair(
+                Resource.Heading, listOf(
+                    Resource.Color,
+                    Resource.StringResource,
+                    Resource.Primitive
+                )
+            )
         )
 
         setContent {
@@ -91,9 +116,12 @@ class HomeActivity : AppCompatActivity() {
                 if (state.category == null) {
                     AdapterList(data = mappedData.keys.toList()) {
                         val selected = state { false }
-                        Clickable(onClick = {
-                            selected.value = !selected.value
-                        }, modifier = Modifier.padding(16.dp).ripple(bounded = true).fillMaxWidth()) {
+                        Clickable(
+                            onClick = {
+                                selected.value = !selected.value
+                            },
+                            modifier = Modifier.padding(16.dp).ripple(bounded = true).fillMaxWidth()
+                        ) {
                             Text(
                                 it.label,
                                 style = TextStyle(color = Color.Black, fontSize = 20.sp)
@@ -111,8 +139,10 @@ class HomeActivity : AppCompatActivity() {
                                     ) {
                                         Text(
                                             it.label,
-                                            style = TextStyle(color = Color.Black, fontSize = 14.sp,
-                                                textIndent = TextIndent(firstLine = 16.sp))
+                                            style = TextStyle(
+                                                color = Color.Black, fontSize = 14.sp,
+                                                textIndent = TextIndent(firstLine = 16.sp)
+                                            )
                                         )
                                     }
                                 }
