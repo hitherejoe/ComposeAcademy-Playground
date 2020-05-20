@@ -18,6 +18,7 @@ The project is split up by API, with the intention of removing friction when try
 ### [Core](app/src/main/java/co/joebirch/composeplayground/core)
 
   * [Gestures](app/src/main/java/co/joebirch/composeplayground/core/gesture.kt)
+  * [Opacity](app/src/main/java/co/joebirch/composeplayground/core/opacity.kt)
   * [Popup](app/src/main/java/co/joebirch/composeplayground/core/popup.kt)
   * [Shadow](app/src/main/java/co/joebirch/composeplayground/core/shadow.kt)
 

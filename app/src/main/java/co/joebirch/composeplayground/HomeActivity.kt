@@ -54,6 +54,7 @@ class HomeActivity : AppCompatActivity() {
                 Core.Heading,
                 listOf(
                     Core.Gesture,
+                    Core.Opacity,
                     Core.Popup,
                     Core.Shadow
                 )
