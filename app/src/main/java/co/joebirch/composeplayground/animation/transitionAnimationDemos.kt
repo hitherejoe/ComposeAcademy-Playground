@@ -2,7 +2,6 @@ package co.joebirch.composeplayground.animation
 
 import androidx.animation.*
 import androidx.compose.Composable
-import androidx.compose.frames.restore
 import androidx.compose.state
 import androidx.ui.animation.Transition
 import androidx.ui.core.Alignment
@@ -11,10 +10,7 @@ import androidx.ui.foundation.Box
 import androidx.ui.foundation.Canvas
 import androidx.ui.foundation.ContentGravity
 import androidx.ui.foundation.Text
-import androidx.ui.geometry.Offset
 import androidx.ui.graphics.Color
-import androidx.ui.graphics.Paint
-import androidx.ui.graphics.painter.translate
 import androidx.ui.layout.*
 import androidx.ui.material.Button
 import androidx.ui.material.RadioGroup
@@ -23,7 +19,7 @@ import co.joebirch.composeplayground.ComposableLayout
 
 object TransitionDemoView : ComposableLayout {
 
-    val sizeS = FloatPropKey()
+    val sizeState = FloatPropKey()
 
     enum class AnimationType {
         SNAP, TWEEN, PHYSICS, REPEATABLE, KEYFRAME
@@ -38,7 +34,7 @@ object TransitionDemoView : ComposableLayout {
         ) {
             val animationType = state { AnimationType.SNAP }
             val toState = state { CircleStatus.Shrinking }
-            val rippleTransDef = sizeTransitionDefinition(animationType.value)
+            val transitionDef = sizeTransitionDefinition(animationType.value)
 
             RadioGroup {
                 RadioGroupTextItem(selected = animationType.value == AnimationType.SNAP, onSelect = {
@@ -68,11 +64,11 @@ object TransitionDemoView : ComposableLayout {
             }
             Box(modifier = Modifier.fillMaxSize(), gravity = ContentGravity.Center, children = {
                 Transition(
-                    definition = rippleTransDef,
+                    definition = transitionDef,
                     toState = toState.value
                 ) { state ->
                     Canvas(modifier = Modifier.preferredSize(80.dp)) {
-                        drawCircle(Color.Red, state[sizeS])
+                        drawCircle(Color.Red, state[sizeState])
                     }
                 }
             })
@@ -86,8 +82,8 @@ object TransitionDemoView : ComposableLayout {
 
     private fun sizeTransitionDefinition(animationType: AnimationType): TransitionDefinition<CircleStatus> {
         return transitionDefinition {
-            state(CircleStatus.Shrinking) { this[sizeS] = 50f }
-            state(CircleStatus.Growing) { this[sizeS] = 175f }
+            state(CircleStatus.Shrinking) { this[sizeState] = 50f }
+            state(CircleStatus.Growing) { this[sizeState] = 175f }
 
             when (animationType) {
                 AnimationType.SNAP -> {
@@ -96,7 +92,7 @@ object TransitionDemoView : ComposableLayout {
                 }
                 AnimationType.REPEATABLE -> {
                     transition(fromState = CircleStatus.Shrinking, toState = CircleStatus.Growing) {
-                        sizeS using repeatable<Float> {
+                        sizeState using repeatable<Float> {
                             iterations = Infinite
                             animation = tween {
                                 easing = LinearEasing
@@ -105,7 +101,7 @@ object TransitionDemoView : ComposableLayout {
                         }
                     }
                     transition(fromState = CircleStatus.Growing, toState = CircleStatus.Shrinking) {
-                        sizeS using repeatable<Float> {
+                        sizeState using repeatable<Float> {
                             iterations = Infinite
                             animation = tween {
                                 easing = LinearEasing
@@ -116,13 +112,13 @@ object TransitionDemoView : ComposableLayout {
                 }
                 AnimationType.PHYSICS -> {
                     transition(fromState = CircleStatus.Shrinking, toState = CircleStatus.Growing) {
-                        sizeS using physics<Float> {
+                        sizeState using physics<Float> {
                             stiffness = 5f
                             dampingRatio = 5f
                         }
                     }
                     transition(fromState = CircleStatus.Growing, toState = CircleStatus.Shrinking) {
-                        sizeS using physics<Float> {
+                        sizeState using physics<Float> {
                             stiffness = 5f
                             dampingRatio = 5f
                         }
@@ -130,13 +126,13 @@ object TransitionDemoView : ComposableLayout {
                 }
                 AnimationType.TWEEN -> {
                     transition(fromState = CircleStatus.Shrinking, toState = CircleStatus.Growing) {
-                        sizeS using tween<Float> {
+                        sizeState using tween<Float> {
                             duration = 2000
                             easing = FastOutLinearInEasing
                         }
                     }
                     transition(fromState = CircleStatus.Growing, toState = CircleStatus.Shrinking) {
-                        sizeS using tween<Float> {
+                        sizeState using tween<Float> {
                             duration = 2000
                             easing = LinearOutSlowInEasing
                         }
@@ -144,7 +140,7 @@ object TransitionDemoView : ComposableLayout {
                 }
                 AnimationType.KEYFRAME -> {
                     transition(fromState = CircleStatus.Shrinking, toState = CircleStatus.Growing) {
-                        sizeS using keyframes<Float> {
+                        sizeState using keyframes<Float> {
                             duration = 2500
                             50f at 200
                             60f at 2200
@@ -152,7 +148,7 @@ object TransitionDemoView : ComposableLayout {
                         }
                     }
                     transition(fromState = CircleStatus.Growing, toState = CircleStatus.Shrinking) {
-                        sizeS using keyframes<Float> {
+                        sizeState using keyframes<Float> {
                             duration = 2500
                             175f at 200
                             160f at 300
