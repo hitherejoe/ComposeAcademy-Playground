@@ -21,7 +21,7 @@ object ClickableView : ComposableLayout {
             horizontalGravity = Alignment.CenterHorizontally
         ) {
             ClickableComponent()
-            ClickableComponentWithRipple()
+            ClickableComponentWithListeners()
         }
     }
 
@@ -30,25 +30,25 @@ object ClickableView : ComposableLayout {
 @Composable
 fun ClickableComponent() {
     val clicked = state { false }
-    Clickable(onClick = {
-        clicked.value = !clicked.value
-    }) {
-        Text(
-            text = "Clickable",
-            color = if (clicked.value) Color.Red else Color.Black,
-            modifier = Modifier.padding(16.dp)
-        )
-    }
+    Text(
+        text = "Clickable",
+        color = if (clicked.value) Color.Red else Color.Black,
+        modifier = Modifier.padding(16.dp).clickable(onClick = {
+
+        })
+    )
 }
 
 @Composable
-fun ClickableComponentWithRipple() {
-    Clickable(onClick = {
-        // handle click
-    }, modifier = Modifier.ripple()) {
-        Text(
-            text = "Clickable with ripple",
-            modifier = Modifier.padding(16.dp)
-        )
-    }
+fun ClickableComponentWithListeners() {
+    Text(
+        text = "Clickable with ripple",
+        modifier = Modifier.padding(16.dp).clickable(onClick = {
+
+        }, onLongClick = {
+
+        }, onDoubleClick = {
+
+        })
+    )
 }
