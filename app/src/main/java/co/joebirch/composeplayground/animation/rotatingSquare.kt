@@ -9,7 +9,7 @@ import androidx.ui.foundation.Box
 import androidx.ui.foundation.Canvas
 import androidx.ui.foundation.ContentGravity
 import androidx.ui.graphics.Color
-import androidx.ui.graphics.painter.rotate
+import androidx.ui.graphics.drawscope.rotate
 import androidx.ui.layout.*
 import androidx.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout

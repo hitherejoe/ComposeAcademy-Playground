@@ -84,9 +84,9 @@ fun StandardPopup() {
 @Composable
 fun StandardPopupWithProperties(onDismiss: () -> Unit) {
     Box {
-        Popup(popupProperties = PopupProperties(isFocusable = true, onDismissRequest = {
+        Popup(isFocusable = true, onDismissRequest = {
             onDismiss()
-        })) {
+        }) {
             Stack {
                 Box(
                     Modifier.preferredSize(200.dp, 50.dp),

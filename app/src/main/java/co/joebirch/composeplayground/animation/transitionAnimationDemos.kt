@@ -135,6 +135,7 @@ object TransitionDemoView : ComposableLayout {
                         sizeState using tween<Float> {
                             duration = 2000
                             easing = LinearOutSlowInEasing
+                            delay = 200
                         }
                     }
                 }
