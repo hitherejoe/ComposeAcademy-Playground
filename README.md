@@ -101,7 +101,7 @@ If you want to make a one-off contribution, please do so to one of the following
 - Donate to [Black Visions](https://www.blackvisionsmn.org/)
 - Buy something for the dogs at [Raystede](https://www.raystede.org/) from their [Amazon Wishlist](https://www.amazon.co.uk/gp/registry/wishlist/4X1FCQP5NDIE)
 - Give a [one-off donation](https://www.seashepherd.org.uk/support-us/donate-monthly.html) to Sea Shepherd
-- Buy some merchandise from Sea Shepherd ([UK](https://seashepherduktrading.org/, [US](https://shop.seashepherd.org/))
+- Buy some merchandise from Sea Shepherd ([UK](https://seashepherduktrading.org/), [US](https://shop.seashepherd.org/))
 
 **Supporters**
 
