@@ -46,7 +46,6 @@ class VerticalSwipeTests {
         launchContent()
         findByTag("MyTag").doGesture {
             sendSwipeUp()
-            sendSwipeDown()
         }
     }
 }

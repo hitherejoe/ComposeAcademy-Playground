@@ -29,20 +29,18 @@ object ClickableView : ComposableLayout {
 
 @Composable
 fun ClickableComponent() {
-    val clicked = state { false }
     Text(
         text = "Clickable",
-        color = if (clicked.value) Color.Red else Color.Black,
         modifier = Modifier.padding(16.dp).clickable(onClick = {
 
-        })
+        }, onClickLabel = "Click to open document")
     )
 }
 
 @Composable
 fun ClickableComponentWithListeners() {
     Text(
-        text = "Clickable with ripple",
+        text = "Clickable",
         modifier = Modifier.padding(16.dp).clickable(onClick = {
 
         }, onLongClick = {

@@ -8,6 +8,7 @@ import androidx.ui.core.Modifier
 import androidx.ui.foundation.Border
 import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.clickable
 import androidx.ui.foundation.shape.corner.CutCornerShape
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
@@ -56,12 +57,10 @@ fun AlertDialogComponent() {
                 Row(horizontalArrangement = Arrangement.End,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Clickable(onClick = {
-                        showingDialog.value = false
-                    }) {
-                        Text(text = "Close",
-                            modifier = Modifier.padding(16.dp))
-                    }
+                    Text(text = "Close",
+                        modifier = Modifier.padding(16.dp).clickable(onClick = {
+                            showingDialog.value = false
+                        }))
                 }
             })
     }

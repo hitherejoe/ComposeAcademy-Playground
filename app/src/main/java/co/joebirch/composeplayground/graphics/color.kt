@@ -4,10 +4,7 @@ import androidx.compose.Composable
 import androidx.compose.state
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.Clickable
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.VerticalScroller
+import androidx.ui.foundation.*
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.material.Divider
@@ -56,12 +53,11 @@ fun ColorObject() {
         Color.Yellow,
         Color.Unset
     )
-    Clickable(onClick = {
-        if (selectedColor.value < colors.count() - 1) selectedColor.value =
-            selectedColor.value + 1 else selectedColor.value = 0
-    }) {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().clickable(onClick = {
+                if (selectedColor.value < colors.count() - 1) selectedColor.value =
+                    selectedColor.value + 1 else selectedColor.value = 0
+            }),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalGravity = Alignment.CenterHorizontally
         ) {
@@ -75,7 +71,6 @@ fun ColorObject() {
                 modifier = Modifier.padding(16.dp)
             )
         }
-    }
 }
 
 @Composable
