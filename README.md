@@ -93,7 +93,19 @@ If there is something missing you'd like documented, please feel free to add an 
 
 ## Support the project 🙇‍♂️ 🙇‍♀️
 
-This project has been built entirely in my free time. There are only small costs involved with the running of the site, but if you are able to [sponser this project](https://github.com/sponsors/hitherejoe) then it would be very appreciated!
+If you are able to [sponser this project](https://github.com/sponsors/hitherejoe), all money will be dispersed to different charitable organisations.
+
+If you want to make a one-off contribution, please do so to one of the following and let me know so that I can add you to the supporters section 🙂
+
+- Donate to [Reclaim the Block](https://www.reclaimtheblock.org/home/#about)
+- Donate to [Black Visions](https://www.blackvisionsmn.org/)
+- Buy something for the dogs at [Raystede](https://www.raystede.org/) from their [Amazon Wishlist](https://www.amazon.co.uk/gp/registry/wishlist/4X1FCQP5NDIE)
+- Give a [one-off donation](https://www.seashepherd.org.uk/support-us/donate-monthly.html) to Sea Shepherd
+- Buy some merchandise from Sea Shepherd ([UK](https://seashepherduktrading.org/), [US](https://shop.seashepherd.org/))
+
+**Supporters**
+
+None, yet!
 
 ## Coming soon - Compose Academy, the book and tutorial videos 📰
 
