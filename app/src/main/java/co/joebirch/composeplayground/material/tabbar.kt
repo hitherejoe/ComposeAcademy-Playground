@@ -15,7 +15,7 @@ object TabBarView : ComposableLayout {
     override fun build() {
         val selectedTab = state { 0 }
 
-        Scaffold(topAppBar = {
+        Scaffold(topBar = {
             TopAppBar(
                 elevation = 0.dp
             ) {

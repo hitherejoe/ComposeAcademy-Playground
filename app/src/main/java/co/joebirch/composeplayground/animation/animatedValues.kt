@@ -30,20 +30,25 @@ object AnimatedValuesView : ComposableLayout {
     fun AnimatedFloat() {
         val expandedState = state { false }
         val viewHeight = if (expandedState.value) animatedFloat(140f) else animatedFloat(40f)
-        Clickable(onClick = { expandedState.value = !expandedState.value }) {
-            Box(modifier = Modifier.fillMaxWidth().preferredHeight(viewHeight.value.dp),
-                backgroundColor = Color.Red)
-        }
+        Box(modifier = Modifier.fillMaxWidth().preferredHeight(viewHeight.value.dp).clickable(
+            onClick = {
+                expandedState.value = !expandedState.value
+            }
+        ),
+            backgroundColor = Color.Red)
     }
 
     @Composable
     fun AnimatedColor() {
         val expandedState = state { false }
-        val viewHeight = if (expandedState.value) animatedColor(Color.Red) else animatedColor(Color.Green)
-        Clickable(onClick = { expandedState.value = !expandedState.value }) {
-            Box(modifier = Modifier.fillMaxWidth().preferredHeight(40.dp),
-                backgroundColor = viewHeight.value)
-        }
+        val viewHeight =
+            if (expandedState.value) animatedColor(Color.Red) else animatedColor(Color.Green)
+        Box(
+            modifier = Modifier.fillMaxWidth().preferredHeight(40.dp).clickable(onClick = {
+                expandedState.value = !expandedState.value
+            }),
+            backgroundColor = viewHeight.value
+        )
     }
 
 }

@@ -31,7 +31,7 @@ android {
     }
     composeOptions {
         kotlinCompilerVersion "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
-        kotlinCompilerExtensionVersion "0.1.0-dev13"
+        kotlinCompilerExtensionVersion "0.1.0-dev14"
     }
 
     buildFeatures {
@@ -40,7 +40,7 @@ android {
 }
 
 dependencies {
-    def ui_version = "0.1.0-dev13"
+    def ui_version = "0.1.0-dev14"
 
     implementation "androidx.compose:compose-compiler:$ui_version"
     implementation "androidx.compose:compose-runtime:$ui_version"

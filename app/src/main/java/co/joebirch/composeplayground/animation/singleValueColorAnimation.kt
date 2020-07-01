@@ -6,8 +6,8 @@ import androidx.ui.animation.animate
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Box
-import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.clickable
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.unit.dp
@@ -31,13 +31,13 @@ object SingleAnimationColorView : ComposableLayout {
     @Composable
     fun SingleValueAnimationColor() {
         val enabled = state { true }
-        Clickable({ enabled.value = !enabled.value }) {
-            Stack {
-                Box(Modifier.fillMaxSize(), backgroundColor =
-                animate(if (enabled.value) Color.Green else Color.Red))
-                Text(text = "Click me to change color!",
-                    modifier = Modifier.gravity(Alignment.Center))
-            }
+        Stack {
+            Box(Modifier.fillMaxSize().clickable(onClick = {
+                enabled.value = !enabled.value
+            }), backgroundColor =
+            animate(if (enabled.value) Color.Green else Color.Red))
+            Text(text = "Click me to change color!",
+                modifier = Modifier.gravity(Alignment.Center))
         }
     }
 }

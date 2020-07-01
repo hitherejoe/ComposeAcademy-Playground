@@ -1,7 +1,6 @@
 package co.joebirch.composeplayground.material
 
 import androidx.compose.Composable
-import androidx.compose.Model
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Image
@@ -34,7 +33,6 @@ object TriStateRadioButtonView: ComposableLayout {
 
 }
 
-@Model
 class TriRadioState(var selectedOption: String? = null)
 
 

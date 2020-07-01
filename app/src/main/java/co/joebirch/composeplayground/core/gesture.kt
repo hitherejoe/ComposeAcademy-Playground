@@ -6,9 +6,9 @@ import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.core.gesture.*
 import androidx.ui.foundation.Text
+import androidx.ui.geometry.Offset
 import androidx.ui.layout.*
 import androidx.ui.material.Snackbar
-import androidx.ui.unit.PxPosition
 import androidx.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
@@ -95,16 +95,16 @@ fun LongPressDragComponent() {
             modifier = Modifier.padding(16.dp).longPressDragGestureFilter(
                 object : LongPressDragObserver {
 
-                    override fun onLongPress(pxPosition: PxPosition) {
-                        super.onLongPress(pxPosition)
+                    override fun onLongPress(offset: Offset) {
+                        super.onLongPress(offset)
 
                         //Toast.makeText(ContextAmbient.current, "Long pressed!!", LENGTH_SHORT)
                     }
 
-                    override fun onDrag(dragDistance: PxPosition): PxPosition {
+                    override fun onDrag(offset: Offset): Offset {
                         // Toast.makeText(ContextAmbient.current, "Dragged: " + dragDistance.x +
                         //   " : " + dragDistance.y, LENGTH_SHORT)
-                        return super.onDrag(dragDistance)
+                        return super.onDrag(offset)
                     }
 
                     override fun onDragStart() {
@@ -116,9 +116,9 @@ fun LongPressDragComponent() {
                         super.onCancel()
                     }
 
-                    override fun onStop(velocity: PxPosition) {
+                    override fun onStop(offset: Offset) {
                         showSnackbar.value = false
-                        super.onStop(velocity)
+                        super.onStop(offset)
                     }
                 }
             )

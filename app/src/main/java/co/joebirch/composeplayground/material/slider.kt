@@ -1,7 +1,6 @@
 package co.joebirch.composeplayground.material
 
 import androidx.compose.Composable
-import androidx.compose.Model
 import androidx.compose.state
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
@@ -13,7 +12,6 @@ import androidx.ui.layout.Column
 import androidx.ui.layout.fillMaxSize
 import androidx.ui.layout.padding
 import androidx.ui.material.Slider
-import androidx.ui.material.Switch
 import androidx.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 

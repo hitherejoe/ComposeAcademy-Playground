@@ -1,9 +1,10 @@
 package co.joebirch.composeplayground.assertions
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.ui.core.TestTag
-import androidx.ui.foundation.Clickable
+import androidx.ui.core.Modifier
+import androidx.ui.core.testTag
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.clickable
 import androidx.ui.layout.Stack
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
@@ -25,20 +26,17 @@ class AssertClickActionTests {
             MaterialTheme {
                 Surface {
                     Stack {
-                        TestTag(tag = "MyTag") {
-                            if (clickable) {
-                                Clickable(onClick = {
+                        if (clickable) {
+                            Text(
+                                text = "Hello",
+                                modifier = Modifier.clickable(onClick = {
 
-                                }) {
-                                    Text(
-                                        text = "Hello"
-                                    )
-                                }
-                            } else {
-                                Text(
-                                    text = "Hello"
-                                )
-                            }
+                                }).testTag("MyTag")
+                            )
+                        } else {
+                            Text(
+                                text = "Hello"
+                            )
                         }
                     }
                 }

@@ -5,10 +5,7 @@ import androidx.compose.remember
 import androidx.compose.state
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
-import androidx.ui.foundation.Border
-import androidx.ui.foundation.Clickable
-import androidx.ui.foundation.Icon
-import androidx.ui.foundation.Text
+import androidx.ui.foundation.*
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
@@ -81,7 +78,7 @@ object TopAppBarView : ComposableLayout {
 
 @Composable
 fun MinimalTopAppBar(bodyContent: @Composable() () -> Unit) {
-    Scaffold(topAppBar = {
+    Scaffold(topBar = {
         TopAppBar(
             title = {
                 Text(text = "Jetpack Compose")
@@ -94,7 +91,7 @@ fun MinimalTopAppBar(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun NavigationIconTopAppBar(bodyContent: @Composable() () -> Unit) {
-    Scaffold(topAppBar = {
+    Scaffold(topBar = {
         TopAppBar(
             title = {
                 Text(text = "Jetpack Compose")
@@ -112,7 +109,7 @@ fun NavigationIconTopAppBar(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun StyledTopAppBar(bodyContent: @Composable() () -> Unit) {
-    Scaffold(topAppBar = {
+    Scaffold(topBar = {
         TopAppBar(
             title = {
                 Text(text = "Jetpack Compose")
@@ -128,18 +125,18 @@ fun StyledTopAppBar(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun ActionsTopAppBar(bodyContent: @Composable() () -> Unit) {
-    Scaffold(topAppBar = {
+    Scaffold(topBar = {
         TopAppBar(
             title = {
                 Text(text = "Jetpack Compose")
             },
             actions = {
-                Clickable(onClick = {
+                Text(
+                    text = "Save", modifier = Modifier.padding(16.dp).clickable(onClick = {
 
-                }, modifier = Modifier.ripple()) {
-                    Text(text = "Save", modifier = Modifier.padding(16.dp),
-                        color = Color.White)
-                }
+                    }),
+                    color = Color.White
+                )
             }
         )
     }, bodyContent = {

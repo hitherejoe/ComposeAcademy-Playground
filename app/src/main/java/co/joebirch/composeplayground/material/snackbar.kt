@@ -4,8 +4,8 @@ import androidx.compose.Composable
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Box
-import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.clickable
 import androidx.ui.graphics.Color
 import androidx.ui.layout.Arrangement
 import androidx.ui.layout.Column
@@ -20,12 +20,12 @@ import androidx.ui.text.font.FontWeight
 import androidx.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
-object SnackbarView: ComposableLayout {
+object SnackbarView : ComposableLayout {
 
     @Composable
     override fun build() {
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().padding(16.dp),
             backgroundColor = Color.LightGray
         ) {
             Column(
@@ -52,18 +52,16 @@ object SnackbarView: ComposableLayout {
         Snackbar(
             text = { Text(text = "This is a snackbar!") },
             action = {
-                Clickable(onClick = {
-                    // Handle action
-                }) {
-                    Text(
-                        text = "Undo",
-                        modifier = Modifier.padding(end = 16.dp).ripple(),
-                        style = TextStyle(
-                            fontWeight = FontWeight.Bold,
-                            color = snackbarPrimaryColorFor(MaterialTheme.colors)
-                        )
+                Text(
+                    text = "Undo",
+                    modifier = Modifier.padding(end = 16.dp).clickable(onClick = {
+                        // handle action
+                    }),
+                    style = TextStyle(
+                        fontWeight = FontWeight.Bold,
+                        color = snackbarPrimaryColorFor(MaterialTheme.colors)
                     )
-                }
+                )
             }
         )
     }
@@ -73,18 +71,16 @@ object SnackbarView: ComposableLayout {
         Snackbar(
             text = { Text(text = "This is a snackbar with a lot of text, that way it makes sense to use the new line!") },
             action = {
-                Clickable(onClick = {
-                    // Handle action
-                }) {
-                    Text(
-                        text = "Undo",
-                        modifier = Modifier.padding(end = 16.dp).ripple(),
-                        style = TextStyle(
-                            fontWeight = FontWeight.Bold,
-                            color = snackbarPrimaryColorFor(MaterialTheme.colors)
-                        )
+                Text(
+                    text = "Undo",
+                    modifier = Modifier.padding(end = 16.dp).clickable(onClick = {
+                        // Handle action
+                    }),
+                    style = TextStyle(
+                        fontWeight = FontWeight.Bold,
+                        color = snackbarPrimaryColorFor(MaterialTheme.colors)
                     )
-                }
+                )
             },
             actionOnNewLine = true
         )

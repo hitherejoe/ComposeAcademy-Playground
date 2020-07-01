@@ -4,12 +4,16 @@ import androidx.compose.Composable
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Text
+import androidx.ui.graphics.Color
+import androidx.ui.graphics.Shadow
 import androidx.ui.layout.*
 import androidx.ui.text.TextStyle
 import androidx.ui.text.font.FontStyle
 import androidx.ui.text.font.FontSynthesis
 import androidx.ui.text.font.FontWeight
 import androidx.ui.text.style.BaselineShift
+import androidx.ui.text.style.TextDecoration
+import androidx.ui.text.style.TextDirectionAlgorithm
 import androidx.ui.text.style.TextIndent
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
@@ -43,6 +47,35 @@ fun SimpleComponent() {
     Text(
         text = "Font size",
         style = TextStyle(fontSize = 28.sp),
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun TextWithShadowComponent() {
+    Text(
+        text = "Font size",
+        style = TextStyle(shadow = Shadow(Color.Gray)),
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun TextDirectionComponent() {
+    Text(
+        text = "Font size",
+        style = TextStyle(textDirectionAlgorithm = TextDirectionAlgorithm.ContentOrRtl),
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun TextDecorationComponent() {
+    Text(
+        text = "Font size",
+        style = TextStyle(textDecoration = TextDecoration.combine(listOf(
+            TextDecoration.LineThrough, TextDecoration.Underline
+        ))),
         modifier = Modifier.padding(16.dp)
     )
 }

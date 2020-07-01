@@ -6,8 +6,8 @@ import androidx.compose.*
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
 import androidx.ui.foundation.AdapterList
-import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.clickable
 import androidx.ui.graphics.Color
 import androidx.ui.layout.Column
 import androidx.ui.layout.fillMaxWidth
@@ -47,7 +47,8 @@ class HomeActivity : AppCompatActivity() {
                     Animation.AnimatedValues,
                     Animation.RotatingShape,
                     Animation.PulsingShape,
-                    Animation.InterationAnimation
+                    Animation.InterationAnimation,
+                    Animation.TextAnimations
                 )
             ),
             Pair(
@@ -118,35 +119,26 @@ class HomeActivity : AppCompatActivity() {
                 if (state.category == null) {
                     AdapterList(data = mappedData.keys.toList()) {
                         val selected = state { false }
-                        Clickable(
-                            onClick = {
+                        Text(
+                            it.label,
+                            style = TextStyle(color = Color.Black, fontSize = 20.sp),
+                            modifier = Modifier.padding(16.dp).clickable(onClick = {
                                 selected.value = !selected.value
-                            },
-                            modifier = Modifier.padding(16.dp).ripple(bounded = true).fillMaxWidth()
-                        ) {
-                            Text(
-                                it.label,
-                                style = TextStyle(color = Color.Black, fontSize = 20.sp)
-                            )
-                        }
+                            }).fillMaxWidth()
+                        )
                         if (selected.value) {
                             Column {
                                 mappedData.getValue(it).toList().forEach {
-                                    Clickable(
-                                        onClick = {
+                                    Text(
+                                        it.label,
+                                        style = TextStyle(
+                                            color = Color.Black, fontSize = 14.sp,
+                                            textIndent = TextIndent(firstLine = 16.sp)
+                                        ),
+                                        modifier = Modifier.padding(16.dp).clickable(onClick = {
                                             state.category = it
-                                        },
-                                        modifier = Modifier.padding(16.dp).ripple(bounded = true)
-                                            .fillMaxWidth()
-                                    ) {
-                                        Text(
-                                            it.label,
-                                            style = TextStyle(
-                                                color = Color.Black, fontSize = 14.sp,
-                                                textIndent = TextIndent(firstLine = 16.sp)
-                                            )
-                                        )
-                                    }
+                                        }).fillMaxWidth()
+                                    )
                                 }
                             }
                         }

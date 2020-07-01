@@ -12,9 +12,9 @@ import androidx.ui.core.gesture.pressIndicatorGestureFilter
 import androidx.ui.foundation.Box
 import androidx.ui.foundation.Canvas
 import androidx.ui.foundation.ContentGravity
+import androidx.ui.geometry.Offset
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
-import androidx.ui.unit.PxPosition
 import androidx.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
@@ -46,9 +46,9 @@ object InteractionAnimationView : ComposableLayout {
         val toState = state { CircleStatus.Idle }
         val rippleTransDef = remember { createTransDef() }
 
-        val onPress: (PxPosition) -> Unit = { position ->
-            down.x = position.x.value
-            down.y = position.y.value
+        val onPress: (Offset) -> Unit = { offset ->
+            down.x = offset.x
+            down.y = offset.y
             toState.value = CircleStatus.Pressed
         }
         val onRelease: () -> Unit = {

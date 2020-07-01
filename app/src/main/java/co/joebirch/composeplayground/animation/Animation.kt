@@ -17,5 +17,6 @@ sealed class Animation(
     object RotatingShape : Animation("Rotating shape", RotatingShapeAnimationView)
     object PulsingShape : Animation("Pulsing shape", GrowingCircleAnimationView)
     object InterationAnimation : Animation("Interaction animation", InteractionAnimationView)
+    object TextAnimations : Animation("Text", TextDemoView)
 
 }

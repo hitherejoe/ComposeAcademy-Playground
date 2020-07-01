@@ -1,7 +1,6 @@
 package co.joebirch.composeplayground.material
 
 import androidx.compose.Composable
-import androidx.compose.Model
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Image
@@ -34,9 +33,7 @@ object RadioButtonView: ComposableLayout {
 
 }
 
-@Model
 class RadioState(var selectedOption: String? = null)
-
 
 @Composable
 fun SimpleRadioGroupComponent(formState: RadioState) {

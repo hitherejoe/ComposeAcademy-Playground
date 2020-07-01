@@ -14,12 +14,7 @@ import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.filled.*
-import androidx.ui.material.ripple.ripple
-import androidx.ui.res.booleanResource
-import androidx.ui.unit.IntPxSize
-import androidx.ui.unit.PxPosition
 import androidx.ui.unit.dp
-import androidx.ui.unit.ipx
 import co.joebirch.composeplayground.ComposableLayout
 
 object BottomNavigationView : ComposableLayout {

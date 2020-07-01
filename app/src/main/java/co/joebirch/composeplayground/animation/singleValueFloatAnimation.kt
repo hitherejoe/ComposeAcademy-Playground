@@ -6,8 +6,8 @@ import androidx.ui.animation.animate
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Box
-import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.clickable
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.unit.dp
@@ -29,12 +29,14 @@ object SingleAnimationFloatView : ComposableLayout {
     @Composable
     fun SingleValueAnimationFloat() {
         val enabled = state { true }
-        Clickable({ enabled.value = !enabled.value }) {
-            Stack(modifier = Modifier.padding(animate(if (enabled.value) 0f else 100f).dp)) {
-                Box(Modifier.fillMaxSize(), backgroundColor = Color.Green)
-                Text(text = "Click me to change padding!",
-                    modifier = Modifier.gravity(Alignment.Center))
+        Stack(modifier = Modifier.padding(animate(if (enabled.value) 0f else 100f).dp).clickable(
+            onClick = {
+                enabled.value = !enabled.value
             }
+        )) {
+            Box(Modifier.fillMaxSize(), backgroundColor = Color.Green)
+            Text(text = "Click me to change padding!",
+                modifier = Modifier.gravity(Alignment.Center))
         }
     }
 }

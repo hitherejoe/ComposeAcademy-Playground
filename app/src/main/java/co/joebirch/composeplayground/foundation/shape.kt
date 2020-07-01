@@ -63,6 +63,34 @@ fun AlternateCutCornerShapeComponent() {
 }
 
 @Composable
+fun FloatCutCornerShapeComponent() {
+    Box(
+        shape = CutCornerShape(12f, 4f, 12f, 4f),
+        backgroundColor = Color.Blue
+    ) {
+        Text(
+            text = "Cut corner shape",
+            modifier = Modifier.padding(16.dp),
+            color = Color.White
+        )
+    }
+}
+
+@Composable
+fun PercentCutCornerShapeComponent() {
+    Box(
+        shape = CutCornerShape(40, 20, 50, 10),
+        backgroundColor = Color.Blue
+    ) {
+        Text(
+            text = "Cut corner shape",
+            modifier = Modifier.padding(16.dp),
+            color = Color.White
+        )
+    }
+}
+
+@Composable
 fun RoundedCornerShapeComponent() {
     Box(
         shape = RoundedCornerShape(12.dp),

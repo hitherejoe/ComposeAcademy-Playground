@@ -1,7 +1,7 @@
 package co.joebirch.composeplayground.material
 
 import androidx.compose.Composable
-import androidx.compose.Model
+import androidx.compose.state
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Box
@@ -9,6 +9,7 @@ import androidx.ui.graphics.Color
 import androidx.ui.layout.Arrangement
 import androidx.ui.layout.Column
 import androidx.ui.layout.fillMaxSize
+import androidx.ui.layout.wrapContentSize
 import androidx.ui.material.Switch
 import co.joebirch.composeplayground.ComposableLayout
 
@@ -16,10 +17,8 @@ object SwitchView: ComposableLayout {
 
     @Composable
     override fun build() {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            backgroundColor = Color.LightGray
-        ) {
+        Box(modifier = Modifier.fillMaxSize(),
+        backgroundColor = Color.LightGray) {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceEvenly,
@@ -32,40 +31,36 @@ object SwitchView: ComposableLayout {
         }
     }
 
-    @Model
-    class FormState(var optionChecked: Boolean = false)
-
     @Composable
-    fun MinimalSwitchComponent(formState: FormState = FormState()) {
+    fun MinimalSwitchComponent() {
+        val isChecked = state  { false }
         Switch(
-            checked = formState.optionChecked,
+            checked = isChecked.value,
             onCheckedChange = { checked ->
-                formState.optionChecked = checked
-            }
+                isChecked.value = checked
+            }, modifier = Modifier.wrapContentSize()
         )
     }
 
     @Composable
-    fun ColoredSwitchComponent(
-        formState: FormState = FormState(
-            optionChecked = true
-        )
-    ) {
+    fun ColoredSwitchComponent() {
+        val isChecked = state  { true }
         Switch(
-            checked = formState.optionChecked,
+            checked = isChecked.value,
             onCheckedChange = { checked ->
-                formState.optionChecked = checked
+                isChecked.value = checked
             },
             color = Color.Red
         )
     }
 
     @Composable
-    fun DisabledSwitchComponent(formState: FormState = FormState()) {
+    fun DisabledSwitchComponent() {
+        val isChecked = state  { true }
         Switch(
-            checked = formState.optionChecked,
+            checked = isChecked.value,
             onCheckedChange = { checked ->
-                formState.optionChecked = checked
+                isChecked.value = checked
             },
             enabled = false
         )

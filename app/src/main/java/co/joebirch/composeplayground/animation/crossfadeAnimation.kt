@@ -5,8 +5,8 @@ import androidx.ui.animation.Crossfade
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Box
-import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.clickable
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.text.TextStyle
@@ -34,13 +34,11 @@ object CrossfadeAnimationView : ComposableLayout {
         var currentString by state { strings[0] }
 
         Column(modifier = Modifier.fillMaxWidth()) {
-            Clickable(onClick = {
-                currentString = if (currentString == strings[0]) strings[1] else strings[0]
-            }) {
-                Crossfade(current = currentString) { color ->
-                    Text(color, modifier = Modifier.fillMaxWidth(),
-                        style = TextStyle(textAlign = TextAlign.Center))
-                }
+            Crossfade(current = currentString) { color ->
+                Text(color, modifier = Modifier.fillMaxWidth().clickable(onClick = {
+                    currentString = if (currentString == strings[0]) strings[1] else strings[0]
+                }),
+                    style = TextStyle(textAlign = TextAlign.Center))
             }
         }
     }
@@ -51,12 +49,10 @@ object CrossfadeAnimationView : ComposableLayout {
         var current by state { colors[0] }
 
         Column(modifier = Modifier.fillMaxWidth()) {
-            Clickable(onClick = {
-                current = if (current == colors[0]) colors[1] else colors[0]
-            }) {
-                Crossfade(current = current) { color ->
-                    Box(Modifier.fillMaxWidth().preferredHeight(120.dp), backgroundColor = color)
-                }
+            Crossfade(current = current) { color ->
+                Box(Modifier.fillMaxWidth().preferredHeight(120.dp).clickable(onClick = {
+                    current = if (current == colors[0]) colors[1] else colors[0]
+                }), backgroundColor = color)
             }
         }
     }

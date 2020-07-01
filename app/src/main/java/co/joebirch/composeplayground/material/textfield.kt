@@ -31,7 +31,6 @@ object TextFieldView : ComposableLayout {
                 StyledTextFieldComponent()
                 ImeActionTextFieldComponent()
                 KeyboardTypeTextFieldComponent()
-                FilledTextFieldComponent()
             }
         }
     }
@@ -84,22 +83,6 @@ object TextFieldView : ComposableLayout {
             modifier = Modifier.padding(16.dp).fillMaxWidth(),
             keyboardType = KeyboardType.Password,
             visualTransformation = PasswordVisualTransformation()
-        )
-    }
-
-    @Composable
-    fun FilledTextFieldComponent() {
-        val state = state { TextFieldValue(text = "Hello") }
-        FilledTextField(value = state.value, onValueChange = {
-            state.value = it
-        }, label = {
-            Text(text = "This is a label")
-        },
-            inactiveColor = Color.Gray,
-            activeColor = Color.Black,
-            errorColor = Color.Red,
-            backgroundColor = Color.LightGray,
-            shape = RectangleShape
         )
     }
 }

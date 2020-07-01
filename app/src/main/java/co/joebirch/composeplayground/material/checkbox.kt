@@ -1,11 +1,12 @@
 package co.joebirch.composeplayground.material
 
 import androidx.compose.Composable
-import androidx.compose.Model
+import androidx.compose.MutableState
+import androidx.compose.state
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
-import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.clickable
 import androidx.ui.foundation.selection.ToggleableState
 import androidx.ui.layout.*
 import androidx.ui.material.Checkbox
@@ -22,17 +23,14 @@ object CheckboxView: ComposableLayout {
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalGravity = Alignment.CenterHorizontally
         ) {
-            TriStateCheckboxComponent(
-                TriStateFormState()
-            )
+            val state = state { TriStateFormState() }
+            TriStateCheckboxComponent(state)
         }
     }
 
 }
 
-@Model
 class FormState(var optionChecked: Boolean = false)
-
 
 @Composable
 fun CheckboxComponent(formState: FormState) {
@@ -46,42 +44,39 @@ fun CheckboxComponent(formState: FormState) {
 
 @Composable
 fun CheckboxWithLabel(formState: FormState) {
-    Clickable(onClick = {
+    Row (modifier = Modifier.clickable(onClick = {
         formState.optionChecked = !formState.optionChecked
-    }) {
-        Row {
-            Checkbox(
-                checked = formState.optionChecked,
-                onCheckedChange = { checked ->
-                    formState.optionChecked = checked
-                }
-            )
-            Text(
-                text = "Notify me of updates",
-                modifier = Modifier.padding(start = 8.dp)
-            )
-        }
+    })) {
+        Checkbox(
+            checked = formState.optionChecked,
+            onCheckedChange = { checked ->
+                formState.optionChecked = checked
+            }
+        )
+        Text(
+            text = "Notify me of updates",
+            modifier = Modifier.padding(start = 8.dp)
+        )
     }
 }
 
-@Model
 class TriStateFormState(var optionChecked: ToggleableState? = ToggleableState.Indeterminate)
 
 
 @Composable
-fun TriStateCheckboxComponent(formState: TriStateFormState) {
+fun TriStateCheckboxComponent(formState: MutableState<TriStateFormState>) {
     TriStateCheckbox(
-        state = formState.optionChecked ?: ToggleableState.Indeterminate,
+        state = formState.value.optionChecked ?: ToggleableState.Indeterminate,
         onClick = {
-            when (formState.optionChecked) {
+            when (formState.value.optionChecked) {
                 ToggleableState.Off -> {
-                    formState.optionChecked = ToggleableState.Indeterminate
+                    formState.value.optionChecked = ToggleableState.Indeterminate
                 }
                 ToggleableState.On -> {
-                    formState.optionChecked = ToggleableState.Off
+                    formState.value.optionChecked = ToggleableState.Off
                 }
                 ToggleableState.Indeterminate -> {
-                    formState.optionChecked = ToggleableState.On
+                    formState.value.optionChecked = ToggleableState.On
                 }
             }
         }

@@ -104,28 +104,20 @@ fun ScaffoldWithFabComponent(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun ScaffoldWithDockedFabComponent(bodyContent: @Composable() () -> Unit) {
-    val state = state { 0 }
-
-    val positions = listOf(
-        Scaffold.FabPosition.EndDocked,
-        Scaffold.FabPosition.CenterDocked
-    )
+    val state = state { true }
 
     Scaffold(floatingActionButton = {
         FloatingActionButton(onClick = {
-            if (state.value < positions.count() - 1) {
-                state.value = state.value + 1
-            } else {
-                state.value = 0
-            }
+            state.value = !state.value
         }) {
             Icon(asset = Icons.Filled.Done)
         }
-    }, bottomAppBar = {
+    }, bottomBar = {
         BottomAppBar {
 
         }
-    }, floatingActionButtonPosition = positions[state.value],
+    }, floatingActionButtonPosition = Scaffold.FabPosition.Center,
+        isFloatingActionButtonDocked = state.value,
         bodyContent = {
             bodyContent()
         })
@@ -133,7 +125,7 @@ fun ScaffoldWithDockedFabComponent(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun ScaffoldWithTopAppBar(bodyContent: @Composable() () -> Unit) {
-    Scaffold(topAppBar = {
+    Scaffold(topBar = {
         TopAppBar(
             title = {
                 Text(text = "Jetpack Compose")
@@ -154,7 +146,7 @@ fun ScaffoldWithDrawer(bodyContent: @Composable() () -> Unit) {
     val scaffoldState = remember { ScaffoldState() }
     Scaffold(
         scaffoldState = scaffoldState,
-        topAppBar = {
+        topBar = {
             TopAppBar(
                 title = {
                     Text(text = "Jetpack Compose")
