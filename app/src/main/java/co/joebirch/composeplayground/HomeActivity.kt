@@ -13,7 +13,6 @@ import androidx.ui.layout.Column
 import androidx.ui.layout.fillMaxWidth
 import androidx.ui.layout.padding
 import androidx.ui.material.Scaffold
-import androidx.ui.material.ripple.ripple
 import androidx.ui.text.TextStyle
 import androidx.ui.text.style.TextIndent
 import androidx.ui.unit.dp
@@ -30,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
 
     class HomeState(category: Category? = null) {
         var category by mutableStateOf<Category?>(category)
+        var expandedCategory by mutableStateOf<Category?>(null)
     }
 
     private val currentState = HomeState()
@@ -118,15 +118,15 @@ class HomeActivity : AppCompatActivity() {
             Scaffold(bodyContent = {
                 if (state.category == null) {
                     AdapterList(data = mappedData.keys.toList()) {
-                        val selected = state { false }
                         Text(
                             it.label,
                             style = TextStyle(color = Color.Black, fontSize = 20.sp),
                             modifier = Modifier.padding(16.dp).clickable(onClick = {
-                                selected.value = !selected.value
+                                state.expandedCategory =
+                                    it.takeIf { state.expandedCategory == null }
                             }).fillMaxWidth()
                         )
-                        if (selected.value) {
+                        if (state.expandedCategory == it) {
                             Column {
                                 mappedData.getValue(it).toList().forEach {
                                     Text(
