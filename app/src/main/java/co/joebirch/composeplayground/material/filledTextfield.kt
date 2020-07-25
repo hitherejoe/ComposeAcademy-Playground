@@ -4,20 +4,16 @@ import androidx.compose.Composable
 import androidx.compose.state
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
-import androidx.ui.foundation.*
+import androidx.ui.foundation.Icon
+import androidx.ui.foundation.Text
+import androidx.ui.foundation.VerticalScroller
 import androidx.ui.graphics.Color
-import androidx.ui.graphics.RectangleShape
-import androidx.ui.input.ImeAction
-import androidx.ui.input.KeyboardType
-import androidx.ui.input.PasswordVisualTransformation
+import androidx.ui.input.TextFieldValue
 import androidx.ui.layout.*
 import androidx.ui.material.FilledTextField
 import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.filled.Check
 import androidx.ui.material.icons.filled.Info
-import androidx.ui.text.TextStyle
-import androidx.ui.unit.dp
-import androidx.ui.unit.sp
 import co.joebirch.composeplayground.ComposableLayout
 
 object FilledTextFieldView : ComposableLayout {

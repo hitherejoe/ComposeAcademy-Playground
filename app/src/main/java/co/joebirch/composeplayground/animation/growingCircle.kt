@@ -17,23 +17,23 @@ object GrowingCircleAnimationView : ComposableLayout {
 
     private val shapeSize = FloatPropKey()
 
-    private val sizeTransitionDefinition = transitionDefinition {
+    private val sizeTransitionDefinition = transitionDefinition<String> {
         state("A") { this[shapeSize] = 50f }
         state("B") { this[shapeSize] = 175f }
         state("C") { this[shapeSize] = 50f }
 
         transition(fromState = "A", toState = "B") {
-            shapeSize using tween<Float> {
-                duration = 900
+            shapeSize using tween(
+                durationMillis = 900,
                 easing = FastOutLinearInEasing
-            }
+            )
             nextState = "C"
         }
         transition(fromState = "B", toState = "C") {
-            shapeSize using tween<Float> {
-                duration = 900
+            shapeSize using tween(
+                durationMillis = 900,
                 easing = LinearOutSlowInEasing
-            }
+            )
         }
     }
 

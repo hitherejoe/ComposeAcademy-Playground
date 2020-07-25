@@ -1,6 +1,7 @@
 package co.joebirch.composeplayground.animation
 
 import androidx.animation.*
+import androidx.animation.AnimationConstants.Infinite
 import androidx.compose.Composable
 import androidx.ui.animation.Transition
 import androidx.ui.core.Alignment
@@ -23,13 +24,13 @@ object RotatingShapeAnimationView : ComposableLayout {
         state("B") { this[rotation] = 360f }
 
         transition(fromState = "A", toState = "B") {
-            rotation using repeatable<Float> {
-                animation = tween {
-                    duration = 3000
+            rotation using repeatable(
+                iterations = Infinite,
+                animation = tween(
+                    durationMillis = 3000,
                     easing = LinearEasing
-                }
-                iterations = Infinite
-            }
+                )
+            )
         }
     }
 

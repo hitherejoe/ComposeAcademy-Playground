@@ -81,15 +81,15 @@ object InteractionAnimationView : ComposableLayout {
                 this[shapeRadius] = 50f
             }
             transition(fromState = CircleStatus.Idle, toState = CircleStatus.Pressed) {
-                shapeRadius using tween<Float> {
-                    duration = 225
-                }
+                shapeRadius using tween(
+                    durationMillis = 225
+                )
                 interruptionHandling = InterruptionHandling.UNINTERRUPTIBLE
             }
             transition(fromState = CircleStatus.Pressed, toState = CircleStatus.Released) {
-                shapeRadius using tween<Float> {
-                    duration = 225
-                }
+                shapeRadius using tween(
+                    durationMillis = 225
+                )
                 interruptionHandling = InterruptionHandling.UNINTERRUPTIBLE
                 nextState = CircleStatus.Idle
             }

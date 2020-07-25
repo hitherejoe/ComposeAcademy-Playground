@@ -12,9 +12,6 @@ import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.filled.ArrowBack
-import androidx.ui.material.icons.filled.Done
-import androidx.ui.material.icons.filled.Menu
-import androidx.ui.material.ripple.ripple
 import androidx.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 

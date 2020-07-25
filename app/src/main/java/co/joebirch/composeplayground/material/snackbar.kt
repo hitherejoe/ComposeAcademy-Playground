@@ -13,7 +13,6 @@ import androidx.ui.layout.fillMaxSize
 import androidx.ui.layout.padding
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Snackbar
-import androidx.ui.material.ripple.ripple
 import androidx.ui.material.snackbarPrimaryColorFor
 import androidx.ui.text.TextStyle
 import androidx.ui.text.font.FontWeight

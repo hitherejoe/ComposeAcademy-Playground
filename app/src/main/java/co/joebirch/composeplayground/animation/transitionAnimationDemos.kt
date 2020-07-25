@@ -1,6 +1,7 @@
 package co.joebirch.composeplayground.animation
 
 import androidx.animation.*
+import androidx.animation.AnimationConstants.Infinite
 import androidx.compose.Composable
 import androidx.compose.state
 import androidx.ui.animation.Transition
@@ -92,57 +93,56 @@ object TransitionDemoView : ComposableLayout {
                 }
                 AnimationType.REPEATABLE -> {
                     transition(fromState = CircleStatus.Shrinking, toState = CircleStatus.Growing) {
-                        sizeState using repeatable<Float> {
-                            iterations = Infinite
-                            animation = tween {
-                                easing = LinearEasing
-                                duration = 1000
-                            }
-                        }
+                        sizeState using repeatable(
+                            iterations = Infinite,
+                            animation = tween(
+                                easing = LinearEasing,
+                                durationMillis = 1000
+                            )
+                        )
                     }
                     transition(fromState = CircleStatus.Growing, toState = CircleStatus.Shrinking) {
-                        sizeState using repeatable<Float> {
-                            iterations = Infinite
-                            animation = tween {
-                                easing = LinearEasing
-                                duration = 1000
-                            }
-                        }
+                        sizeState using repeatable(
+                            iterations = Infinite,
+                            animation = tween(
+                                easing = LinearEasing,
+                                durationMillis = 1000
+                            )
+                        )
                     }
                 }
                 AnimationType.PHYSICS -> {
                     transition(fromState = CircleStatus.Shrinking, toState = CircleStatus.Growing) {
-                        sizeState using physics<Float> {
-                            stiffness = 5f
+                        sizeState using spring(
+                            stiffness = 5f,
                             dampingRatio = 5f
-                        }
+                        )
                     }
                     transition(fromState = CircleStatus.Growing, toState = CircleStatus.Shrinking) {
-                        sizeState using physics<Float> {
-                            stiffness = 5f
+                        sizeState using spring(
+                            stiffness = 5f,
                             dampingRatio = 5f
-                        }
+                        )
                     }
                 }
                 AnimationType.TWEEN -> {
                     transition(fromState = CircleStatus.Shrinking, toState = CircleStatus.Growing) {
-                        sizeState using tween<Float> {
-                            duration = 2000
+                        sizeState using tween(
+                            durationMillis = 2000,
                             easing = FastOutLinearInEasing
-                        }
+                        )
                     }
                     transition(fromState = CircleStatus.Growing, toState = CircleStatus.Shrinking) {
-                        sizeState using tween<Float> {
-                            duration = 2000
-                            easing = LinearOutSlowInEasing
-                            delay = 200
-                        }
+                        sizeState using tween(
+                            durationMillis = 2000,
+                            easing = LinearOutSlowInEasing,
+                            delayMillis = 200
+                        )
                     }
                 }
                 AnimationType.KEYFRAME -> {
                     transition(fromState = CircleStatus.Shrinking, toState = CircleStatus.Growing) {
                         sizeState using keyframes<Float> {
-                            duration = 2500
                             50f at 200
                             60f at 2200
                             175f at 2500
@@ -150,7 +150,6 @@ object TransitionDemoView : ComposableLayout {
                     }
                     transition(fromState = CircleStatus.Growing, toState = CircleStatus.Shrinking) {
                         sizeState using keyframes<Float> {
-                            duration = 2500
                             175f at 200
                             160f at 300
                             100f at 750

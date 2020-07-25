@@ -1,13 +1,10 @@
 package co.joebirch.composeplayground.foundation
 
 import androidx.compose.Composable
-import androidx.compose.state
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
-import androidx.ui.graphics.Color
 import androidx.ui.layout.*
-import androidx.ui.material.ripple.ripple
 import androidx.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 

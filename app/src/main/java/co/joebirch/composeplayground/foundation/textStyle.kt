@@ -13,7 +13,7 @@ import androidx.ui.text.font.FontSynthesis
 import androidx.ui.text.font.FontWeight
 import androidx.ui.text.style.BaselineShift
 import androidx.ui.text.style.TextDecoration
-import androidx.ui.text.style.TextDirectionAlgorithm
+import androidx.ui.text.style.TextDirection
 import androidx.ui.text.style.TextIndent
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
@@ -64,7 +64,7 @@ fun TextWithShadowComponent() {
 fun TextDirectionComponent() {
     Text(
         text = "Font size",
-        style = TextStyle(textDirectionAlgorithm = TextDirectionAlgorithm.ContentOrRtl),
+        style = TextStyle(textDirection = TextDirection.ContentOrRtl),
         modifier = Modifier.padding(16.dp)
     )
 }

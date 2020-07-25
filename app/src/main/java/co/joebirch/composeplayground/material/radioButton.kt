@@ -154,7 +154,7 @@ fun RadioButtonWithLabel(
     Row(modifier = Modifier.padding(10.dp)) {
         RadioButton(
             selected = formState.selectedOption == text,
-            onSelect = {
+            onClick = {
                 formState.selectedOption = text
             }
         )
