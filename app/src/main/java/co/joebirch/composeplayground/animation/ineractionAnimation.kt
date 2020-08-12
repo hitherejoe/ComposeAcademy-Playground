@@ -1,21 +1,21 @@
 package co.joebirch.composeplayground.animation
 
 import android.graphics.PointF
-import androidx.animation.*
-import androidx.compose.Composable
-import androidx.compose.remember
-import androidx.compose.state
-import androidx.ui.animation.Transition
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.core.gesture.pressIndicatorGestureFilter
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.Canvas
-import androidx.ui.foundation.ContentGravity
-import androidx.ui.geometry.Offset
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.unit.dp
+import androidx.compose.animation.core.*
+import androidx.compose.animation.transition
+import androidx.compose.foundation.Box
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ContentGravity
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.gesture.pressIndicatorGestureFilter
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
 object InteractionAnimationView : ComposableLayout {
@@ -57,13 +57,12 @@ object InteractionAnimationView : ComposableLayout {
 
         Box(modifier = Modifier.fillMaxSize().pressIndicatorGestureFilter(
             onStart = onPress, onStop = onRelease), gravity = ContentGravity.Center, children = {
-            Transition(
+            val state = transition(
                 definition = rippleTransDef,
                 toState = toState.value
-            ) { state ->
-                Canvas(modifier = Modifier.preferredSize(80.dp)) {
-                    drawCircle(Color.Black, state[shapeRadius])
-                }
+            )
+            Canvas(modifier = Modifier.preferredSize(80.dp)) {
+                drawCircle(Color.Black, state[shapeRadius])
             }
         })
     }

@@ -1,15 +1,17 @@
 package co.joebirch.composeplayground.core
 
-import androidx.compose.Composable
-import androidx.compose.state
-import androidx.ui.core.*
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.material.Button
-import androidx.ui.unit.dp
+import androidx.compose.foundation.Box
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Popup
 import co.joebirch.composeplayground.ComposableLayout
 
 object PopupView : ComposableLayout {
@@ -41,18 +43,11 @@ object PopupView : ComposableLayout {
 
                 Spacer(modifier = Modifier.preferredHeight(16.dp))
 
-                Button(onClick = {
-                    showingDropdownPopup.value = !showingDropdownPopup.value
-                }) {
-                    Text(text = "Dropdown Popup")
-                }
-
                 Spacer(modifier = Modifier.preferredHeight(16.dp))
             }
 
             when {
                 showingStandardPopup.value -> StandardPopup()
-                showingDropdownPopup.value -> PopupDropdown()
                 showingStandardPopupWithProperties.value -> {
                     StandardPopupWithProperties(onDismiss = {
                         showingStandardPopupWithProperties.value = false
@@ -98,23 +93,6 @@ fun StandardPopupWithProperties(onDismiss: () -> Unit) {
                     color = Color.White
                 )
             }
-        }
-    }
-}
-
-@Composable
-fun PopupDropdown() {
-    DropdownPopup(dropDownAlignment = DropDownAlignment.End) {
-        Stack {
-            Box(
-                Modifier.preferredSize(200.dp, 50.dp),
-                shape = RoundedCornerShape(16.dp),
-                backgroundColor = Color.Black
-            )
-            Text(
-                text = "Pop up!", modifier = Modifier.gravity(Alignment.Center),
-                color = Color.White
-            )
         }
     }
 }

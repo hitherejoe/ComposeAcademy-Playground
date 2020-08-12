@@ -1,19 +1,21 @@
 package co.joebirch.composeplayground.unit
 
-import androidx.compose.Composable
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.VerticalScroller
-import androidx.ui.geometry.Size
-import androidx.ui.layout.*
-import androidx.ui.unit.*
+import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.*
 import co.joebirch.composeplayground.ComposableLayout
+import kotlin.ranges.coerceAtLeast
+import kotlin.ranges.coerceAtMost
+import kotlin.ranges.coerceIn
 
 object DpView : ComposableLayout {
 
     @Composable
     override fun build() {
-        VerticalScroller {
+        ScrollableColumn {
             Column(
                 modifier = Modifier.fillMaxSize().padding(32.dp),
                 verticalArrangement = Arrangement.SpaceEvenly,
@@ -110,10 +112,7 @@ fun DisplayPixelsInverse() {
 
 @Composable
 fun DisplaySize() {
-    val constructor = Size(8)
 
-    val width = constructor.width
-    val height = constructor.height
 /*
     val timesFloat = Size(8) * 6f
     val timesInt = Size(8) * 6

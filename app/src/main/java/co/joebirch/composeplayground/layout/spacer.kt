@@ -1,10 +1,10 @@
 package co.joebirch.composeplayground.layout
 
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Text
-import androidx.ui.layout.*
-import androidx.ui.unit.dp
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
 object SpacerView : ComposableLayout {

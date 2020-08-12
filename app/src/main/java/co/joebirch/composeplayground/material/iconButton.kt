@@ -1,28 +1,18 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.Composable
-import androidx.compose.state
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Border
-import androidx.ui.foundation.Icon
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.shape.corner.CutCornerShape
-import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.material.Button
-import androidx.ui.material.Card
-import androidx.ui.material.IconButton
-import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.filled.Person
-import androidx.ui.unit.dp
+import androidx.compose.foundation.Icon
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
-import kotlinx.coroutines.delay
-import java.util.*
-import kotlin.concurrent.schedule
-import kotlin.concurrent.timer
-import kotlin.concurrent.timerTask
 
 object IconButtonView : ComposableLayout {
 

@@ -1,6 +1,6 @@
 package co.joebirch.composeplayground
 
-import androidx.compose.Composable
+import androidx.compose.runtime.Composable
 
 interface ComposableLayout {
 

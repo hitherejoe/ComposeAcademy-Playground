@@ -6,12 +6,12 @@ import androidx.ui.core.TestTag
 import androidx.ui.material.Checkbox
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
-import androidx.ui.test.*
-
+import androidx.ui.test.createComposeRule
+import androidx.ui.test.doClick
+import androidx.ui.test.findByTag
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Rule
 
 @RunWith(AndroidJUnit4::class)
 class ClickTests {

@@ -8,12 +8,13 @@ import androidx.ui.foundation.clickable
 import androidx.ui.layout.Stack
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
-import androidx.ui.test.*
-
+import androidx.ui.test.assertHasClickAction
+import androidx.ui.test.assertHasNoClickAction
+import androidx.ui.test.createComposeRule
+import androidx.ui.test.findByTag
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Rule
 
 @RunWith(AndroidJUnit4::class)
 class AssertClickActionTests {

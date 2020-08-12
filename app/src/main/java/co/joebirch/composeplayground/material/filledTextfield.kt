@@ -1,26 +1,28 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.Composable
-import androidx.compose.state
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Icon
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.VerticalScroller
-import androidx.ui.graphics.Color
-import androidx.ui.input.TextFieldValue
-import androidx.ui.layout.*
-import androidx.ui.material.FilledTextField
-import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.filled.Check
-import androidx.ui.material.icons.filled.Info
+import androidx.compose.foundation.Icon
+import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.TextField
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.TextFieldValue
 import co.joebirch.composeplayground.ComposableLayout
 
 object FilledTextFieldView : ComposableLayout {
 
     @Composable
     override fun build() {
-        VerticalScroller {
+        ScrollableColumn {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceEvenly,
@@ -36,7 +38,7 @@ object FilledTextFieldView : ComposableLayout {
     @Composable
     fun MinimalFilledTextFieldComponent() {
         val state = state { TextFieldValue(text = "Hello") }
-        FilledTextField(value = state.value, onValueChange = {
+        TextField(value = state.value, onValueChange = {
             state.value = it
         }, label = {
             Text(text = "This is a label")
@@ -46,7 +48,7 @@ object FilledTextFieldView : ComposableLayout {
     @Composable
     fun PlaceholderFilledTextFieldComponent() {
         val state = state { TextFieldValue(text = "Hello") }
-        FilledTextField(value = state.value, onValueChange = {
+        TextField(value = state.value, onValueChange = {
             state.value = it
         }, label = {
             Text(text = "This is a label")
@@ -58,7 +60,7 @@ object FilledTextFieldView : ComposableLayout {
     @Composable
     fun IconsFilledTextFieldComponent() {
         val state = state { TextFieldValue(text = "Hello") }
-        FilledTextField(value = state.value, onValueChange = {
+        TextField(value = state.value, onValueChange = {
             state.value = it
         }, label = {
             Text(text = "This is a label")
@@ -72,7 +74,7 @@ object FilledTextFieldView : ComposableLayout {
     @Composable
     fun ColoredFilledTextFieldComponent() {
         val state = state { TextFieldValue(text = "Hello") }
-        FilledTextField(value = state.value, onValueChange = {
+        TextField(value = state.value, onValueChange = {
             state.value = it
         }, label = {
             Text(text = "This is a label")

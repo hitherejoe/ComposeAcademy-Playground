@@ -1,17 +1,17 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.Composable
-import androidx.compose.MutableState
-import androidx.compose.state
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.clickable
-import androidx.ui.foundation.selection.ToggleableState
-import androidx.ui.layout.*
-import androidx.ui.material.Checkbox
-import androidx.ui.material.TriStateCheckbox
-import androidx.ui.unit.dp
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.ToggleableState
+import androidx.compose.material.Checkbox
+import androidx.compose.material.TriStateCheckbox
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
 object CheckboxView: ComposableLayout {

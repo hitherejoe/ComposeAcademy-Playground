@@ -1,21 +1,22 @@
 package co.joebirch.composeplayground.animation
 
-import androidx.animation.*
-import androidx.animation.AnimationConstants.Infinite
-import androidx.compose.Composable
-import androidx.compose.state
-import androidx.ui.animation.Transition
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.Canvas
-import androidx.ui.foundation.ContentGravity
-import androidx.ui.foundation.Text
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.material.Button
-import androidx.ui.material.RadioGroup
-import androidx.ui.unit.dp
+import androidx.compose.animation.core.*
+import androidx.compose.animation.core.AnimationConstants.Infinite
+import androidx.compose.animation.transition
+import androidx.compose.foundation.Box
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ContentGravity
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.material.Button
+import androidx.compose.material.RadioButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
 object TransitionDemoView : ComposableLayout {
@@ -37,23 +38,68 @@ object TransitionDemoView : ComposableLayout {
             val toState = state { CircleStatus.Shrinking }
             val transitionDef = sizeTransitionDefinition(animationType.value)
 
-            RadioGroup {
-                RadioGroupTextItem(selected = animationType.value == AnimationType.SNAP, onSelect = {
-                    animationType.value = AnimationType.SNAP
-                }, text = "Snap")
-                RadioGroupTextItem(selected = animationType.value == AnimationType.TWEEN, onSelect = {
-                    animationType.value = AnimationType.TWEEN
-                }, text = "Tween")
-                RadioGroupTextItem(selected = animationType.value == AnimationType.PHYSICS, onSelect = {
-                    animationType.value = AnimationType.PHYSICS
-                }, text = "Physics")
-                RadioGroupTextItem(selected = animationType.value == AnimationType.REPEATABLE, onSelect = {
-                    animationType.value = AnimationType.REPEATABLE
-                }, text = "Repeatable")
-                RadioGroupTextItem(selected = animationType.value == AnimationType.KEYFRAME, onSelect = {
-                    animationType.value = AnimationType.KEYFRAME
-                }, text = "Keyframe")
+            Column {
+                Row(
+                    modifier = Modifier.selectable(selected =
+                    animationType.value == AnimationType.SNAP, onClick = {
+                        animationType.value = AnimationType.SNAP
+                    })
+                ) {
+                    RadioButton(selected = animationType.value == AnimationType.SNAP, onClick = {
+                        animationType.value = AnimationType.SNAP
+                    })
+                    Text(text = "Snap")
+                }
+
+                Row(
+                    modifier = Modifier.selectable(selected =
+                    animationType.value == AnimationType.TWEEN, onClick = {
+                        animationType.value = AnimationType.TWEEN
+                    })
+                ) {
+                    RadioButton(selected = animationType.value == AnimationType.TWEEN, onClick = {
+                        animationType.value = AnimationType.TWEEN
+                    })
+                    Text(text = "Tween")
+                }
+
+                Row(
+                    modifier = Modifier.selectable(selected =
+                    animationType.value == AnimationType.PHYSICS, onClick = {
+                        animationType.value = AnimationType.PHYSICS
+                    })
+                ) {
+                    RadioButton(selected = animationType.value == AnimationType.PHYSICS, onClick = {
+                        animationType.value = AnimationType.PHYSICS
+                    })
+                    Text(text = "Physics")
+                }
+
+                Row(
+                    modifier = Modifier.selectable(selected =
+                    animationType.value == AnimationType.REPEATABLE, onClick = {
+                        animationType.value = AnimationType.REPEATABLE
+                    })
+                ) {
+                    RadioButton(selected = animationType.value == AnimationType.REPEATABLE, onClick = {
+                        animationType.value = AnimationType.REPEATABLE
+                    })
+                    Text(text = "Repeatable")
+                }
+
+                Row(
+                    modifier = Modifier.selectable(selected =
+                    animationType.value == AnimationType.KEYFRAME, onClick = {
+                        animationType.value = AnimationType.KEYFRAME
+                    })
+                ) {
+                    RadioButton(selected = animationType.value == AnimationType.KEYFRAME, onClick = {
+                        animationType.value = AnimationType.KEYFRAME
+                    })
+                    Text(text = "Keyframe")
+                }
             }
+
             Button(onClick = {
                 if (toState.value == CircleStatus.Shrinking) {
                     toState.value = CircleStatus.Growing
@@ -64,13 +110,12 @@ object TransitionDemoView : ComposableLayout {
                 Text("Animate!")
             }
             Box(modifier = Modifier.fillMaxSize(), gravity = ContentGravity.Center, children = {
-                Transition(
+                val state = transition(
                     definition = transitionDef,
                     toState = toState.value
-                ) { state ->
-                    Canvas(modifier = Modifier.preferredSize(80.dp)) {
-                        drawCircle(Color.Red, state[sizeState])
-                    }
+                )
+                Canvas(modifier = Modifier.preferredSize(80.dp)) {
+                    drawCircle(Color.Red, state[sizeState])
                 }
             })
         }

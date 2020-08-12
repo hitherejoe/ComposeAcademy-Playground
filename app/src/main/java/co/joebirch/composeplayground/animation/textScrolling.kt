@@ -1,22 +1,21 @@
 package co.joebirch.composeplayground.animation
 
-import androidx.compose.Composable
-import androidx.compose.remember
-import androidx.ui.animation.animate
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.*
-import androidx.ui.layout.*
+import androidx.compose.animation.animate
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import co.joebirch.composeplayground.ComposableLayout
 
 object TextDemoView : ComposableLayout {
 
     @Composable
     override fun build() {
-        val scroller = ScrollerPosition()
-        val animateee = animate(target = scroller.maxPosition)
+        val scroller = rememberScrollState()
+        val animateee = animate(target = scroller.maxValue)
 
         Box {
-            VerticalScroller(scrollerPosition = scroller,
+            ScrollableColumn(scrollState = scroller,
                 modifier = Modifier.fillMaxSize()) {
                 Text(text = text, modifier = Modifier.clickable(onClick = {
                     scroller.smoothScrollTo(animateee)

@@ -1,16 +1,16 @@
 package co.joebirch.composeplayground.animation
 
-import androidx.animation.*
-import androidx.compose.Composable
-import androidx.ui.animation.Transition
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.Canvas
-import androidx.ui.foundation.ContentGravity
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.unit.dp
+import androidx.compose.animation.core.*
+import androidx.compose.animation.transition
+import androidx.compose.foundation.Box
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ContentGravity
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
 object GrowingCircleAnimationView : ComposableLayout {
@@ -51,14 +51,13 @@ object GrowingCircleAnimationView : ComposableLayout {
     @Composable
     fun GrowingCircleComponent() {
         Box(modifier = Modifier.fillMaxSize(), gravity = ContentGravity.Center, children = {
-            Transition(
+            val state = transition(
                 definition = sizeTransitionDefinition,
                 initState = "A",
                 toState = "B"
-            ) { state ->
-                Canvas(modifier = Modifier.preferredSize(80.dp)) {
-                    drawCircle(Color.Black, state[shapeSize])
-                }
+            )
+            Canvas(modifier = Modifier.preferredSize(80.dp)) {
+                drawCircle(Color.Black, state[shapeSize])
             }
         })
     }

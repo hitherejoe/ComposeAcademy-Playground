@@ -1,22 +1,18 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.Composable
-import androidx.compose.remember
-import androidx.compose.state
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Border
-import androidx.ui.foundation.Icon
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.material.*
-import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.filled.ArrowBack
-import androidx.ui.material.icons.filled.Done
-import androidx.ui.material.icons.filled.Menu
-import androidx.ui.unit.dp
+import androidx.compose.foundation.Icon
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
 object ScaffoldView : ComposableLayout {
@@ -143,9 +139,9 @@ fun ScaffoldWithTopAppBar(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun ScaffoldWithDrawer(bodyContent: @Composable() () -> Unit) {
-    val scaffoldState = remember { ScaffoldState() }
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     Scaffold(
-        scaffoldState = scaffoldState,
+        scaffoldState = ScaffoldState(drawerState),
         topBar = {
             TopAppBar(
                 title = {
@@ -153,7 +149,7 @@ fun ScaffoldWithDrawer(bodyContent: @Composable() () -> Unit) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        scaffoldState.drawerState = DrawerState.Opened
+                        drawerState.open()
                     }) {
                         Icon(Icons.Filled.Menu)
                     }
@@ -164,7 +160,7 @@ fun ScaffoldWithDrawer(bodyContent: @Composable() () -> Unit) {
             horizontalGravity = Alignment.CenterHorizontally) {
             Spacer(modifier = Modifier.preferredHeight(24.dp))
             Button(onClick = {
-                scaffoldState.drawerState = DrawerState.Closed
+                drawerState.close()
             }) {
                 Text(text = "Close Drawer")
             }

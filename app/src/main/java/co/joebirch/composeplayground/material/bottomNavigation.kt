@@ -1,20 +1,22 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.Composable
-import androidx.compose.remember
-import androidx.compose.state
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.*
-import androidx.ui.foundation.shape.corner.CircleShape
-import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
-import androidx.ui.graphics.vector.VectorAsset
-import androidx.ui.layout.*
-import androidx.ui.material.*
-import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.filled.*
-import androidx.ui.unit.dp
+import androidx.compose.foundation.Icon
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Button
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
 object BottomNavigationView : ComposableLayout {
@@ -73,9 +75,9 @@ fun StandardBottomNavigation(bodyContent: @Composable() () -> Unit) {
             items.forEachIndexed { index, item ->
                 BottomNavigationItem(
                     icon = { Icon(item.icon) },
-                    text = { Text(text = item.label) },
+                    label = { Text(text = item.label) },
                     selected = selectedItem.value == index,
-                    onSelected = { selectedItem.value = index }
+                    onSelect = { selectedItem.value = index }
                 )
             }
         }
@@ -97,9 +99,9 @@ fun BottomNavigationOnlySelectedLabels(bodyContent: @Composable() () -> Unit) {
             items.forEachIndexed { index, item ->
                 BottomNavigationItem(
                     icon = { Icon(item.icon) },
-                    text = { Text(text = item.label) },
+                    label = { Text(text = item.label) },
                     selected = selectedItem.value == index,
-                    onSelected = { selectedItem.value = index },
+                    onSelect = { selectedItem.value = index },
                     alwaysShowLabels = false
                 )
             }
@@ -122,11 +124,11 @@ fun StyledBottomNavigation(bodyContent: @Composable() () -> Unit) {
             items.forEachIndexed { index, item ->
                 BottomNavigationItem(
                     icon = { Icon(item.icon) },
-                    text = { Text(text = item.label) },
+                    label = { Text(text = item.label) },
                     selected = selectedItem.value == index,
-                    onSelected = { selectedItem.value = index },
-                    activeColor = Color.Green,
-                    inactiveColor = Color.Red
+                    onSelect = { selectedItem.value = index },
+                    selectedContentColor = Color.Green,
+                    unselectedContentColor = Color.Red
                 )
             }
         }

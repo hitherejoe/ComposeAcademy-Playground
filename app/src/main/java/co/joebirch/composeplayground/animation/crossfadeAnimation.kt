@@ -1,17 +1,20 @@
 package co.joebirch.composeplayground.animation
 
-import androidx.compose.*
-import androidx.ui.animation.Crossfade
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.clickable
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.text.TextStyle
-import androidx.ui.text.style.TextAlign
-import androidx.ui.unit.dp
+import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.Box
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
 object CrossfadeAnimationView : ComposableLayout {
@@ -35,10 +38,12 @@ object CrossfadeAnimationView : ComposableLayout {
 
         Column(modifier = Modifier.fillMaxWidth()) {
             Crossfade(current = currentString) { color ->
-                Text(color, modifier = Modifier.fillMaxWidth().clickable(onClick = {
-                    currentString = if (currentString == strings[0]) strings[1] else strings[0]
-                }),
-                    style = TextStyle(textAlign = TextAlign.Center))
+                Text(
+                    color, modifier = Modifier.fillMaxWidth().clickable(onClick = {
+                        currentString = if (currentString == strings[0]) strings[1] else strings[0]
+                    }),
+                    style = TextStyle(textAlign = TextAlign.Center)
+                )
             }
         }
     }
@@ -46,7 +51,7 @@ object CrossfadeAnimationView : ComposableLayout {
     @Composable
     fun CrossfadeColorAnimation() {
         val colors = listOf(Color.Red, Color.Green)
-        var current by state { colors[0] }
+        var current by state<Color> { colors[0] }
 
         Column(modifier = Modifier.fillMaxWidth()) {
             Crossfade(current = current) { color ->

@@ -8,13 +8,14 @@ import androidx.ui.foundation.Text
 import androidx.ui.layout.padding
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
-import androidx.ui.test.*
+import androidx.ui.test.createComposeRule
+import androidx.ui.test.doGesture
+import androidx.ui.test.findByTag
+import androidx.ui.test.sendSwipeUp
 import androidx.ui.unit.dp
-
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Rule
 import java.util.*
 
 @RunWith(AndroidJUnit4::class)

@@ -1,27 +1,29 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.Composable
-import androidx.compose.state
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.*
-import androidx.ui.graphics.Color
-import androidx.ui.graphics.RectangleShape
-import androidx.ui.input.ImeAction
-import androidx.ui.input.KeyboardType
-import androidx.ui.input.PasswordVisualTransformation
-import androidx.ui.layout.*
-import androidx.ui.material.FilledTextField
-import androidx.ui.text.TextStyle
-import androidx.ui.unit.dp
-import androidx.ui.unit.sp
+import androidx.compose.foundation.BaseTextField
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import co.joebirch.composeplayground.ComposableLayout
 
+@ExperimentalFoundationApi
 object TextFieldView : ComposableLayout {
 
     @Composable
     override fun build() {
-        VerticalScroller {
+        ScrollableColumn {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceEvenly,
@@ -38,7 +40,7 @@ object TextFieldView : ComposableLayout {
     @Composable
     fun MinimalTextFieldComponent() {
         val state = state { TextFieldValue(text = "Hello") }
-        TextField(
+        BaseTextField(
             value = state.value, onValueChange = {
                 state.value = it
             }, textColor = Color.Black,
@@ -49,7 +51,7 @@ object TextFieldView : ComposableLayout {
     @Composable
     fun StyledTextFieldComponent() {
         val state = state { TextFieldValue(text = "Hello") }
-        TextField(
+        BaseTextField(
             value = state.value, onValueChange = {
                 state.value = it
             },
@@ -63,7 +65,7 @@ object TextFieldView : ComposableLayout {
     @Composable
     fun ImeActionTextFieldComponent() {
         val state = state { TextFieldValue(text = "Hello") }
-        TextField(value = state.value, onValueChange = {
+        BaseTextField(value = state.value, onValueChange = {
             state.value = it
         },
             modifier = Modifier.padding(16.dp).fillMaxWidth(),
@@ -76,7 +78,7 @@ object TextFieldView : ComposableLayout {
     @Composable
     fun KeyboardTypeTextFieldComponent() {
         val state = state { TextFieldValue(text = "Hello") }
-        TextField(
+        BaseTextField(
             value = state.value, onValueChange = {
                 state.value = it
             },

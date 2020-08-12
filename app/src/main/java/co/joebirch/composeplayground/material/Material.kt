@@ -1,5 +1,6 @@
 package co.joebirch.composeplayground.material
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import co.joebirch.composeplayground.Category
 import co.joebirch.composeplayground.ComposableLayout
 import co.joebirch.composeplayground.foundation.BorderView
@@ -27,6 +28,7 @@ sealed class Material(
     object Snackbar: Material("Snackbar", SnackbarView)
     object Switch: Material("Switch", SwitchView)
     object TabRow: Material("Tab Row", TabBarView)
+    @ExperimentalFoundationApi
     object TextField: Material("Text Field", TextFieldView)
     object TopAppBar: Material("Top App Bar", TopAppBarView)
     object TriStateRadioButton: Material("Tri-state Radio Button", TriStateRadioButtonView)

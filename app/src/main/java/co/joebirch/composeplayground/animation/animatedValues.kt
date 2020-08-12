@@ -1,15 +1,16 @@
 package co.joebirch.composeplayground.animation
 
-import androidx.compose.Composable
-import androidx.compose.state
-import androidx.ui.animation.animatedColor
-import androidx.ui.animation.animatedFloat
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.*
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.unit.dp
+import androidx.compose.animation.animatedColor
+import androidx.compose.animation.animatedFloat
+import androidx.compose.foundation.Box
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
 object AnimatedValuesView : ComposableLayout {

@@ -12,11 +12,9 @@ import androidx.ui.test.assertIsNotDisplayed
 import androidx.ui.test.createComposeRule
 import androidx.ui.test.findByText
 import androidx.ui.unit.dp
-
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Rule
 
 @RunWith(AndroidJUnit4::class)
 class AssertDisplayedTests {
