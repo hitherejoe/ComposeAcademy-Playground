@@ -30,7 +30,7 @@ object TopAppBarView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             when (selectedLayout.value) {
                 0 -> MinimalTopAppBar {
@@ -38,7 +38,7 @@ object TopAppBarView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 1
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to Navigation Icon")
                         }
                     }
@@ -48,7 +48,7 @@ object TopAppBarView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 2
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to styled TopAppBar")
                         }
                     }
@@ -58,7 +58,7 @@ object TopAppBarView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 3
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to Actions TopAppBar")
                         }
                     }
@@ -68,7 +68,7 @@ object TopAppBarView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 0
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to Minimal TopAppBar")
                         }
                     }

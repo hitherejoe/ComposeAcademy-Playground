@@ -1,8 +1,8 @@
 package co.joebirch.composeplayground.animation
 
 import androidx.compose.animation.animate
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -20,7 +20,7 @@ object SingleAnimationColorView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             SingleValueAnimationColor()
         }
@@ -29,13 +29,16 @@ object SingleAnimationColorView : ComposableLayout {
     @Composable
     fun SingleValueAnimationColor() {
         val enabled = state { true }
-        Stack {
-            Box(Modifier.fillMaxSize().clickable(onClick = {
-                enabled.value = !enabled.value
-            }), backgroundColor =
-            animate(if (enabled.value) Color.Green else Color.Red))
-            Text(text = "Click me to change color!",
-                modifier = Modifier.gravity(Alignment.Center))
+        Box {
+            Box(
+                Modifier.fillMaxSize().clickable(onClick = {
+                    enabled.value = !enabled.value
+                }).background(animate(if (enabled.value) Color.Green else Color.Red)),
+            )
+            Text(
+                text = "Click me to change color!",
+                modifier = Modifier.align(Alignment.Center)
+            )
         }
     }
 }

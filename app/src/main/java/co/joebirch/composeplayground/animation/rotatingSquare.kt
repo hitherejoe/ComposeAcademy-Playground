@@ -3,9 +3,7 @@ package co.joebirch.composeplayground.animation
 import androidx.compose.animation.core.*
 import androidx.compose.animation.core.AnimationConstants.Infinite
 import androidx.compose.animation.transition
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.ContentGravity
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,7 +37,7 @@ object RotatingShapeAnimationView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             RotatingSquareComponent()
         }
@@ -47,17 +45,17 @@ object RotatingShapeAnimationView : ComposableLayout {
 
     @Composable
     fun RotatingSquareComponent() {
-        Box(modifier = Modifier.fillMaxSize(), gravity = ContentGravity.Center, children = {
+        Box(modifier = Modifier.fillMaxSize()) {
             val state = transition(
                 definition = rotationTransitionDefinition,
                 initState = "A",
                 toState = "B"
             )
-            Canvas(modifier = Modifier.preferredSize(80.dp)) {
+            Canvas(modifier = Modifier.preferredSize(80.dp).align(Alignment.Center)) {
                 rotate(state[rotation]) {
                     drawRect(Color.Black, size = size)
                 }
             }
-        })
+        }
     }
 }

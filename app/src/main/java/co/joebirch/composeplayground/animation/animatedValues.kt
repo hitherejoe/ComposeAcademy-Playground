@@ -2,7 +2,7 @@ package co.joebirch.composeplayground.animation
 
 import androidx.compose.animation.animatedColor
 import androidx.compose.animation.animatedFloat
-import androidx.compose.foundation.Box
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -20,7 +20,7 @@ object AnimatedValuesView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             AnimatedFloat()
             AnimatedColor()
@@ -35,8 +35,7 @@ object AnimatedValuesView : ComposableLayout {
             onClick = {
                 expandedState.value = !expandedState.value
             }
-        ),
-            backgroundColor = Color.Red)
+        ).background(Color.Red))
     }
 
     @Composable
@@ -47,8 +46,7 @@ object AnimatedValuesView : ComposableLayout {
         Box(
             modifier = Modifier.fillMaxWidth().preferredHeight(40.dp).clickable(onClick = {
                 expandedState.value = !expandedState.value
-            }),
-            backgroundColor = viewHeight.value
+            }).background(viewHeight.value)
         )
     }
 

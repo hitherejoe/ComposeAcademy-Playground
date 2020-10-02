@@ -2,6 +2,7 @@ package co.joebirch.composeplayground.core
 
 import co.joebirch.composeplayground.Category
 import co.joebirch.composeplayground.ComposableLayout
+import co.joebirch.composeplayground.ui.draw.OpacityView
 
 sealed class Core(
     override val label: String,

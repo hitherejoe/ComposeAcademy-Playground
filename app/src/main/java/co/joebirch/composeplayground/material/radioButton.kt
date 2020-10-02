@@ -17,7 +17,7 @@ object RadioButtonView: ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             RadioButtonWithLabel("Test")
         }

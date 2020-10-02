@@ -1,8 +1,8 @@
 package co.joebirch.composeplayground.animation
 
 import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -24,7 +24,7 @@ object CrossfadeAnimationView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CrossfadeTextAnimation()
             CrossfadeColorAnimation()
@@ -57,7 +57,7 @@ object CrossfadeAnimationView : ComposableLayout {
             Crossfade(current = current) { color ->
                 Box(Modifier.fillMaxWidth().preferredHeight(120.dp).clickable(onClick = {
                     current = if (current == colors[0]) colors[1] else colors[0]
-                }), backgroundColor = color)
+                }).background(color))
             }
         }
     }

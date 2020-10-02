@@ -27,7 +27,7 @@ object TextFieldView : ComposableLayout {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalGravity = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 MinimalTextFieldComponent()
                 StyledTextFieldComponent()

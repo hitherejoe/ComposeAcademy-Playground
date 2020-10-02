@@ -1,7 +1,7 @@
 package co.joebirch.composeplayground.core
 
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -21,10 +21,10 @@ object PopupView : ComposableLayout {
         val showingStandardPopup = state { false }
         val showingStandardPopupWithProperties = state { false }
         val showingDropdownPopup = state { false }
-        Stack(
+        Box(
             modifier = Modifier.fillMaxSize().padding(32.dp)
         ) {
-            Column(modifier = Modifier.gravity(Alignment.Center)) {
+            Column(modifier = Modifier.align(Alignment.Center)) {
 
                 Button(onClick = {
                     showingStandardPopup.value = !showingStandardPopup.value
@@ -62,14 +62,16 @@ object PopupView : ComposableLayout {
 @Composable
 fun StandardPopup() {
     Popup {
-        Stack {
+        Box {
             Box(
-                Modifier.preferredSize(200.dp, 50.dp),
-                shape = RoundedCornerShape(16.dp),
-                backgroundColor = Color.Black
+                Modifier.preferredSize(200.dp, 50.dp)
+                    .background(
+                        shape = RoundedCornerShape(16.dp),
+                        color = Color.Black
+                    )
             )
             Text(
-                text = "Pop up!", modifier = Modifier.gravity(Alignment.Center),
+                text = "Pop up!", modifier = Modifier.align(Alignment.Center),
                 color = Color.White
             )
         }
@@ -82,14 +84,16 @@ fun StandardPopupWithProperties(onDismiss: () -> Unit) {
         Popup(isFocusable = true, onDismissRequest = {
             onDismiss()
         }) {
-            Stack {
+            Box {
                 Box(
-                    Modifier.preferredSize(200.dp, 50.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    backgroundColor = Color.Black
+                    Modifier.preferredSize(200.dp, 50.dp)
+                        .background(
+                            Color.Black,
+                            shape = RoundedCornerShape(16.dp)
+                        )
                 )
                 Text(
-                    text = "Click to dismiss!", modifier = Modifier.gravity(Alignment.Center),
+                    text = "Click to dismiss!", modifier = Modifier.align(Alignment.Center),
                     color = Color.White
                 )
             }

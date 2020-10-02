@@ -8,7 +8,7 @@ import androidx.ui.foundation.TextFieldValue
 import androidx.ui.input.ImeAction
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
-import androidx.ui.test.*
+import androidx.ui.test.createComposeRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

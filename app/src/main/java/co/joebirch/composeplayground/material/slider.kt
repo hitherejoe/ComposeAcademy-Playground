@@ -1,11 +1,7 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Slider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.state
@@ -25,7 +21,7 @@ object SliderView : ComposableLayout {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalGravity = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 MinimalSliderComponent()
                 ColoredSliderComponent()
@@ -39,7 +35,7 @@ object SliderView : ComposableLayout {
     @Composable
     fun MinimalSliderComponent() {
         val state = state { 0f }
-        Column(horizontalGravity = Alignment.CenterHorizontally) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = state.value.toString())
             Slider(
                 value = state.value,
@@ -54,7 +50,7 @@ object SliderView : ComposableLayout {
     @Composable
     fun RangedSliderComponent() {
         val state = state { 0f }
-        Column(horizontalGravity = Alignment.CenterHorizontally) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = state.value.toString())
             Slider(
                 value = state.value,
@@ -69,7 +65,7 @@ object SliderView : ComposableLayout {
     @Composable
     fun SteppedSliderComponent() {
         val state = state { 0f }
-        Column(horizontalGravity = Alignment.CenterHorizontally) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = state.value.toString())
             Slider(
                 value = state.value,
@@ -84,14 +80,14 @@ object SliderView : ComposableLayout {
     @Composable
     fun ColoredSliderComponent() {
         val state = state { 0f }
-        Column(horizontalGravity = Alignment.CenterHorizontally) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = state.value.toString())
             Slider(
                 value = state.value,
                 onValueChange = {
                     state.value = it
                 },
-                color = Color.Red
+                thumbColor = Color.Red
             )
         }
     }
@@ -100,7 +96,7 @@ object SliderView : ComposableLayout {
     fun EndListenerSliderComponent() {
         val state = state { 0f }
         val endState = state { 0f }
-        Column(horizontalGravity = Alignment.CenterHorizontally) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = endState.value.toString())
             Slider(
                 value = state.value,
@@ -110,7 +106,7 @@ object SliderView : ComposableLayout {
                 onValueChangeEnd = {
                     endState.value = state.value
                 },
-                color = Color.Red
+                thumbColor = Color.Red
             )
         }
     }

@@ -3,9 +3,7 @@ package co.joebirch.composeplayground.animation
 import android.graphics.PointF
 import androidx.compose.animation.core.*
 import androidx.compose.animation.transition
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.ContentGravity
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -34,7 +32,7 @@ object InteractionAnimationView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TouchCircleComponent()
         }
@@ -56,7 +54,7 @@ object InteractionAnimationView : ComposableLayout {
         }
 
         Box(modifier = Modifier.fillMaxSize().pressIndicatorGestureFilter(
-            onStart = onPress, onStop = onRelease), gravity = ContentGravity.Center, children = {
+            onStart = onPress, onStop = onRelease)) {
             val state = transition(
                 definition = rippleTransDef,
                 toState = toState.value
@@ -64,7 +62,7 @@ object InteractionAnimationView : ComposableLayout {
             Canvas(modifier = Modifier.preferredSize(80.dp)) {
                 drawCircle(Color.Black, state[shapeRadius])
             }
-        })
+        }
     }
 
 

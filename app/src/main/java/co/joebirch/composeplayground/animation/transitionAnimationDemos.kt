@@ -3,9 +3,7 @@ package co.joebirch.composeplayground.animation
 import androidx.compose.animation.core.*
 import androidx.compose.animation.core.AnimationConstants.Infinite
 import androidx.compose.animation.transition
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.ContentGravity
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
@@ -32,7 +30,7 @@ object TransitionDemoView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             val animationType = state { AnimationType.SNAP }
             val toState = state { CircleStatus.Shrinking }
@@ -81,9 +79,11 @@ object TransitionDemoView : ComposableLayout {
                         animationType.value = AnimationType.REPEATABLE
                     })
                 ) {
-                    RadioButton(selected = animationType.value == AnimationType.REPEATABLE, onClick = {
-                        animationType.value = AnimationType.REPEATABLE
-                    })
+                    RadioButton(
+                        selected = animationType.value == AnimationType.REPEATABLE,
+                        onClick = {
+                            animationType.value = AnimationType.REPEATABLE
+                        })
                     Text(text = "Repeatable")
                 }
 
@@ -93,9 +93,11 @@ object TransitionDemoView : ComposableLayout {
                         animationType.value = AnimationType.KEYFRAME
                     })
                 ) {
-                    RadioButton(selected = animationType.value == AnimationType.KEYFRAME, onClick = {
-                        animationType.value = AnimationType.KEYFRAME
-                    })
+                    RadioButton(
+                        selected = animationType.value == AnimationType.KEYFRAME,
+                        onClick = {
+                            animationType.value = AnimationType.KEYFRAME
+                        })
                     Text(text = "Keyframe")
                 }
             }
@@ -109,7 +111,10 @@ object TransitionDemoView : ComposableLayout {
             }, modifier = Modifier.padding(16.dp)) {
                 Text("Animate!")
             }
-            Box(modifier = Modifier.fillMaxSize(), gravity = ContentGravity.Center, children = {
+            Box(
+                modifier = Modifier.fillMaxSize()
+                    .align(Alignment.CenterHorizontally)
+            ) {
                 val state = transition(
                     definition = transitionDef,
                     toState = toState.value
@@ -117,7 +122,7 @@ object TransitionDemoView : ComposableLayout {
                 Canvas(modifier = Modifier.preferredSize(80.dp)) {
                     drawCircle(Color.Red, state[sizeState])
                 }
-            })
+            }
         }
     }
 
@@ -187,14 +192,14 @@ object TransitionDemoView : ComposableLayout {
                 }
                 AnimationType.KEYFRAME -> {
                     transition(fromState = CircleStatus.Shrinking, toState = CircleStatus.Growing) {
-                        sizeState using keyframes<Float> {
+                        sizeState using keyframes {
                             50f at 200
                             60f at 2200
                             175f at 2500
                         }
                     }
                     transition(fromState = CircleStatus.Growing, toState = CircleStatus.Shrinking) {
-                        sizeState using keyframes<Float> {
+                        sizeState using keyframes {
                             175f at 200
                             160f at 300
                             100f at 750

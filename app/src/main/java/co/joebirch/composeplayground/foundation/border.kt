@@ -1,6 +1,6 @@
 package co.joebirch.composeplayground.foundation
 
-import androidx.compose.foundation.Border
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,7 +22,7 @@ object BorderView: ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             BorderComponent()
             BorderBrushComponent()
@@ -34,7 +34,7 @@ object BorderView: ComposableLayout {
 @Composable
 fun BorderComponent() {
     Card(
-        border = Border(2.dp, Color.Black)
+        border = BorderStroke(2.dp, Color.Black)
     ) {
         Text(
             text = "Jetpack Compose",
@@ -46,7 +46,7 @@ fun BorderComponent() {
 @Composable
 fun BorderBrushComponent() {
     Card(
-        border = Border(2.dp, SolidColor(Color.Red))
+        border = BorderStroke(2.dp, SolidColor(Color.Red))
     ) {
         Text(
             text = "Jetpack Compose",

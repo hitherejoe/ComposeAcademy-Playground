@@ -23,7 +23,7 @@ object PrimitiveResourceView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             repeat(integerResource(id = R.integer.some_integer)) {
                 Text(text = it.toString())

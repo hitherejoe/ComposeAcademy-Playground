@@ -1,15 +1,11 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Snackbar
-import androidx.compose.material.snackbarPrimaryColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,13 +20,13 @@ object SnackbarView : ComposableLayout {
     @Composable
     override fun build() {
         Box(
-            modifier = Modifier.fillMaxSize().padding(16.dp),
-            backgroundColor = Color.LightGray
+            modifier = Modifier.fillMaxSize().padding(16.dp)
+                .background(Color.LightGray)
         ) {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalGravity = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 MinimalSnackbarComponent()
                 ActionSnackbarComponent()
@@ -58,7 +54,7 @@ object SnackbarView : ComposableLayout {
                     }),
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
-                        color = snackbarPrimaryColorFor(MaterialTheme.colors)
+                        color = MaterialTheme.colors.primary
                     )
                 )
             }
@@ -77,7 +73,7 @@ object SnackbarView : ComposableLayout {
                     }),
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
-                        color = snackbarPrimaryColorFor(MaterialTheme.colors)
+                        color = MaterialTheme.colors.primary
                     )
                 )
             },

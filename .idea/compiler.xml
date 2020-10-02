@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="11">
+      <module name="Compose_Playground.data.commonMain" target="1.8" />
+      <module name="Compose_Playground.data.commonMain~1" target="1.8" />
+      <module name="Compose_Playground.data.commonTest" target="1.8" />
+      <module name="Compose_Playground.data.commonTest~1" target="1.8" />
+      <module name="Compose_Playground.data.jvmMain" target="1.8" />
+      <module name="Compose_Playground.data.jvmMain~1" target="1.8" />
+      <module name="Compose_Playground.data.jvmTest" target="1.8" />
+      <module name="Compose_Playground.data.jvmTest~1" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

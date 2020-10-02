@@ -1,6 +1,6 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.foundation.Border
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,7 +23,7 @@ object ButtonView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             MinimalButtonComponent()
             BorderButtonComponent()
@@ -62,7 +62,7 @@ fun ShapeButtonComponent() {
 fun BorderButtonComponent() {
     Button(onClick = {
 
-    }, border = Border(2.dp, Color.Red)) {
+    }, border = BorderStroke(2.dp, Color.Red)) {
         Text(
             text = "Jetpack Compose",
             modifier = Modifier.padding(16.dp)
@@ -75,8 +75,8 @@ fun DisabledButtonComponent() {
     val disabled = state { false }
     Button(onClick = {
         disabled.value = true
-    }, backgroundColor = Color.Green, disabledBackgroundColor = Color.Red,
-        elevation = 8.dp, disabledElevation = 0.dp, disabledContentColor = Color.DarkGray,
+    }, backgroundColor = Color.Green,
+        elevation = 8.dp,
         contentColor = Color.White, enabled = !disabled.value) {
         Text(
             text = "Jetpack Compose",

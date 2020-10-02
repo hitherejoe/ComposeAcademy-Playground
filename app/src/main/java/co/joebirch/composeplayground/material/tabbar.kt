@@ -25,8 +25,10 @@ object TabBarView : ComposableLayout {
             TopAppBar(
                 elevation = 0.dp
             ) {
-                Text("Jetpack Compose",
-                    modifier = Modifier.padding(16.dp))
+                Text(
+                    "Jetpack Compose",
+                    modifier = Modifier.padding(16.dp)
+                )
             }
         }, bodyContent = {
             Column(
@@ -36,20 +38,21 @@ object TabBarView : ComposableLayout {
 
                 val tabs = listOf("One", "Two")
                 TabRow(
-                    items = tabs,
-                    selectedIndex = selectedTab.value,
-                    tab = { index, currentTab ->
+                    selectedTabIndex = selectedTab.value
+                ) {
+                    tabs.forEachIndexed { index, s ->
                         Tab(
                             selected = selectedTab.value == index,
-                            onSelected = {
+                            onClick = {
                                 selectedTab.value = index
                             }) {
                             Text(
-                                text = currentTab,
+                                text = s,
                                 modifier = Modifier.padding(16.dp)
                             )
                         }
-                    })
+                    }
+                }
             }
         })
     }

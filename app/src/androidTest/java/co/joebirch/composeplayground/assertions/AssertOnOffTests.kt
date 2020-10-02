@@ -6,8 +6,6 @@ import androidx.ui.layout.Stack
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
 import androidx.ui.material.Switch
-import androidx.ui.test.assertIsOff
-import androidx.ui.test.assertIsOn
 import androidx.ui.test.createComposeRule
 import androidx.ui.test.findByTag
 import org.junit.Rule

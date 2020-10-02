@@ -29,7 +29,7 @@ import co.joebirch.composeplayground.resource.Resource
 class HomeActivity : AppCompatActivity() {
 
     class HomeState(category: Category? = null) {
-        var category by mutableStateOf<Category?>(category)
+        var category by mutableStateOf(category)
     }
 
     private val currentState = HomeState()
@@ -88,9 +88,12 @@ class HomeActivity : AppCompatActivity() {
             Pair(
                 Layout.Heading, listOf(
                     Layout.Column,
+                    Layout.ScrollableColumn,
                     Layout.HorizontalArrangement,
+                    Layout.FlowColumn,
                     Layout.Row,
                     Layout.Spacer,
+                    Layout.Stack,
                     Layout.VerticalArrangement
                 )
             ),

@@ -21,12 +21,12 @@ object StringResourceView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = stringResource(id = R.string.app_name),
                 modifier = Modifier.padding(16.dp))
             Text(text = stringResource(id = R.string.app_name_formatting,
-                formatArgs = *arrayOf(stringResource(id = R.string.app_name))),
+                formatArgs = arrayOf(stringResource(id = R.string.app_name))),
                 modifier = Modifier.padding(16.dp))
             stringArrayResource(id = R.array.sample_array).forEach {
                 Text(text = it,

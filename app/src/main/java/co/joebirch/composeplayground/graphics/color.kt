@@ -1,8 +1,8 @@
 package co.joebirch.composeplayground.graphics
 
-import androidx.compose.foundation.Box
+import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.VerticalScroller
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -18,23 +18,20 @@ object ColorView : ComposableLayout {
 
     @Composable
     override fun build() {
-        VerticalScroller {
-            Column(
-                modifier = Modifier.fillMaxSize().padding(32.dp),
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalGravity = Alignment.CenterHorizontally
-            ) {
-                ColorObject()
-                Spacer(modifier = Modifier.height(48.dp))
-                ColorFromLong()
-                Spacer(modifier = Modifier.height(48.dp))
-                ColorFromFloats()
-                Spacer(modifier = Modifier.height(48.dp))
-                ColorFromIntRange()
-            }
+        ScrollableColumn(
+            modifier = Modifier.fillMaxSize().padding(32.dp),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            ColorObject()
+            Spacer(modifier = Modifier.height(48.dp))
+            ColorFromLong()
+            Spacer(modifier = Modifier.height(48.dp))
+            ColorFromFloats()
+            Spacer(modifier = Modifier.height(48.dp))
+            ColorFromIntRange()
         }
     }
-
 }
 
 @Composable
@@ -55,24 +52,24 @@ fun ColorObject() {
         Color.Yellow,
         Color.Unset
     )
-        Column(
-            modifier = Modifier.fillMaxSize().clickable(onClick = {
-                if (selectedColor.value < colors.count() - 1) selectedColor.value =
-                    selectedColor.value + 1 else selectedColor.value = 0
-            }),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
-        ) {
-            Box(
-                backgroundColor = colors[selectedColor.value],
-                modifier = Modifier.fillMaxWidth().preferredHeight(16.dp)
-            )
-            Text(
-                textAlign = TextAlign.Center,
-                text = "Click to change",
-                modifier = Modifier.padding(16.dp)
-            )
-        }
+    Column(
+        modifier = Modifier.fillMaxSize().clickable(onClick = {
+            if (selectedColor.value < colors.count() - 1) selectedColor.value =
+                selectedColor.value + 1 else selectedColor.value = 0
+        }),
+        verticalArrangement = Arrangement.SpaceEvenly,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Box(
+            modifier = Modifier.fillMaxWidth().preferredHeight(16.dp)
+                .background(colors[selectedColor.value])
+        )
+        Text(
+            textAlign = TextAlign.Center,
+            text = "Click to change",
+            modifier = Modifier.padding(16.dp)
+        )
+    }
 }
 
 @Composable
@@ -80,8 +77,8 @@ fun ColorFromLong() {
     val color = Color(0xFF000080)
 
     Box(
-        backgroundColor = color,
         modifier = Modifier.fillMaxWidth().preferredHeight(16.dp)
+            .background(color = color)
     )
 }
 
@@ -95,8 +92,8 @@ fun ColorFromFloats() {
     )
 
     Box(
-        backgroundColor = color,
         modifier = Modifier.fillMaxWidth().preferredHeight(16.dp)
+            .background(color)
     )
 }
 
@@ -110,7 +107,7 @@ fun ColorFromIntRange() {
     )
 
     Box(
-        backgroundColor = color,
         modifier = Modifier.fillMaxWidth().preferredHeight(16.dp)
+            .background(color)
     )
 }

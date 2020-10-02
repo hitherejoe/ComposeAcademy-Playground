@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.state
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
@@ -26,8 +25,7 @@ object HorizontalArrangementView : ComposableLayout {
 
         Row(
             modifier = Modifier.fillMaxSize().padding(32.dp),
-            horizontalArrangement = options[state.value],
-            verticalGravity = Alignment.CenterVertically
+            horizontalArrangement = options[state.value]
         ) {
             Text(text = options[state.value].javaClass.simpleName)
             Button(

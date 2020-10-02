@@ -24,7 +24,7 @@ object ScaffoldView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             when (selectedLayout.value) {
                 0 -> ScaffoldWithFabComponent {
@@ -32,7 +32,7 @@ object ScaffoldView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 1
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to docked FAB")
                         }
                     }
@@ -42,7 +42,7 @@ object ScaffoldView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 2
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to TopAppBar")
                         }
                     }
@@ -52,7 +52,7 @@ object ScaffoldView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 3
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to Drawer")
                         }
                     }
@@ -62,7 +62,7 @@ object ScaffoldView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 0
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to FAB")
                         }
                     }
@@ -78,8 +78,8 @@ fun ScaffoldWithFabComponent(bodyContent: @Composable() () -> Unit) {
     val state = state { 0 }
 
     val positions = listOf(
-        Scaffold.FabPosition.End,
-        Scaffold.FabPosition.Center
+        FabPosition.End,
+        FabPosition.Center
     )
 
     Scaffold(floatingActionButton = {
@@ -112,7 +112,7 @@ fun ScaffoldWithDockedFabComponent(bodyContent: @Composable() () -> Unit) {
         BottomAppBar {
 
         }
-    }, floatingActionButtonPosition = Scaffold.FabPosition.Center,
+    }, floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = state.value,
         bodyContent = {
             bodyContent()
@@ -140,8 +140,9 @@ fun ScaffoldWithTopAppBar(bodyContent: @Composable() () -> Unit) {
 @Composable
 fun ScaffoldWithDrawer(bodyContent: @Composable() () -> Unit) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val scaffoldState = rememberScaffoldState(drawerState = drawerState)
     Scaffold(
-        scaffoldState = ScaffoldState(drawerState),
+        scaffoldState = scaffoldState,
         topBar = {
             TopAppBar(
                 title = {
@@ -157,7 +158,7 @@ fun ScaffoldWithDrawer(bodyContent: @Composable() () -> Unit) {
             )
         }, drawerContent = {
         Column(modifier = Modifier.fillMaxSize(),
-            horizontalGravity = Alignment.CenterHorizontally) {
+            horizontalAlignment = Alignment.CenterHorizontally) {
             Spacer(modifier = Modifier.preferredHeight(24.dp))
             Button(onClick = {
                 drawerState.close()

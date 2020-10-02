@@ -2,9 +2,7 @@ package co.joebirch.composeplayground.animation
 
 import androidx.compose.animation.core.*
 import androidx.compose.animation.transition
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.ContentGravity
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -42,7 +40,7 @@ object GrowingCircleAnimationView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             GrowingCircleComponent()
         }
@@ -50,15 +48,15 @@ object GrowingCircleAnimationView : ComposableLayout {
 
     @Composable
     fun GrowingCircleComponent() {
-        Box(modifier = Modifier.fillMaxSize(), gravity = ContentGravity.Center, children = {
+        Box(modifier = Modifier.fillMaxSize()) {
             val state = transition(
                 definition = sizeTransitionDefinition,
                 initState = "A",
                 toState = "B"
             )
-            Canvas(modifier = Modifier.preferredSize(80.dp)) {
+            Canvas(modifier = Modifier.preferredSize(80.dp).align(Alignment.Center)) {
                 drawCircle(Color.Black, state[shapeSize])
             }
-        })
+        }
     }
 }

@@ -7,8 +7,6 @@ import androidx.ui.foundation.Text
 import androidx.ui.layout.preferredHeight
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
-import androidx.ui.test.assertIsDisplayed
-import androidx.ui.test.assertIsNotDisplayed
 import androidx.ui.test.createComposeRule
 import androidx.ui.test.findByText
 import androidx.ui.unit.dp

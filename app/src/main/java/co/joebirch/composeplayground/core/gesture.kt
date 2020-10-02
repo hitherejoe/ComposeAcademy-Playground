@@ -9,8 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.state
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.gesture.*
+import androidx.compose.ui.gesture.doubleTapGestureFilter
+import androidx.compose.ui.gesture.longPressGestureFilter
+import androidx.compose.ui.gesture.tapGestureFilter
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
@@ -21,12 +22,11 @@ object GestureView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TapComponent()
             DoubleTapComponent()
             LongPressComponent()
-            LongPressDragComponent()
         }
     }
 
@@ -35,7 +35,7 @@ object GestureView : ComposableLayout {
 @Composable
 fun TapComponent() {
     val showSnackbar = state { false }
-    Column(horizontalGravity = Alignment.CenterHorizontally) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = "Jetpack Compose",
             modifier = Modifier.padding(16.dp).tapGestureFilter(onTap = {
@@ -53,7 +53,7 @@ fun TapComponent() {
 @Composable
 fun DoubleTapComponent() {
     val showSnackbar = state { false }
-    Column(horizontalGravity = Alignment.CenterHorizontally) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = "Jetpack Compose",
             modifier = Modifier.padding(16.dp).doubleTapGestureFilter(onDoubleTap = {
@@ -71,7 +71,7 @@ fun DoubleTapComponent() {
 @Composable
 fun LongPressComponent() {
     val showSnackbar = state { false }
-    Column(horizontalGravity = Alignment.CenterHorizontally) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
         Text(
             text = "Jetpack Compose",
@@ -82,52 +82,6 @@ fun LongPressComponent() {
         if (showSnackbar.value) {
             Snackbar(text = {
                 Text(text = "Long press the text to hide")
-            })
-        }
-    }
-}
-
-@Composable
-fun LongPressDragComponent() {
-    val showSnackbar = state { false }
-    Column(horizontalGravity = Alignment.CenterHorizontally) {
-
-        Text(
-            text = "Jetpack Compose",
-            modifier = Modifier.padding(16.dp).longPressDragGestureFilter(
-                object : LongPressDragObserver {
-
-                    override fun onLongPress(offset: Offset) {
-                        super.onLongPress(offset)
-
-                        //Toast.makeText(ContextAmbient.current, "Long pressed!!", LENGTH_SHORT)
-                    }
-
-                    override fun onDrag(offset: Offset): Offset {
-                        // Toast.makeText(ContextAmbient.current, "Dragged: " + dragDistance.x +
-                        //   " : " + dragDistance.y, LENGTH_SHORT)
-                        return super.onDrag(offset)
-                    }
-
-                    override fun onDragStart() {
-                        super.onDragStart()
-                        showSnackbar.value = true
-                    }
-
-                    override fun onCancel() {
-                        super.onCancel()
-                    }
-
-                    override fun onStop(offset: Offset) {
-                        showSnackbar.value = false
-                        super.onStop(offset)
-                    }
-                }
-            )
-        )
-        if (showSnackbar.value) {
-            Snackbar(text = {
-                Text(text = "Dragging in progress")
             })
         }
     }

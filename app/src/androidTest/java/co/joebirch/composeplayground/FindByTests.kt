@@ -5,7 +5,7 @@ import androidx.ui.core.TestTag
 import androidx.ui.foundation.Text
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
-import androidx.ui.test.*
+import androidx.ui.test.createComposeRule
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

@@ -28,27 +28,27 @@ object BottomNavigationView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Bottom,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             when (selectedLayout.value) {
                 0 -> StandardBottomNavigation {
                     Button(onClick = {
                         selectedLayout.value = 1
-                    }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                    }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                         Text(text = "Switch to no labels")
                     }
                 }
                 1 -> BottomNavigationOnlySelectedLabels {
                     Button(onClick = {
                         selectedLayout.value = 2
-                    }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                    }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                         Text(text = "Switch to styled")
                     }
                 }
                 2 -> StyledBottomNavigation {
                     Button(onClick = {
                         selectedLayout.value = 0
-                    }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                    }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                         Text(text = "Switch to standard")
                     }
                 }
@@ -77,7 +77,7 @@ fun StandardBottomNavigation(bodyContent: @Composable() () -> Unit) {
                     icon = { Icon(item.icon) },
                     label = { Text(text = item.label) },
                     selected = selectedItem.value == index,
-                    onSelect = { selectedItem.value = index }
+                    onClick = { selectedItem.value = index }
                 )
             }
         }
@@ -101,7 +101,7 @@ fun BottomNavigationOnlySelectedLabels(bodyContent: @Composable() () -> Unit) {
                     icon = { Icon(item.icon) },
                     label = { Text(text = item.label) },
                     selected = selectedItem.value == index,
-                    onSelect = { selectedItem.value = index },
+                    onClick = { selectedItem.value = index },
                     alwaysShowLabels = false
                 )
             }
@@ -126,7 +126,7 @@ fun StyledBottomNavigation(bodyContent: @Composable() () -> Unit) {
                     icon = { Icon(item.icon) },
                     label = { Text(text = item.label) },
                     selected = selectedItem.value == index,
-                    onSelect = { selectedItem.value = index },
+                    onClick = { selectedItem.value = index },
                     selectedContentColor = Color.Green,
                     unselectedContentColor = Color.Red
                 )

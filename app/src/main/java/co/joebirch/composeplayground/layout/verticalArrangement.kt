@@ -27,7 +27,7 @@ object VerticalArrangementView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = options[state.value],
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = options[state.value].javaClass.simpleName)
             Button(

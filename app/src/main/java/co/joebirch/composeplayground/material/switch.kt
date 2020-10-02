@@ -1,10 +1,7 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.foundation.Box
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Switch
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.state
@@ -13,16 +10,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import co.joebirch.composeplayground.ComposableLayout
 
-object SwitchView: ComposableLayout {
+object SwitchView : ComposableLayout {
 
     @Composable
     override fun build() {
-        Box(modifier = Modifier.fillMaxSize(),
-        backgroundColor = Color.LightGray) {
+        Box(
+            modifier = Modifier.fillMaxSize()
+                .background(Color.LightGray)
+        ) {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalGravity = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 MinimalSwitchComponent()
                 ColoredSwitchComponent()
@@ -33,7 +32,7 @@ object SwitchView: ComposableLayout {
 
     @Composable
     fun MinimalSwitchComponent() {
-        val isChecked = state  { false }
+        val isChecked = state { false }
         Switch(
             checked = isChecked.value,
             onCheckedChange = { checked ->
@@ -44,7 +43,7 @@ object SwitchView: ComposableLayout {
 
     @Composable
     fun ColoredSwitchComponent() {
-        val isChecked = state  { true }
+        val isChecked = state { true }
         Switch(
             checked = isChecked.value,
             onCheckedChange = { checked ->
@@ -56,7 +55,7 @@ object SwitchView: ComposableLayout {
 
     @Composable
     fun DisabledSwitchComponent() {
-        val isChecked = state  { true }
+        val isChecked = state { true }
         Switch(
             checked = isChecked.value,
             onCheckedChange = { checked ->

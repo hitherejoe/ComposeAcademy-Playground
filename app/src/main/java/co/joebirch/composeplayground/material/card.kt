@@ -1,6 +1,6 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.foundation.Border
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,7 +19,7 @@ object CardView: ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             MinimalCardComponent()
             MultipleChildCardComponent()
@@ -76,7 +76,7 @@ fun ShapeCardComponent() {
 @Composable
 fun ColorCardComponent() {
     Card(
-        color = Color.LightGray
+        backgroundColor = Color.LightGray
     ) {
         Text(
             text = "Jetpack Compose",
@@ -88,7 +88,7 @@ fun ColorCardComponent() {
 @Composable
 fun ContentColorCardComponent() {
     Card(
-        color = Color.Black,
+        backgroundColor = Color.Black,
         contentColor = Color.White
     ) {
         Text(
@@ -101,7 +101,7 @@ fun ContentColorCardComponent() {
 @Composable
 fun BorderCardComponent() {
     Card(
-        border = Border(2.dp, Color.Black)
+        border = BorderStroke(2.dp, Color.Black)
     ) {
         Text(
             text = "Jetpack Compose",

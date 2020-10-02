@@ -22,7 +22,7 @@ object ImageResourceView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(asset = vectorResource(id =
             R.drawable.ic_baseline_account_circle_24),

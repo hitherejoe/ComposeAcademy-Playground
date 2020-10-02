@@ -6,7 +6,7 @@ import androidx.ui.core.TestTag
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Slider
 import androidx.ui.material.Surface
-import androidx.ui.test.*
+import androidx.ui.test.createComposeRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

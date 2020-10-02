@@ -8,8 +8,6 @@ import androidx.ui.foundation.clickable
 import androidx.ui.layout.Stack
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
-import androidx.ui.test.assertHasClickAction
-import androidx.ui.test.assertHasNoClickAction
 import androidx.ui.test.createComposeRule
 import androidx.ui.test.findByTag
 import org.junit.Rule

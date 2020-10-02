@@ -1,10 +1,12 @@
-package co.joebirch.composeplayground.core
+package co.joebirch.composeplayground.ui.draw
 
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.state
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,11 +19,11 @@ object OpacityView : ComposableLayout {
 
     @Composable
     override fun build() {
-        val showShadow = state { false }
+        val showShadow = remember { mutableStateOf(false) }
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             val modifier = if (showShadow.value) {
@@ -30,8 +32,8 @@ object OpacityView : ComposableLayout {
                 Modifier.preferredSize(100.dp, 100.dp)
             }
             Box(
-                modifier = modifier,
-                backgroundColor = Color.Green
+                modifier = modifier
+                    .background(Color.Green),
             )
 
             Spacer(modifier = Modifier.preferredHeight(36.dp))

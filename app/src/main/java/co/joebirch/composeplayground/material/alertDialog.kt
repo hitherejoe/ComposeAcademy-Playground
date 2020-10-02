@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.state
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
@@ -19,7 +21,7 @@ object AlertDialogView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             AlertDialogComponent()
         }
@@ -32,7 +34,7 @@ fun AlertDialogComponent() {
     val showingDialog = state { false }
     if (showingDialog.value) {
         AlertDialog(
-            onCloseRequest = {
+            onDismissRequest = {
                 showingDialog.value = false
             },
             text = {
@@ -51,6 +53,39 @@ fun AlertDialogComponent() {
                         }))
                 }
             })
+    }
+    Button(onClick = {
+        showingDialog.value = true
+    }) {
+        Text(
+            text = "Show dialog"
+        )
+    }
+}
+
+@Composable
+fun ContentAlertDialogComponent() {
+    val showingDialog = state { false }
+    if (showingDialog.value) {
+        AlertDialog(
+            onDismissRequest = {
+                showingDialog.value = false
+            },
+            text = {
+                Text(text = "Body message")
+            },
+            title = {
+                Text(text = "Title")
+            },
+            confirmButton = {
+                Text(text = "Close",
+                    modifier = Modifier.padding(16.dp).clickable(onClick = {
+                        showingDialog.value = false
+                    }))
+            },
+            backgroundColor = Color.White,
+            shape = RectangleShape
+        )
     }
     Button(onClick = {
         showingDialog.value = true

@@ -7,10 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.BottomAppBar
-import androidx.compose.material.Button
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Scaffold
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.runtime.Composable
@@ -30,7 +27,7 @@ object BottomAppBarView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             when (selectedLayout.value) {
                 0 -> MinimalBottomAppBar {
@@ -38,7 +35,7 @@ object BottomAppBarView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 1
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to styled bar")
                         }
                     }
@@ -48,7 +45,7 @@ object BottomAppBarView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 2
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to FAB bar")
                         }
                     }
@@ -58,7 +55,7 @@ object BottomAppBarView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 3
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to minimal bar")
                         }
                     }
@@ -68,7 +65,7 @@ object BottomAppBarView : ComposableLayout {
                         verticalArrangement = Arrangement.Center) {
                         Button(onClick = {
                             selectedLayout.value = 0
-                        }, modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
+                        }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
                             Text(text = "Switch to minimal bar")
                         }
                     }
@@ -129,7 +126,7 @@ fun FabBottomAppBar(bodyContent: @Composable() () -> Unit) {
                 Icon(asset = Icons.Default.Done)
             }
         },
-        floatingActionButtonPosition = Scaffold.FabPosition.Center,
+        floatingActionButtonPosition = FabPosition.Center,
         bodyContent = {
             bodyContent()
         })
@@ -154,7 +151,7 @@ fun DockedFabBottomAppBar(bodyContent: @Composable() () -> Unit) {
                 Icon(asset = Icons.Default.Done)
             }
         },
-        floatingActionButtonPosition = Scaffold.FabPosition.Center,
+        floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
         bodyContent = {
             bodyContent()

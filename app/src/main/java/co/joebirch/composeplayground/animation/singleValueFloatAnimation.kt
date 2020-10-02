@@ -1,8 +1,8 @@
 package co.joebirch.composeplayground.animation
 
 import androidx.compose.animation.animate
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -20,7 +20,7 @@ object SingleAnimationFloatView : ComposableLayout {
         Column(
             modifier = Modifier.fillMaxSize().padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalGravity = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             SingleValueAnimationFloat()
         }
@@ -29,14 +29,16 @@ object SingleAnimationFloatView : ComposableLayout {
     @Composable
     fun SingleValueAnimationFloat() {
         val enabled = state { true }
-        Stack(modifier = Modifier.padding(animate(if (enabled.value) 0f else 100f).dp).clickable(
+        Box(modifier = Modifier.padding(animate(if (enabled.value) 0f else 100f).dp).clickable(
             onClick = {
                 enabled.value = !enabled.value
             }
         )) {
-            Box(Modifier.fillMaxSize(), backgroundColor = Color.Green)
-            Text(text = "Click me to change padding!",
-                modifier = Modifier.gravity(Alignment.Center))
+            Box(Modifier.fillMaxSize().background(Color.Green))
+            Text(
+                text = "Click me to change padding!",
+                modifier = Modifier.align(Alignment.Center)
+            )
         }
     }
 }

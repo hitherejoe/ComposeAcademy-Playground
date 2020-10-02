@@ -17,11 +17,11 @@ object SpacerView : ComposableLayout {
             Text(
                 text = "First item"
             )
-            Spacer(modifier = Modifier.preferredHeight(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "Second item"
             )
-            Spacer(modifier = Modifier.preferredHeight(32.dp))
+            Spacer(modifier = Modifier.width(32.dp))
             Text(
                 text = "Third item"
             )
