@@ -2,11 +2,11 @@ package co.joebirch.composeplayground.animation
 
 import androidx.compose.animation.animate
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import co.joebirch.composeplayground.ComposableLayout
@@ -22,7 +22,7 @@ object TextDemoView : ComposableLayout {
             ScrollableColumn(scrollState = scroller,
                 modifier = Modifier.fillMaxSize()) {
                 Text(text = text, modifier = Modifier.clickable(onClick = {
-                    scroller.smoothScrollTo(animateee)
+                    //scroller.smoothScrollTo(animateee)
                 }))
             }
         }

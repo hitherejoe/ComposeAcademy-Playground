@@ -6,8 +6,8 @@ import androidx.compose.animation.transition
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.state
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -41,7 +41,7 @@ object InteractionAnimationView : ComposableLayout {
 
     @Composable
     fun TouchCircleComponent() {
-        val toState = state { CircleStatus.Idle }
+        val toState = remember { mutableStateOf(CircleStatus.Idle) }
         val rippleTransDef = remember { createTransDef() }
 
         val onPress: (Offset) -> Unit = { offset ->

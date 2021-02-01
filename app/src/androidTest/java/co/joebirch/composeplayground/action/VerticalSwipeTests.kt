@@ -1,18 +1,18 @@
 package co.joebirch.composeplayground.action
 
+import androidx.compose.material.Text
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performGesture
+import androidx.compose.ui.test.swipeDown
+import androidx.compose.ui.test.swipeUp
+import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.ui.core.Modifier
-import androidx.ui.core.TestTag
-import androidx.ui.foundation.AdapterList
-import androidx.ui.foundation.Text
-import androidx.ui.layout.padding
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Surface
-import androidx.ui.test.createComposeRule
-import androidx.ui.test.doGesture
-import androidx.ui.test.findByTag
-import androidx.ui.test.sendSwipeUp
-import androidx.ui.unit.dp
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -29,13 +29,11 @@ class VerticalSwipeTests {
             MaterialTheme {
                 Surface {
                     val content = (0..100).map { UUID.randomUUID().toString() }
-                    TestTag(tag = "MyTag") {
-                        AdapterList(data = content) {
-                            Text(
-                                text = it,
-                                modifier = Modifier.padding(16.dp)
-                            )
-                        }
+                    LazyColumnFor(content) {
+                        Text(
+                            text = it,
+                            modifier = Modifier.padding(16.dp)
+                        )
                     }
                 }
             }
@@ -45,8 +43,9 @@ class VerticalSwipeTests {
     @Test
     fun testSwipeVertical() {
         launchContent()
-        findByTag("MyTag").doGesture {
-            sendSwipeUp()
+        composeTestRule.onNodeWithTag("MyTag").performGesture {
+            swipeUp()
+            swipeDown()
         }
     }
 }

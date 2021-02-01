@@ -1,15 +1,17 @@
-package co.joebirch.composeplayground.core
+package co.joebirch.composeplayground.window
 
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.state
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import co.joebirch.composeplayground.ComposableLayout
@@ -18,9 +20,9 @@ object PopupView : ComposableLayout {
 
     @Composable
     override fun build() {
-        val showingStandardPopup = state { false }
-        val showingStandardPopupWithProperties = state { false }
-        val showingDropdownPopup = state { false }
+        val showingStandardPopup = remember { mutableStateOf(false) }
+        val showingStandardPopupWithProperties = remember { mutableStateOf(false) }
+        val showingDropdownPopup = remember { mutableStateOf(false) }
         Box(
             modifier = Modifier.fillMaxSize().padding(32.dp)
         ) {
@@ -61,17 +63,58 @@ object PopupView : ComposableLayout {
 
 @Composable
 fun StandardPopup() {
-    Popup {
-        Box {
-            Box(
-                Modifier.preferredSize(200.dp, 50.dp)
-                    .background(
-                        shape = RoundedCornerShape(16.dp),
-                        color = Color.Black
-                    )
+    Popup(
+        alignment = Alignment.Center
+    ) {
+        Box(modifier = Modifier.preferredSize(200.dp, 50.dp)
+            .background(
+                shape = RoundedCornerShape(16.dp),
+                color = Color.Black
             )
+        ) {
             Text(
-                text = "Pop up!", modifier = Modifier.align(Alignment.Center),
+                text = "Pop up!",
+                modifier = Modifier.align(Alignment.Center),
+                color = Color.White
+            )
+        }
+    }
+}
+
+@Composable
+fun AlignPopup() {
+    Popup(
+        alignment = Alignment.Center
+    ) {
+        Box(modifier = Modifier.preferredSize(200.dp, 50.dp)
+            .background(
+                shape = RoundedCornerShape(16.dp),
+                color = Color.Black
+            )
+        ) {
+            Text(
+                text = "Pop up!",
+                modifier = Modifier.align(Alignment.Center),
+                color = Color.White
+            )
+        }
+    }
+}
+
+@Composable
+fun OffsetPopup() {
+    Popup(
+        offset = IntOffset(16)
+    ) {
+        Box(modifier = Modifier.preferredSize(200.dp, 50.dp)
+            .background(
+                shape = RoundedCornerShape(16.dp),
+                color = Color.Black
+            )
+        ) {
+            Text(
+                text = "Pop up!",
+                modifier = Modifier.align(Alignment.Center),
                 color = Color.White
             )
         }

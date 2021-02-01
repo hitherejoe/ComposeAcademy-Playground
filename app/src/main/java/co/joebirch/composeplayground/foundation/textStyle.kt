@@ -1,16 +1,17 @@
 package co.joebirch.composeplayground.foundation
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontSynthesis
 import androidx.compose.ui.text.font.FontWeight
@@ -57,7 +58,7 @@ fun SimpleComponent() {
 @Composable
 fun TextWithShadowComponent() {
     Text(
-        text = "Font size",
+        text = "Jetpack Compose",
         style = TextStyle(shadow = Shadow(Color.Gray)),
         modifier = Modifier.padding(16.dp)
     )
@@ -66,7 +67,7 @@ fun TextWithShadowComponent() {
 @Composable
 fun TextDirectionComponent() {
     Text(
-        text = "Font size",
+        text = "Jetpack Compose",
         style = TextStyle(textDirection = TextDirection.ContentOrRtl),
         modifier = Modifier.padding(16.dp)
     )
@@ -75,7 +76,7 @@ fun TextDirectionComponent() {
 @Composable
 fun TextDecorationComponent() {
     Text(
-        text = "Font size",
+        text = "Jetpack Compose",
         style = TextStyle(textDecoration = TextDecoration.combine(listOf(
             TextDecoration.LineThrough, TextDecoration.Underline
         ))),
@@ -88,6 +89,15 @@ fun FontWeightComponent() {
     Text(
         text = "Font weight",
         style = TextStyle(fontWeight = FontWeight.Bold),
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun FontFamilyComponent() {
+    Text(
+        text = "Font weight",
+        style = TextStyle(fontFamily = FontFamily.SansSerif),
         modifier = Modifier.padding(16.dp)
     )
 }

@@ -1,12 +1,18 @@
 package co.joebirch.composeplayground.action
 
-import androidx.compose.state
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Slider
+import androidx.compose.material.Surface
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.test.*
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.unit.Duration
+import androidx.compose.ui.unit.inMilliseconds
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.ui.core.TestTag
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Slider
-import androidx.ui.material.Surface
-import androidx.ui.test.createComposeRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -21,12 +27,10 @@ class HorizontalSwipeTests {
         composeTestRule.setContent {
             MaterialTheme {
                 Surface {
-                    val selectedValue = state { 0f }
-                    TestTag(tag = "MyTag") {
-                        Slider(value = selectedValue.value, onValueChange = {
-                            selectedValue.value = it
-                        })
-                    }
+                    val selectedValue = remember { mutableStateOf(0f) }
+                    Slider(value = selectedValue.value, onValueChange = {
+                        selectedValue.value = it
+                    }, modifier = Modifier.testTag("MyTag"))
                 }
             }
         }
@@ -35,9 +39,12 @@ class HorizontalSwipeTests {
     @Test
     fun testSwipeHorizontal() {
         launchContent()
-        findByTag("MyTag").doGesture {
-            sendSwipeRight()
-            sendSwipeLeft()
-        }
+        composeTestRule.onNodeWithTag("MyTag")
+            .performGesture {
+                swipe(Offset(0f, 0f),  Offset(200f, 0f),
+                    Duration(5000).apply { inMilliseconds() })
+                swipeRight()
+                swipeLeft()
+            }
     }
 }

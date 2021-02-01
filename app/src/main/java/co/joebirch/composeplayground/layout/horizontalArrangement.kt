@@ -1,13 +1,14 @@
 package co.joebirch.composeplayground.layout
 
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.state
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
@@ -21,7 +22,7 @@ object HorizontalArrangementView : ComposableLayout {
 
     @Composable
     override fun build() {
-        val state = state { 0 }
+        val state = remember { mutableStateOf(0) }
 
         Row(
             modifier = Modifier.fillMaxSize().padding(32.dp),

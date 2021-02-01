@@ -1,7 +1,7 @@
 package co.joebirch.composeplayground.material
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.ui.tooling.preview.Preview
 import co.joebirch.composeplayground.ComposableLayout
 
 object CardView: ComposableLayout {
@@ -43,6 +44,12 @@ fun MinimalCardComponent() {
     }
 }
 
+@Preview(showBackground = false)
+@Composable
+fun CardPreview() {
+    MinimalCardComponent()
+}
+
 @Composable
 fun MultipleChildCardComponent() {
     Card {
@@ -57,8 +64,13 @@ fun MultipleChildCardComponent() {
                 modifier = Modifier.padding(16.dp)
             )
         }
-
     }
+}
+
+@Preview(showBackground = false)
+@Composable
+fun CardMultipleChildPreview() {
+    MultipleChildCardComponent()
 }
 
 @Composable

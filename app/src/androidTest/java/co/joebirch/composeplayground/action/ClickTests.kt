@@ -1,19 +1,18 @@
 package co.joebirch.composeplayground.action
 
-import androidx.compose.state
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.ui.core.TestTag
-import androidx.ui.material.Checkbox
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Surface
-import androidx.ui.test.createComposeRule
-import androidx.ui.test.doClick
-import androidx.ui.test.findByTag
+import androidx.compose.material.Checkbox
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performClick
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
 class ClickTests {
 
     @get:Rule
@@ -23,12 +22,10 @@ class ClickTests {
         composeTestRule.setContent {
             MaterialTheme {
                 Surface {
-                    val selected = state { false }
-                    TestTag(tag = "MyTag") {
-                        Checkbox(checked = selected.value, onCheckedChange = {
-                            selected.value = it
-                        })
-                    }
+                    val selected = remember { mutableStateOf(false) }
+                    Checkbox(checked = selected.value, onCheckedChange = {
+                        selected.value = it
+                    }, modifier = Modifier.testTag("MyTag"))
                 }
             }
         }
@@ -37,6 +34,8 @@ class ClickTests {
     @Test
     fun testClick() {
         launchContent()
-        findByTag("MyTag").doClick()
+        composeTestRule
+            .onNodeWithTag("MyTag")
+            .performClick()
     }
 }

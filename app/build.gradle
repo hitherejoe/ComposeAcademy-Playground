@@ -30,8 +30,8 @@ android {
         jvmTarget = '1.8'
     }
     composeOptions {
-        kotlinCompilerVersion "1.4.0"
-        kotlinCompilerExtensionVersion "1.0.0-alpha04"
+        kotlinCompilerVersion "1.4.21-2"
+        kotlinCompilerExtensionVersion "1.0.0-alpha11"
     }
 
     buildFeatures {
@@ -47,7 +47,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
 }
 
 dependencies {
-    def ui_version = "1.0.0-alpha04"
+    def ui_version = "1.0.0-alpha11"
 
     implementation "androidx.compose.compiler:compiler:$ui_version"
     implementation "androidx.compose.runtime:runtime:$ui_version"
@@ -55,12 +55,14 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation "androidx.compose.foundation:foundation:$ui_version"
+    implementation "androidx.compose.animation:animation:$ui_version"
     implementation "androidx.compose.ui:ui-graphics:$ui_version"
     implementation "androidx.compose.foundation:foundation-layout:$ui_version"
     implementation "androidx.compose.material:material:$ui_version"
-    implementation "androidx.ui:ui-tooling:$ui_version"
+    implementation "androidx.ui:ui-tooling:1.0.0-alpha07"
     implementation "androidx.compose.ui:ui:$ui_version"
-    implementation "androidx.ui:ui-test:$ui_version"
+    androidTestImplementation "androidx.compose.ui:ui-test:$ui_version"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$ui_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

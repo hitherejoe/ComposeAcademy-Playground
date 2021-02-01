@@ -1,12 +1,12 @@
 package co.joebirch.composeplayground.assertions
 
+import androidx.compose.material.Text
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.ui.foundation.Text
-import androidx.ui.layout.Stack
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Surface
-import androidx.ui.test.createComposeRule
-import androidx.ui.test.findByText
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -21,7 +21,7 @@ class AssertExistsTests {
         composeTestRule.setContent {
             MaterialTheme {
                 Surface {
-                    Stack {
+                    Box {
                         if (!hidden) {
                             Text(
                                 text = "Hello"
@@ -36,12 +36,12 @@ class AssertExistsTests {
     @Test
     fun testExists() {
         launchContent(false)
-        findByText("Hello").assertExists()
+        composeTestRule.onNodeWithTag("Hello").assertExists()
     }
 
     @Test
     fun testNotExists() {
         launchContent(true)
-        findByText("Hello").assertDoesNotExist()
+        composeTestRule.onNodeWithTag("Hello").assertDoesNotExist()
     }
 }

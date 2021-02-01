@@ -1,6 +1,6 @@
 package co.joebirch.composeplayground.resource
 
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,9 +25,11 @@ object StringResourceView : ComposableLayout {
         ) {
             Text(text = stringResource(id = R.string.app_name),
                 modifier = Modifier.padding(16.dp))
-            Text(text = stringResource(id = R.string.app_name_formatting,
+            Text(
+                text = stringResource(id = R.string.app_name_formatting,
                 formatArgs = arrayOf(stringResource(id = R.string.app_name))),
-                modifier = Modifier.padding(16.dp))
+                modifier = Modifier.padding(16.dp)
+            )
             stringArrayResource(id = R.array.sample_array).forEach {
                 Text(text = it,
                     modifier = Modifier.padding(16.dp))

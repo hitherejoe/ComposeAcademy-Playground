@@ -1,18 +1,24 @@
 package co.joebirch.composeplayground.foundation
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.ui.tooling.preview.Preview
 import co.joebirch.composeplayground.ComposableLayout
 
 object TextView: ComposableLayout {
@@ -35,19 +41,106 @@ object TextView: ComposableLayout {
 
 }
 
+@Preview
 @Composable
 fun MinimalTextComponent() {
     Text(
-        text = "Simple text",
+        text = "Jetpack Compose"
+    )
+}
+
+@Preview
+@Composable
+fun ColoredTextComponent() {
+    Text(
+        text = "Jetpack Compose",
+        color = Color.Red
+    )
+}
+
+@Preview
+@Composable
+fun FontSizeTextComponent() {
+    Text(
+        text = "Colored text",
+        fontSize = 18.sp
+    )
+}
+
+@Preview
+@Composable
+fun FontWeightTextComponent() {
+    Text(
+        text = "Colored text",
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun FontStyleTextComponent() {
+    Text(
+        text = "Colored text",
+        fontStyle = FontStyle.Italic
+    )
+}
+
+@Composable
+fun FontFamilyTextComponent() {
+    Text(
+        text = "Colored text",
+        fontFamily = FontFamily.SansSerif
+    )
+}
+
+@Composable
+fun LetterSpacingTextComponent() {
+    Text(
+        text = "Colored text",
+        letterSpacing = 4.sp
+    )
+}
+
+@Composable
+fun DecorationTextComponent() {
+    Text(
+        text = "Colored text",
+        textDecoration = TextDecoration.LineThrough,
         modifier = Modifier.padding(16.dp)
     )
 }
 
 @Composable
-fun ColoredTextComponent() {
+fun AlignTextComponent() {
     Text(
         text = "Colored text",
-        color = Color.Red,
+        textAlign = TextAlign.Center,
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun LineHeightTextComponent() {
+    Text(
+        text = "Colored text",
+        lineHeight = 2.sp,
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun OverflowTextComponent() {
+    Text(
+        text = "Colored text",
+        overflow = TextOverflow.Ellipsis,
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun WrapTextComponent() {
+    Text(
+        text = "Colored text",
+        softWrap = true,
         modifier = Modifier.padding(16.dp)
     )
 }

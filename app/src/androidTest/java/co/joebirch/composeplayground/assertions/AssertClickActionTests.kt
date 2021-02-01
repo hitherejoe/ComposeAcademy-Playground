@@ -1,15 +1,15 @@
 package co.joebirch.composeplayground.assertions
 
+import androidx.compose.material.Text
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.test.*
+import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.ui.core.Modifier
-import androidx.ui.core.testTag
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.clickable
-import androidx.ui.layout.Stack
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Surface
-import androidx.ui.test.createComposeRule
-import androidx.ui.test.findByTag
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -24,7 +24,7 @@ class AssertClickActionTests {
         composeTestRule.setContent {
             MaterialTheme {
                 Surface {
-                    Stack {
+                    Box {
                         if (clickable) {
                             Text(
                                 text = "Hello",
@@ -46,12 +46,14 @@ class AssertClickActionTests {
     @Test
     fun testHasClickAction() {
         launchContent(true)
-        findByTag("MyTag").assertHasClickAction()
+        composeTestRule.onNodeWithTag("MyTag")
+            .assertHasClickAction()
     }
 
     @Test
     fun testNoClickAction() {
         launchContent(false)
-        findByTag("MyTag").assertHasNoClickAction()
+        composeTestRule.onNodeWithTag("MyTag")
+            .assert(isHidden())
     }
 }

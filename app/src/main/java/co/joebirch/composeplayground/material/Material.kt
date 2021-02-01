@@ -1,6 +1,7 @@
 package co.joebirch.composeplayground.material
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.material.ExperimentalMaterialApi
 import co.joebirch.composeplayground.Category
 import co.joebirch.composeplayground.ComposableLayout
 import co.joebirch.composeplayground.foundation.BorderView
@@ -23,6 +24,7 @@ sealed class Material(
     object IconButton: Material("Icon Button", IconButtonView)
     object Progress: Material("Progress Bar", ProgressView)
     object RadioButton: Material("Radio Button", RadioButtonView)
+    @OptIn(ExperimentalMaterialApi::class)
     object Scaffold: Material("Scaffold", ScaffoldView)
     object Slider: Material("Slider", SliderView)
     object Snackbar: Material("Snackbar", SnackbarView)
@@ -31,6 +33,5 @@ sealed class Material(
     @ExperimentalFoundationApi
     object TextField: Material("Text Field", TextFieldView)
     object TopAppBar: Material("Top App Bar", TopAppBarView)
-    object TriStateRadioButton: Material("Tri-state Radio Button", TriStateRadioButtonView)
 
 }

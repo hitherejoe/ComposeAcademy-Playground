@@ -1,14 +1,17 @@
 package co.joebirch.composeplayground.action
 
-import androidx.compose.state
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.TextField
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.test.*
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.ui.core.TestTag
-import androidx.ui.foundation.TextField
-import androidx.ui.foundation.TextFieldValue
-import androidx.ui.input.ImeAction
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Surface
-import androidx.ui.test.createComposeRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,14 +26,12 @@ class TextActionTests {
         composeTestRule.setContent {
             MaterialTheme {
                 Surface {
-                    val textValue = state { TextFieldValue() }
-                    TestTag(tag = "MyTag") {
-                        TextField(value = textValue.value, onValueChange = {
-                            textValue.value = it
-                        }, imeAction = ImeAction.Search, onImeActionPerformed = {
-                            textValue.value = TextFieldValue("Search!")
-                        })
-                    }
+                    val textValue = remember { mutableStateOf(TextFieldValue()) }
+                    TextField(value = textValue.value, onValueChange = {
+                        textValue.value = it
+                    }, imeAction = ImeAction.Search, onImeActionPerformed = { _, _ ->
+                        textValue.value = TextFieldValue("Search!")
+                    }, modifier = Modifier.testTag("MyTag"))
                 }
             }
         }
@@ -39,12 +40,16 @@ class TextActionTests {
     @Test
     fun testClick() {
         launchContent()
-        findByTag("MyTag").apply {
-            doSendText(text = "Some text")
-            doReplaceText(text = "Replaced text")
-            doClearText()
-            doClick()
-            doSendImeAction()
+        composeTestRule.onNodeWithTag("MyTag").performGesture {
+
+        }
+        composeTestRule.onNodeWithTag("MyTag").apply {
+            performTextInput("Some text")
+            performTextReplacement("Replaced text")
+            performTextClearance()
+            performClick()
+            performImeAction()
+            performScrollTo()
         }
     }
 }

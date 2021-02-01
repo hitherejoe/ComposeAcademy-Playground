@@ -1,13 +1,16 @@
 package co.joebirch.composeplayground.assertions
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Switch
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.test.assertIsOff
+import androidx.compose.ui.test.assertIsOn
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.ui.core.TestTag
-import androidx.ui.layout.Stack
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Surface
-import androidx.ui.material.Switch
-import androidx.ui.test.createComposeRule
-import androidx.ui.test.findByTag
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,10 +25,11 @@ class AssertOnOffTests {
         composeTestRule.setContent {
             MaterialTheme {
                 Surface {
-                    Stack {
-                        TestTag(tag = "MyTag") {
-                            Switch(checked = isOn, onCheckedChange = { })
-                        }
+                    Box {
+                        Switch(
+                            checked = isOn, onCheckedChange = { },
+                            modifier = Modifier.testTag("MyTag")
+                        )
                     }
                 }
             }
@@ -35,12 +39,12 @@ class AssertOnOffTests {
     @Test
     fun testExists() {
         launchContent(true)
-        findByTag("MyTag").assertIsOn()
+        composeTestRule.onNodeWithTag("MyTag").assertIsOn()
     }
 
     @Test
     fun testNotExists() {
         launchContent(false)
-        findByTag("MyTag").assertIsOff()
+        composeTestRule.onNodeWithTag("MyTag").assertIsOff()
     }
 }

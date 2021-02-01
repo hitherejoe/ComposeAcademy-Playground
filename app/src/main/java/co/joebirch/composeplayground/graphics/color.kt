@@ -1,12 +1,13 @@
 package co.joebirch.composeplayground.graphics
 
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.state
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,7 +37,7 @@ object ColorView : ComposableLayout {
 
 @Composable
 fun ColorObject() {
-    val selectedColor = state { 0 }
+    val selectedColor = remember { mutableStateOf(0) }
     val colors = listOf(
         Color.Red,
         Color.Green,
@@ -50,7 +51,7 @@ fun ColorObject() {
         Color.Magenta,
         Color.Transparent,
         Color.Yellow,
-        Color.Unset
+        Color.Unspecified
     )
     Column(
         modifier = Modifier.fillMaxSize().clickable(onClick = {

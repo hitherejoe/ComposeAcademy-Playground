@@ -1,8 +1,9 @@
 package co.joebirch.composeplayground.foundation
 
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.GenericShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
@@ -31,6 +33,32 @@ object ShapeView : ComposableLayout {
         }
     }
 
+}
+
+@Composable
+fun CircleShapeShapeComponent() {
+    Box(
+        modifier = Modifier.background(Color.Blue, shape = CircleShape)
+    ) {
+        Text(
+            text = "Circle shape",
+            modifier = Modifier.padding(16.dp),
+            color = Color.White
+        )
+    }
+}
+
+@Composable
+fun RectangleShapeShapeComponent() {
+    Box(
+        modifier = Modifier.background(Color.Blue, shape = RectangleShape)
+    ) {
+        Text(
+            text = "Rectangle shape",
+            modifier = Modifier.padding(16.dp),
+            color = Color.White
+        )
+    }
 }
 
 @Composable

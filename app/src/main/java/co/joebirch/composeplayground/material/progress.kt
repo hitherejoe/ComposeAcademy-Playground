@@ -42,11 +42,19 @@ fun CircularProgressStatic() {
 }
 
 @Composable
+fun CircularProgressStroke() {
+    CircularProgressIndicator(0.5f, strokeWidth = 8.dp)
+}
+
+@Composable
 fun LinearProgress() {
     LinearProgressIndicator()
 }
 
 @Composable
 fun DeterminateProgress() {
-    LinearProgressIndicator(0.5f, color = Color.Red)
+    LinearProgressIndicator(
+        backgroundColor = Color.White,
+        color = Color.Red
+    )
 }

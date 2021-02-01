@@ -3,12 +3,12 @@ package co.joebirch.composeplayground
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -56,6 +56,7 @@ class HomeActivity : AppCompatActivity() {
                 listOf(
                     Core.Gesture,
                     Core.Opacity,
+                    Core.Dialog,
                     Core.Popup,
                     Core.Shadow
                 )
@@ -81,8 +82,7 @@ class HomeActivity : AppCompatActivity() {
                     Material.Snackbar,
                     Material.TabRow,
                     Material.TextField,
-                    Material.TopAppBar,
-                    Material.TriStateRadioButton
+                    Material.TopAppBar
                 )
             ),
             Pair(
@@ -90,7 +90,6 @@ class HomeActivity : AppCompatActivity() {
                     Layout.Column,
                     Layout.ScrollableColumn,
                     Layout.HorizontalArrangement,
-                    Layout.FlowColumn,
                     Layout.Row,
                     Layout.Spacer,
                     Layout.Stack,
@@ -121,7 +120,7 @@ class HomeActivity : AppCompatActivity() {
             Scaffold(bodyContent = {
                 if (state.category == null) {
                     LazyColumnFor(items = mappedData.keys.toList()) {
-                        val selected = state { false }
+                        val selected = remember { mutableStateOf(false) }
                         Text(
                             it.label,
                             style = TextStyle(color = Color.Black, fontSize = 20.sp),

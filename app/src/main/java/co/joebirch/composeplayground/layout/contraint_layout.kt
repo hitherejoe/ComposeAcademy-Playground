@@ -1,6 +1,6 @@
 package co.joebirch.composeplayground.layout
 
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
@@ -9,16 +9,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
-object FlowColumnView : ComposableLayout {
+object ConstraintLayoutView : ComposableLayout {
 
     @ExperimentalLayout
     @Composable
     override fun build() {
         Box(modifier = Modifier.height(180.dp).background(Color.Cyan)) {
-            FlowColumn(
-                mainAxisAlignment = MainAxisAlignment.Start,
-                mainAxisSpacing = 16.dp
-            ) {
+            ConstraintLayout {
                 Text(
                     text = "First item",
                     modifier = Modifier.height(65.dp)

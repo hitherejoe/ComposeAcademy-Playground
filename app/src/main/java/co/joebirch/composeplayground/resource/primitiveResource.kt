@@ -1,6 +1,6 @@
 package co.joebirch.composeplayground.resource
 
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -38,8 +38,10 @@ object PrimitiveResourceView : ComposableLayout {
             Text(text = "Is enabled: ${booleanResource(id = R.bool.is_feature_enabled)}",
                 modifier = Modifier.padding(16.dp))
 
-            Text(text = "Adding some padding",
-                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding)))
+            Text(
+                text = "Adding some padding",
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding))
+            )
         }
     }
 
