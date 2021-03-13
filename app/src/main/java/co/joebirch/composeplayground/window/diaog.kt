@@ -3,7 +3,6 @@ package co.joebirch.composeplayground.window
 import androidx.compose.material.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -12,10 +11,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.Popup
-import androidx.ui.tooling.preview.Preview
 import co.joebirch.composeplayground.ComposableLayout
 
 object DialogView : ComposableLayout {
@@ -35,7 +33,7 @@ object DialogView : ComposableLayout {
                     Text(text = "Standard Popup")
                 }
 
-                Spacer(modifier = Modifier.preferredHeight(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
                 if (showingStandardPopup.value) {
                     Dialog(onDismissRequest = {
@@ -81,7 +79,7 @@ fun Dialog() {
             Text(text = "Standard Popup")
         }
 
-        Spacer(modifier = Modifier.preferredHeight(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Dialog(onDismissRequest = {
             showingStandardPopup.value = false
