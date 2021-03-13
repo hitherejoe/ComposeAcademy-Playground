@@ -1,6 +1,5 @@
 package co.joebirch.composeplayground.unit
 
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,14 +14,14 @@ object DpView : ComposableLayout {
 
     @Composable
     override fun build() {
-        ScrollableColumn {
-            Column(
-                modifier = Modifier.fillMaxSize().padding(32.dp),
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Spacer(modifier = Modifier.height(48.dp))
-            }
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(32.dp),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Spacer(modifier = Modifier.height(48.dp))
         }
     }
 
@@ -84,28 +83,4 @@ fun DisplaySize() {
     val timesSizeInt = 6 * constructorSize
     val timesSizeDouble = 6.8 * constructorSize
     */
-}
-
-@Composable
-fun DisplayPosition() {
-    val constructor = Position(8)
-
-    val width = constructor.x
-    val height = constructor.y
-
-    val plus = Position(8) + Position(2)
-    val minus = Position(8) - Position(2)
-
-    val constructorXY = Position(8.dp, 6.dp)
-}
-
-@Composable
-fun DisplayBounds() {
-    val constructor = Bounds(0.dp, 200.dp, 200.dp, 0.dp)
-
-    val width = constructor.width
-    val height = constructor.height
-   // val size = constructor.toSize()
-
-   // val bounds = size.toBounds()
 }
