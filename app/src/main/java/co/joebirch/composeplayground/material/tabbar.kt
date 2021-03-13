@@ -5,7 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.TabDefaults.tabIndicatorOffset
+import androidx.compose.material.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,7 +29,7 @@ object TabBarView : ComposableLayout {
                     modifier = Modifier.padding(16.dp)
                 )
             }
-        }, bodyContent = {
+        }, content = {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.Top
@@ -141,11 +141,16 @@ object TabBarView : ComposableLayout {
             selectedTabIndex = selectedTab.value,
             indicator = { tabPositions: List<TabPosition> ->
                 val modifier = Modifier.tabIndicatorOffset(
-                    tabPositions[selectedTab.value])
+                    tabPositions[selectedTab.value]
+                )
                 Box(
-                    modifier.fillMaxWidth().preferredHeight(5.dp)
-                        .background(color = Color.White,
-                            shape = RoundedCornerShape(topLeft = 16.dp, topRight = 16.dp)),
+                    modifier.fillMaxWidth().height(5.dp)
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(
+                                topStart = 16.dp, topEnd = 16.dp
+                            )
+                        ),
                 )
             }
         ) {
