@@ -1,16 +1,11 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.foundation.Icon
-import androidx.compose.material.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.IconButton
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -35,8 +30,10 @@ object TopAppBarView : ComposableLayout {
         ) {
             when (selectedLayout.value) {
                 0 -> MinimalTopAppBar {
-                    Column(modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.Center) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center
+                    ) {
                         Button(onClick = {
                             selectedLayout.value = 1
                         }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
@@ -45,8 +42,10 @@ object TopAppBarView : ComposableLayout {
                     }
                 }
                 1 -> NavigationIconTopAppBar {
-                    Column(modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.Center) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center
+                    ) {
                         Button(onClick = {
                             selectedLayout.value = 2
                         }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
@@ -67,8 +66,10 @@ object TopAppBarView : ComposableLayout {
                 }
                  */
                 3 -> ActionsTopAppBar {
-                    Column(modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.Center) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center
+                    ) {
                         Button(onClick = {
                             selectedLayout.value = 0
                         }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
@@ -107,11 +108,14 @@ fun NavigationIconTopAppBar(bodyContent: @Composable() () -> Unit) {
             },
             navigationIcon = {
                 IconButton(onClick = { }) {
-                    Icon(Icons.Filled.ArrowBack)
+                    Icon(
+                        Icons.Filled.ArrowBack,
+                        contentDescription = "Back arrow"
+                    )
                 }
             }
         )
-    }, bodyContent = {
+    }, content = {
         bodyContent()
     })
 }
@@ -162,7 +166,7 @@ fun ActionsTopAppBar(bodyContent: @Composable() () -> Unit) {
                 )
             }
         )
-    }, bodyContent = {
+    }, content = {
         bodyContent()
     })
 }
