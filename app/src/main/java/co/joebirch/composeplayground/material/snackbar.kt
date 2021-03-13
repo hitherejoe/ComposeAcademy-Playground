@@ -12,8 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import co.joebirch.composeplayground.ComposableLayout
 
 object SnackbarView : ComposableLayout {
@@ -36,25 +36,17 @@ object SnackbarView : ComposableLayout {
         }
     }
 
-    @Preview
-    @Composable
-    fun PreviewComponent() {
-        Surface(color = Color.White) {
-            Text(text = "This is a snackbar!")
-        }
-    }
-
     @Composable
     fun MinimalSnackbarComponent() {
         Snackbar(
-            text = { Text(text = "This is a snackbar!") }
+            content = { Text(text = "This is a snackbar!") }
         )
     }
 
     @Composable
     fun ShapeSnackbarComponent() {
         Snackbar(
-            text = { Text(text = "This is a snackbar!") },
+            content = { Text(text = "This is a snackbar!") },
             shape = RoundedCornerShape(4.dp)
         )
     }
@@ -62,7 +54,7 @@ object SnackbarView : ComposableLayout {
     @Composable
     fun BackgroundColorSnackbarComponent() {
         Snackbar(
-            text = { Text(text = "This is a snackbar!") },
+            content = { Text(text = "This is a snackbar!") },
             backgroundColor = Color.White
         )
     }
@@ -70,7 +62,7 @@ object SnackbarView : ComposableLayout {
     @Composable
     fun ElevationSnackbarComponent() {
         Snackbar(
-            text = { Text(text = "This is a snackbar!") },
+            content = { Text(text = "This is a snackbar!") },
             elevation = 8.dp
         )
     }
@@ -78,7 +70,7 @@ object SnackbarView : ComposableLayout {
     @Composable
     fun ActionSnackbarComponent() {
         Snackbar(
-            text = { Text(text = "This is a snackbar!") },
+            content = { Text(text = "This is a snackbar!") },
             action = {
                 Text(
                     text = "Undo",
@@ -97,7 +89,7 @@ object SnackbarView : ComposableLayout {
     @Composable
     fun ActionOnNewLineSnackbarComponent() {
         Snackbar(
-            text = { Text(text = "This is a snackbar with a lot of text, that way it makes sense to use the new line!") },
+            content = { Text(text = "This is a snackbar with a lot of text, that way it makes sense to use the new line!") },
             action = {
                 Text(
                     text = "Undo",
