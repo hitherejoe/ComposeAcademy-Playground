@@ -1,6 +1,5 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.foundation.Icon
 import androidx.compose.material.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
@@ -29,7 +29,7 @@ object TabView : ComposableLayout {
                     modifier = Modifier.padding(16.dp)
                 )
             }
-        }, bodyContent = {
+        }, content = {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.Top
@@ -158,8 +158,9 @@ object TabView : ComposableLayout {
             },
             icon = {
                 Icon(
-                    imageVector = vectorResource(id = R.drawable.ic_android_black_24dp),
-                    modifier = Modifier.padding(16.dp)
+                    painter = painterResource(id = R.drawable.ic_android_black_24dp),
+                    modifier = Modifier.padding(16.dp),
+                    contentDescription = "Android"
                 )
             }
         )
