@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
+import androidx.compose.ui.window.PopupProperties
 import co.joebirch.composeplayground.ComposableLayout
 
 object PopupView : ComposableLayout {
@@ -34,7 +35,7 @@ object PopupView : ComposableLayout {
                     Text(text = "Standard Popup")
                 }
 
-                Spacer(modifier = Modifier.preferredHeight(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
                 Button(onClick = {
                     showingStandardPopupWithProperties.value =
@@ -43,9 +44,9 @@ object PopupView : ComposableLayout {
                     Text(text = "Standard Popup with Properties")
                 }
 
-                Spacer(modifier = Modifier.preferredHeight(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
-                Spacer(modifier = Modifier.preferredHeight(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
             }
 
             when {
@@ -66,7 +67,7 @@ fun StandardPopup() {
     Popup(
         alignment = Alignment.Center
     ) {
-        Box(modifier = Modifier.preferredSize(200.dp, 50.dp)
+        Box(modifier = Modifier.size(200.dp, 50.dp)
             .background(
                 shape = RoundedCornerShape(16.dp),
                 color = Color.Black
@@ -86,7 +87,7 @@ fun AlignPopup() {
     Popup(
         alignment = Alignment.Center
     ) {
-        Box(modifier = Modifier.preferredSize(200.dp, 50.dp)
+        Box(modifier = Modifier.size(200.dp, 50.dp)
             .background(
                 shape = RoundedCornerShape(16.dp),
                 color = Color.Black
@@ -104,9 +105,9 @@ fun AlignPopup() {
 @Composable
 fun OffsetPopup() {
     Popup(
-        offset = IntOffset(16)
+        offset = IntOffset(16, 0)
     ) {
-        Box(modifier = Modifier.preferredSize(200.dp, 50.dp)
+        Box(modifier = Modifier.size(200.dp, 50.dp)
             .background(
                 shape = RoundedCornerShape(16.dp),
                 color = Color.Black
@@ -124,12 +125,12 @@ fun OffsetPopup() {
 @Composable
 fun StandardPopupWithProperties(onDismiss: () -> Unit) {
     Box {
-        Popup(isFocusable = true, onDismissRequest = {
+        Popup(properties = PopupProperties(focusable = true), onDismissRequest = {
             onDismiss()
         }) {
             Box {
                 Box(
-                    Modifier.preferredSize(200.dp, 50.dp)
+                    Modifier.size(200.dp, 50.dp)
                         .background(
                             Color.Black,
                             shape = RoundedCornerShape(16.dp)
