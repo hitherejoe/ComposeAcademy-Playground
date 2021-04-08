@@ -11,9 +11,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawOpacity
-import androidx.compose.ui.draw.drawShadow
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
@@ -30,16 +27,16 @@ object ClipView : ComposableLayout {
         ) {
 
             val modifier = if (showShadow.value) {
-                Modifier.preferredSize(100.dp, 100.dp).clip(RoundedCornerShape(4.dp))
+                Modifier.size(100.dp, 100.dp).clip(RoundedCornerShape(4.dp))
             } else {
-                Modifier.preferredSize(100.dp, 100.dp)
+                Modifier.size(100.dp, 100.dp)
             }
             Box(
                 modifier = modifier
                     .background(Color.Green),
             )
 
-            Spacer(modifier = Modifier.preferredHeight(36.dp))
+            Spacer(modifier = Modifier.height(36.dp))
 
             Button(onClick = {
                 showShadow.value = !showShadow.value

@@ -1,14 +1,16 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.material.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Icon
 import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Info
@@ -30,16 +32,16 @@ object FilledTextFieldView : ComposableLayout {
 
     @Composable
     override fun build() {
-        ScrollableColumn {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                MinimalFilledTextFieldComponent()
-                PlaceholderFilledTextFieldComponent()
-                IconsFilledTextFieldComponent()
-            }
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            MinimalFilledTextFieldComponent()
+            PlaceholderFilledTextFieldComponent()
+            IconsFilledTextFieldComponent()
         }
     }
 
@@ -73,9 +75,9 @@ object FilledTextFieldView : ComposableLayout {
         }, label = {
             Text(text = "This is a label")
         }, leadingIcon = {
-            Icon(Icons.Filled.Info)
+            Icon(Icons.Filled.Info, contentDescription = "Info")
         }, trailingIcon = {
-            Icon(Icons.Filled.Check)
+            Icon(Icons.Filled.Check, contentDescription = "Checked")
         })
     }
 
@@ -90,9 +92,11 @@ object FilledTextFieldView : ComposableLayout {
             label = {
                 Text(text = "This is a label")
             },
-            activeColor = Color.Black,
-            inactiveColor = Color.Gray,
-            errorColor = Color.Red
+            colors = TextFieldDefaults.textFieldColors(
+                errorLabelColor = Color.Red,
+                disabledTextColor = Color.Gray,
+                textColor = Color.Black
+            )
         )
     }
 
@@ -118,10 +122,7 @@ object FilledTextFieldView : ComposableLayout {
             },
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Done
-            ),
-            onImeActionPerformed = { action, controller ->
-
-            }
+            )
         )
     }
 
@@ -133,7 +134,9 @@ object FilledTextFieldView : ComposableLayout {
             onValueChange = {
                 state.value = it
             },
-            backgroundColor = Color.White
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.White
+            )
         )
     }
 
@@ -160,20 +163,6 @@ object FilledTextFieldView : ComposableLayout {
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Email
             )
-        )
-    }
-
-    @Composable
-    fun ListenerTextFieldComponent() {
-        val state = remember { mutableStateOf(TextFieldValue(text = "Hello")) }
-        TextField(
-            value = state.value,
-            onValueChange = {
-                state.value = it
-            },
-            onTextInputStarted = { controller ->
-
-            }
         )
     }
 

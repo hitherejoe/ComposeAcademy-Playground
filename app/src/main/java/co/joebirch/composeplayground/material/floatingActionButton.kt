@@ -40,6 +40,7 @@ object FloatingActionButtonView : ComposableLayout {
 
 @Composable
 fun IconFloatingActionButton() {
+
     FloatingActionButton(onClick = {
 
     }) {

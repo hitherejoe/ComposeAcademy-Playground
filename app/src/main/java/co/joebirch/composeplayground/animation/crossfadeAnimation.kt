@@ -36,7 +36,7 @@ object CrossfadeAnimationView : ComposableLayout {
         var currentString = remember { mutableStateOf(strings[0]) }
 
         Column(modifier = Modifier.fillMaxWidth()) {
-            Crossfade(current = currentString) { color ->
+            Crossfade(targetState = currentString) { color ->
                 Text(
                     text = color.value, modifier = Modifier.fillMaxWidth().clickable(onClick = {
                         currentString.value = if (currentString.value == strings[0]) strings[1] else strings[0]
@@ -53,8 +53,8 @@ object CrossfadeAnimationView : ComposableLayout {
         val current = remember { mutableStateOf(colors[0]) }
 
         Column(modifier = Modifier.fillMaxWidth()) {
-            Crossfade(current = current) { color ->
-                Box(Modifier.fillMaxWidth().preferredHeight(120.dp).clickable(onClick = {
+            Crossfade(targetState = current) { color ->
+                Box(Modifier.fillMaxWidth().height(120.dp).clickable(onClick = {
                     current.value = if (current.value == colors[0]) colors[1] else colors[0]
                 }).background(current.value))
             }

@@ -1,24 +1,16 @@
 package co.joebirch.composeplayground.animation
 
 import android.graphics.PointF
-import androidx.compose.animation.core.*
-import androidx.compose.animation.transition
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.gesture.pressIndicatorGestureFilter
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
 object InteractionAnimationView : ComposableLayout {
 
-    private val shapeRadius = FloatPropKey()
+    //private val shapeRadius = FloatPropKey()
     private val down = PointF(0f, 0f)
 
     private enum class CircleStatus {
@@ -34,10 +26,10 @@ object InteractionAnimationView : ComposableLayout {
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            TouchCircleComponent()
+            //TouchCircleComponent()
         }
     }
-
+/*
 
     @Composable
     fun TouchCircleComponent() {
@@ -93,4 +85,6 @@ object InteractionAnimationView : ComposableLayout {
             snapTransition(CircleStatus.Released to CircleStatus.Idle)
         }
     }
+
+ */
 }

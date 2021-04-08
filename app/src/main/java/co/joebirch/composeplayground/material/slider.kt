@@ -3,14 +3,15 @@ package co.joebirch.composeplayground.material
 import androidx.compose.material.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Slider
+import androidx.compose.material.SliderDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import co.joebirch.composeplayground.ComposableLayout
 
 object SliderView : ComposableLayout {
@@ -18,7 +19,9 @@ object SliderView : ComposableLayout {
     @Composable
     override fun build() {
         Box(
-            modifier = Modifier.fillMaxSize().padding(32.dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(32.dp)
         ) {
             Column(
                 modifier = Modifier.fillMaxSize(),
@@ -43,12 +46,6 @@ object SliderView : ComposableLayout {
                 state.value = it
             }
         )
-    }
-
-    @Preview
-    @Composable
-    fun MinimalSliderPreview() {
-        MinimalSliderComponent()
     }
 
     @Composable
@@ -84,7 +81,9 @@ object SliderView : ComposableLayout {
             onValueChange = {
                 state.value = it
             },
-            thumbColor = Color.Red
+            colors = SliderDefaults.colors(
+                thumbColor = Color.Red
+            )
         )
     }
 
@@ -99,10 +98,12 @@ object SliderView : ComposableLayout {
                 onValueChange = {
                     state.value = it
                 },
-                onValueChangeEnd = {
+                onValueChangeFinished = {
                     endState.value = state.value
                 },
-                thumbColor = Color.Red
+                colors = SliderDefaults.colors(
+                    thumbColor = Color.Red
+                )
             )
         }
     }

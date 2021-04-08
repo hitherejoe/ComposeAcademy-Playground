@@ -1,9 +1,8 @@
 package co.joebirch.composeplayground.core
 
-import android.util.Log
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.material.Text
-import androidx.compose.foundation.gestures.zoomable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Snackbar
 import androidx.compose.runtime.Composable
@@ -11,14 +10,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.gesture.*
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
-import co.joebirch.composeplayground.R
 
 object GestureView : ComposableLayout {
 
@@ -45,14 +40,16 @@ fun TapComponent() {
             text = "Jetpack Compose",
             modifier = Modifier
                 .padding(16.dp)
-                .tapGestureFilter(onTap = {
+                .clickable {
                     showSnackbar.value = !showSnackbar.value
-                })
+                }
         )
         if (showSnackbar.value) {
-            Snackbar(text = {
-                Text(text = "Jetpack Compose")
-            })
+            Snackbar(
+                content = {
+                    Text(text = "Jetpack Compose")
+                }
+            )
         }
     }
 }
@@ -65,12 +62,12 @@ fun zoomableComponent() {
             text = "Jetpack Compose",
             modifier = Modifier
                 .padding(16.dp)
-                .tapGestureFilter(onTap = {
+                .clickable {
                     showSnackbar.value = !showSnackbar.value
-                })
+                }
         )
         if (showSnackbar.value) {
-            Snackbar(text = {
+            Snackbar(content = {
                 Text(text = "Tap again to hide")
             })
         }
@@ -85,12 +82,15 @@ fun DoubleTapComponent() {
             text = "Jetpack Compose",
             modifier = Modifier
                 .padding(16.dp)
-                .doubleTapGestureFilter(onDoubleTap = {
-                    showSnackbar.value = !showSnackbar.value
-                })
+                .pointerInput(Unit) {
+                    detectTapGestures {
+                        showSnackbar.value = !showSnackbar.value
+
+                    }
+                }
         )
         if (showSnackbar.value) {
-            Snackbar(text = {
+            Snackbar(content = {
                 Text(text = "Double tap again to hide")
             })
         }
@@ -106,12 +106,14 @@ fun LongPressComponent() {
             text = "Jetpack Compose",
             modifier = Modifier
                 .padding(16.dp)
-                .longPressGestureFilter(onLongPress = {
-                    showSnackbar.value = !showSnackbar.value
-                })
+                .pointerInput(Unit) {
+                    detectTapGestures(onLongPress = {
+                        showSnackbar.value = !showSnackbar.value
+                    })
+                }
         )
         if (showSnackbar.value) {
-            Snackbar(text = {
+            Snackbar(content = {
                 Text(text = "Long press the text to hide")
             })
         }

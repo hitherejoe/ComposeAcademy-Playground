@@ -1,6 +1,6 @@
 package co.joebirch.composeplayground.animation
 
-import androidx.compose.animation.animate
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -29,7 +29,7 @@ object SingleAnimationFloatView : ComposableLayout {
     @Composable
     fun SingleValueAnimationFloat() {
         val enabled = remember { mutableStateOf(true) }
-        Box(modifier = Modifier.padding(animate(if (enabled.value) 0f else 100f).dp).clickable(
+        Box(modifier = Modifier.padding(animateFloatAsState(if (enabled.value) 0f else 100f).value.dp).clickable(
             onClick = {
                 enabled.value = !enabled.value
             }

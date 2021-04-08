@@ -1,15 +1,13 @@
 package co.joebirch.composeplayground.foundation
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.InteractionState
 import androidx.compose.foundation.indication
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material.Card
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -83,7 +81,7 @@ fun IndicationToggleableComponent() {
             )
             .indication(
                 indication = rememberRipple(),
-                interactionState = InteractionState()
+                interactionSource = MutableInteractionSource()
             )
     )
 }

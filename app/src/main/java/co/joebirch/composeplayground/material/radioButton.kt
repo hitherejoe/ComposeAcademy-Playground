@@ -3,6 +3,7 @@ package co.joebirch.composeplayground.material
 import androidx.compose.material.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.RadioButton
+import androidx.compose.material.RadioButtonDefaults
 import androidx.compose.material.RadioButtonDefaults.colors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -10,16 +11,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import co.joebirch.composeplayground.ComposableLayout
 
-object RadioButtonView: ComposableLayout {
+object RadioButtonView : ComposableLayout {
 
     @Composable
     override fun build() {
         Column(
-            modifier = Modifier.fillMaxSize().padding(32.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(32.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -70,8 +73,10 @@ fun SelectedColoreRadioButton(
         onClick = {
             state.value = text
         },
-        colors = colors(
-            selectedColor = Color.Red
+        colors = RadioButtonDefaults.colors(
+            selectedColor = Color.Red,
+            disabledColor = Color.LightGray,
+            unselectedColor = Color.Gray
         )
     )
 }

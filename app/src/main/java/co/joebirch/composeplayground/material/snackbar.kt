@@ -21,7 +21,9 @@ object SnackbarView : ComposableLayout {
     @Composable
     override fun build() {
         Box(
-            modifier = Modifier.fillMaxSize().padding(16.dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
                 .background(Color.LightGray)
         ) {
             Column(
@@ -60,6 +62,14 @@ object SnackbarView : ComposableLayout {
     }
 
     @Composable
+    fun ContentColorSnackbarComponent() {
+        Snackbar(
+            content = { Text(text = "This is a snackbar!") },
+            contentColor = Color.Gray
+        )
+    }
+
+    @Composable
     fun ElevationSnackbarComponent() {
         Snackbar(
             content = { Text(text = "This is a snackbar!") },
@@ -74,9 +84,11 @@ object SnackbarView : ComposableLayout {
             action = {
                 Text(
                     text = "Undo",
-                    modifier = Modifier.padding(end = 16.dp).clickable(onClick = {
-                        // handle action
-                    }),
+                    modifier = Modifier
+                        .padding(end = 16.dp)
+                        .clickable(onClick = {
+                            // handle action
+                        }),
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colors.primary
@@ -93,9 +105,11 @@ object SnackbarView : ComposableLayout {
             action = {
                 Text(
                     text = "Undo",
-                    modifier = Modifier.padding(end = 16.dp).clickable(onClick = {
-                        // Handle action
-                    }),
+                    modifier = Modifier
+                        .padding(end = 16.dp)
+                        .clickable(onClick = {
+                            // Handle action
+                        }),
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colors.primary

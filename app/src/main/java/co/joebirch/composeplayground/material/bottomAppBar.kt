@@ -93,7 +93,7 @@ fun MinimalBottomAppBar(bodyContent: @Composable() () -> Unit) {
                 modifier = Modifier.padding(16.dp)
             )
         }
-    }, bodyContent = {
+    }, content = {
         bodyContent()
     })
 }
@@ -147,7 +147,7 @@ fun StyledBottomAppBar(bodyContent: @Composable() () -> Unit) {
                 modifier = Modifier.padding(16.dp)
             )
         }
-    }, bodyContent = {
+    }, content = {
         bodyContent()
     })
 }
@@ -175,7 +175,7 @@ fun FabBottomAppBar(bodyContent: @Composable() () -> Unit) {
             }
         },
         floatingActionButtonPosition = FabPosition.Center,
-        bodyContent = {
+        content = {
             bodyContent()
         }
     )
@@ -205,7 +205,7 @@ fun DockedFabBottomAppBar(bodyContent: @Composable() () -> Unit) {
         },
         floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
-        bodyContent = {
+        content = {
             bodyContent()
         })
 }

@@ -11,11 +11,13 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
+import kotlinx.coroutines.launch
 
 object ScaffoldView : ComposableLayout {
 
@@ -127,7 +129,7 @@ fun ScaffoldWithFabComponent(bodyContent: @Composable() () -> Unit) {
                 )
             }
         },
-        bodyContent = {
+        content = {
             bodyContent()
         }
     )
@@ -157,7 +159,7 @@ fun ScaffoldWithPositionedFabComponent(bodyContent: @Composable() () -> Unit) {
             }
         },
         floatingActionButtonPosition = FabPosition.End,
-        bodyContent = {
+        content = {
             Text(text = "Compose Academy")
         }
     )
@@ -182,7 +184,7 @@ fun ScaffoldWithDockedFabComponent(bodyContent: @Composable() () -> Unit) {
             BottomAppBar { }
         },
         isFloatingActionButtonDocked = true,
-        bodyContent = {
+        content = {
             Text(text = "Compose Academy")
         }
     )
@@ -206,7 +208,7 @@ fun ScaffoldWithTopAppBar(bodyContent: @Composable() () -> Unit) {
                 }
             )
         },
-        bodyContent = {
+        content = {
             Text(text = "Compose Academy")
         }
     )
@@ -214,6 +216,7 @@ fun ScaffoldWithTopAppBar(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun ScaffoldWithDrawer(bodyContent: @Composable() () -> Unit) {
+    val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scaffoldState = rememberScaffoldState(drawerState = drawerState)
     Scaffold(
@@ -225,7 +228,9 @@ fun ScaffoldWithDrawer(bodyContent: @Composable() () -> Unit) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        drawerState.open()
+                        coroutineScope.launch {
+                            drawerState.open()
+                        }
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
@@ -240,15 +245,17 @@ fun ScaffoldWithDrawer(bodyContent: @Composable() () -> Unit) {
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.preferredHeight(24.dp))
+                Spacer(modifier = Modifier.heightIn(24.dp))
                 Button(onClick = {
-                    drawerState.close()
+                    coroutineScope.launch {
+                        drawerState.close()
+                    }
                 }) {
                     Text(text = "Close Drawer")
                 }
             }
         },
-        bodyContent = {
+        content = {
             Text(text = "Compose Academy")
         }
     )
@@ -318,6 +325,7 @@ fun ContentColorScaffold(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun DrawerBackgroundColorScaffold(bodyContent: @Composable() () -> Unit) {
+    val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scaffoldState = rememberScaffoldState(drawerState = drawerState)
     Scaffold(
@@ -329,7 +337,9 @@ fun DrawerBackgroundColorScaffold(bodyContent: @Composable() () -> Unit) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        drawerState.open()
+                        coroutineScope.launch {
+                            drawerState.open()
+                        }
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
@@ -344,16 +354,18 @@ fun DrawerBackgroundColorScaffold(bodyContent: @Composable() () -> Unit) {
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.preferredHeight(24.dp))
+                Spacer(modifier = Modifier.height(24.dp))
                 Button(onClick = {
-                    drawerState.close()
+                    coroutineScope.launch {
+                        drawerState.close()
+                    }
                 }) {
                     Text(text = "Close Drawer")
                 }
             }
         },
         drawerBackgroundColor = Color.White,
-        bodyContent = {
+        content = {
             Text(text = "Compose Academy")
         }
     )
@@ -361,6 +373,7 @@ fun DrawerBackgroundColorScaffold(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun DrawerContentColorScaffold(bodyContent: @Composable() () -> Unit) {
+    val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scaffoldState = rememberScaffoldState(drawerState = drawerState)
     Scaffold(
@@ -372,7 +385,9 @@ fun DrawerContentColorScaffold(bodyContent: @Composable() () -> Unit) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        drawerState.open()
+                        coroutineScope.launch {
+                            drawerState.open()
+                        }
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
@@ -387,16 +402,18 @@ fun DrawerContentColorScaffold(bodyContent: @Composable() () -> Unit) {
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.preferredHeight(24.dp))
+                Spacer(modifier = Modifier.height(24.dp))
                 Button(onClick = {
-                    drawerState.close()
+                    coroutineScope.launch {
+                        drawerState.close()
+                    }
                 }) {
                     Text(text = "Close Drawer")
                 }
             }
         },
         drawerContentColor = Color.Blue,
-        bodyContent = {
+        content = {
             Text(text = "Compose Academy")
         }
     )
@@ -404,6 +421,7 @@ fun DrawerContentColorScaffold(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun DrawerSrimColorScaffold(bodyContent: @Composable() () -> Unit) {
+    val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scaffoldState = rememberScaffoldState(drawerState = drawerState)
     Scaffold(
@@ -415,7 +433,9 @@ fun DrawerSrimColorScaffold(bodyContent: @Composable() () -> Unit) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        drawerState.open()
+                        coroutineScope.launch {
+                            drawerState.open()
+                        }
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
@@ -430,16 +450,18 @@ fun DrawerSrimColorScaffold(bodyContent: @Composable() () -> Unit) {
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.preferredHeight(24.dp))
+                Spacer(modifier = Modifier.height(24.dp))
                 Button(onClick = {
-                    drawerState.close()
+                    coroutineScope.launch {
+                        drawerState.close()
+                    }
                 }) {
                     Text(text = "Close Drawer")
                 }
             }
         },
         drawerScrimColor = Color.Red,
-        bodyContent = {
+        content = {
             Text(text = "Compose Academy")
         }
     )
@@ -447,6 +469,7 @@ fun DrawerSrimColorScaffold(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun DrawerShapeColorScaffold(bodyContent: @Composable() () -> Unit) {
+    val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scaffoldState = rememberScaffoldState(drawerState = drawerState)
     Scaffold(
@@ -458,7 +481,9 @@ fun DrawerShapeColorScaffold(bodyContent: @Composable() () -> Unit) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        drawerState.open()
+                        coroutineScope.launch {
+                            drawerState.open()
+                        }
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
@@ -473,16 +498,18 @@ fun DrawerShapeColorScaffold(bodyContent: @Composable() () -> Unit) {
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.preferredHeight(24.dp))
+                Spacer(modifier = Modifier.height(24.dp))
                 Button(onClick = {
-                    drawerState.close()
+                    coroutineScope.launch {
+                        drawerState.close()
+                    }
                 }) {
                     Text(text = "Close Drawer")
                 }
             }
         },
         drawerShape = RoundedCornerShape(8.dp),
-        bodyContent = {
+        content = {
             Text(text = "Compose Academy")
         }
     )
@@ -490,6 +517,7 @@ fun DrawerShapeColorScaffold(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun DrawerElevationScaffold(bodyContent: @Composable() () -> Unit) {
+    val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scaffoldState = rememberScaffoldState(drawerState = drawerState)
     Scaffold(
@@ -501,7 +529,9 @@ fun DrawerElevationScaffold(bodyContent: @Composable() () -> Unit) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        drawerState.open()
+                        coroutineScope.launch {
+                            drawerState.open()
+                        }
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
@@ -516,16 +546,18 @@ fun DrawerElevationScaffold(bodyContent: @Composable() () -> Unit) {
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.preferredHeight(24.dp))
+                Spacer(modifier = Modifier.height(24.dp))
                 Button(onClick = {
-                    drawerState.close()
+                    coroutineScope.launch {
+                        drawerState.close()
+                    }
                 }) {
                     Text(text = "Close Drawer")
                 }
             }
         },
         drawerElevation = 12.dp,
-        bodyContent = {
+        content = {
             Text(text = "Compose Academy")
         }
     )
@@ -533,6 +565,7 @@ fun DrawerElevationScaffold(bodyContent: @Composable() () -> Unit) {
 
 @Composable
 fun DisableDrawerGestures(bodyContent: @Composable() () -> Unit) {
+    val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scaffoldState = rememberScaffoldState(drawerState = drawerState)
     Scaffold(
@@ -544,7 +577,9 @@ fun DisableDrawerGestures(bodyContent: @Composable() () -> Unit) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        drawerState.open()
+                        coroutineScope.launch {
+                            drawerState.open()
+                        }
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
@@ -559,16 +594,18 @@ fun DisableDrawerGestures(bodyContent: @Composable() () -> Unit) {
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.preferredHeight(24.dp))
+                Spacer(modifier = Modifier.height(24.dp))
                 Button(onClick = {
-                    drawerState.close()
+                    coroutineScope.launch {
+                        drawerState.close()
+                    }
                 }) {
                     Text(text = "Close Drawer")
                 }
             }
         },
         drawerGesturesEnabled = false,
-        bodyContent = {
+        content = {
             Text(text = "Compose Academy")
         }
     )

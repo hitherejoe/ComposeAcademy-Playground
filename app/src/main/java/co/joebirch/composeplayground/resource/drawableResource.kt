@@ -8,11 +8,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.res.loadImageResource
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import co.joebirch.composeplayground.ComposableLayout
 import co.joebirch.composeplayground.R
 
@@ -28,7 +26,7 @@ object ImageResourceView : ComposableLayout {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                imageVector = vectorResource(
+                painter = painterResource(
                     id =
                     R.drawable.ic_baseline_account_circle_24
                 ),
@@ -36,7 +34,7 @@ object ImageResourceView : ComposableLayout {
                 contentDescription = "my description"
             )
             Image(
-                bitmap = imageResource(
+                painter = painterResource(
                     id =
                     R.drawable.outline_accessibility_black_18dp
                 ),
@@ -44,12 +42,14 @@ object ImageResourceView : ComposableLayout {
                 contentDescription = "my description"
             )
 
-            loadImageResource(
+
+
+            painterResource(
                 id =
                 R.drawable.outline_accessibility_black_18dp
-            ).resource.resource?.let {
+            ).also {
                 Image(
-                    bitmap = it,
+                    painter = it,
                     modifier = Modifier.padding(16.dp),
                     contentDescription = "my description"
                 )
@@ -59,18 +59,4 @@ object ImageResourceView : ComposableLayout {
         }
     }
 
-}
-
-@Preview
-@Composable
-fun test() {
-    loadImageResource(
-        id = R.drawable.outline_accessibility_black_18dp
-    ).resource.resource?.let {
-        Image(
-            bitmap = it,
-            modifier = Modifier.padding(16.dp),
-            contentDescription = "my description"
-        )
-    }
 }

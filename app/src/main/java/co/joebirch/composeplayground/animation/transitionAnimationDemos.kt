@@ -1,25 +1,25 @@
 package co.joebirch.composeplayground.animation
 
-import androidx.compose.animation.core.*
-import androidx.compose.animation.core.AnimationConstants.Infinite
-import androidx.compose.animation.transition
-import androidx.compose.foundation.Canvas
-import androidx.compose.material.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.selection.selectable
-import androidx.compose.material.Button
-import androidx.compose.material.RadioButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import co.joebirch.composeplayground.ComposableLayout
 
 object TransitionDemoView : ComposableLayout {
 
+    @Composable
+    override fun build() {
+        Column(
+            modifier = Modifier.fillMaxSize().padding(32.dp),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+        }
+    }
+    /*
     val sizeState = FloatPropKey()
 
     enum class AnimationType {
@@ -212,4 +212,6 @@ object TransitionDemoView : ComposableLayout {
             }
         }
     }
+
+     */
 }

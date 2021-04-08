@@ -1,6 +1,7 @@
 package co.joebirch.composeplayground.material
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material.*
@@ -10,8 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import co.joebirch.composeplayground.ComposableLayout
 
 object ButtonView : ComposableLayout {
@@ -32,6 +33,7 @@ object ButtonView : ComposableLayout {
 
 }
 
+@Preview
 @Composable
 fun MinimalButtonComponent() {
     Button(onClick = {
@@ -44,6 +46,7 @@ fun MinimalButtonComponent() {
     }
 }
 
+@Preview
 @Composable
 fun ShapeButtonComponent() {
     Button(
@@ -85,7 +88,7 @@ fun ContentColorButtonComponent() {
 
         },
         colors = buttonColors(
-            contentColor = Color.White
+            contentColor = Color.Black
         )
     ) {
         Text(
@@ -134,6 +137,7 @@ fun DisabledContentColorButtonComponent() {
     }
 }
 
+@Preview
 @Composable
 fun ContentPaddingButtonComponent() {
     Button(
@@ -149,25 +153,34 @@ fun ContentPaddingButtonComponent() {
     }
 }
 
+@Preview
 @Composable
 fun ElevationPaddingButtonComponent() {
-    Button(
-        onClick = {
-
-        },
-        elevation = elevation(
-            defaultElevation = 12.dp,
-            pressedElevation = 12.dp,
-            disabledElevation = 2.dp,
-        )
+    Box(
+        modifier = Modifier.height(100.dp)
+            .width(200.dp)
+            .background(Color.White),
+        contentAlignment = Alignment.Center
     ) {
-        Text(
-            text = "Jetpack Compose",
-            modifier = Modifier.padding(16.dp)
-        )
+        Button(
+            onClick = {
+
+            },
+            elevation = elevation(
+                defaultElevation = 12.dp,
+                pressedElevation = 12.dp,
+                disabledElevation = 2.dp,
+            )
+        ) {
+            Text(
+                text = "Jetpack Compose",
+                modifier = Modifier.padding(16.dp)
+            )
+        }
     }
 }
 
+@Preview
 @Composable
 fun BorderButtonComponent() {
     Button(
@@ -183,13 +196,14 @@ fun BorderButtonComponent() {
     }
 }
 
+@Preview
 @Composable
 fun DisabledButtonComponent() {
     Button(
         onClick = {
 
         },
-        enabled = true
+        enabled = false
     ) {
         Text(
             text = "Jetpack Compose",
@@ -198,6 +212,7 @@ fun DisabledButtonComponent() {
     }
 }
 
+@Preview
 @Composable
 fun OutlinedButtonComponent() {
     OutlinedButton(onClick = {
@@ -210,6 +225,7 @@ fun OutlinedButtonComponent() {
     }
 }
 
+@Preview
 @Composable
 fun TextButtonComponent() {
     TextButton(onClick = {

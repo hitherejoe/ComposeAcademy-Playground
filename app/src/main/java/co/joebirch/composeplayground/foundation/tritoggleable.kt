@@ -1,7 +1,7 @@
 package co.joebirch.composeplayground.foundation
 
-import androidx.compose.foundation.InteractionState
 import androidx.compose.foundation.indication
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material.Text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -110,7 +110,7 @@ fun IndicationTriToggleableComponent() {
             )
             .indication(
                 indication = rememberRipple(),
-                interactionState = InteractionState()
+                interactionSource = MutableInteractionSource()
             )
     )
 }

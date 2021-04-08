@@ -1,8 +1,7 @@
 package co.joebirch.composeplayground.animation
 
-import androidx.compose.animation.animatedColor
-import androidx.compose.animation.animatedFloat
-import androidx.compose.compiler.plugins.kotlin.ComposeFqNames.remember
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -32,8 +31,10 @@ object AnimatedValuesView : ComposableLayout {
     @Composable
     fun AnimatedFloat() {
         val expandedState = remember { mutableStateOf(false) }
-        val viewHeight = if (expandedState.value) animatedFloat(140f) else animatedFloat(40f)
-        Box(modifier = Modifier.fillMaxWidth().preferredHeight(viewHeight.value.dp).clickable(
+        val viewHeight = if (expandedState.value) {
+            animateFloatAsState(140f)
+        } else animateFloatAsState(40f)
+        Box(modifier = Modifier.fillMaxWidth().height(viewHeight.value.dp).clickable(
             onClick = {
                 expandedState.value = !expandedState.value
             }
@@ -44,9 +45,11 @@ object AnimatedValuesView : ComposableLayout {
     fun AnimatedColor() {
         val expandedState = remember { mutableStateOf(false) }
         val viewHeight =
-            if (expandedState.value) animatedColor(Color.Red) else animatedColor(Color.Green)
+            if (expandedState.value) {
+                animateColorAsState(Color.Red)
+            } else animateColorAsState(Color.Green)
         Box(
-            modifier = Modifier.fillMaxWidth().preferredHeight(40.dp).clickable(onClick = {
+            modifier = Modifier.fillMaxWidth().height(40.dp).clickable(onClick = {
                 expandedState.value = !expandedState.value
             }).background(viewHeight.value)
         )

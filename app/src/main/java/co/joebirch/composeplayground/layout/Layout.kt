@@ -10,7 +10,6 @@ sealed class Layout(
 
     object Heading : Layout("Layout")
     object Column : Layout("Column", ColumnView)
-    object ScrollableColumn : Layout("ScrollableColumn", ScollableColumnView)
     object HorizontalArrangement : Layout("Horizontal Arrangement", HorizontalArrangementView)
     object Row : Layout("Row", RowView)
     object Spacer : Layout("Spacer", SpacerView)

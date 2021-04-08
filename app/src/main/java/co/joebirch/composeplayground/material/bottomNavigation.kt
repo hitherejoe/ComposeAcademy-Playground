@@ -1,15 +1,12 @@
 package co.joebirch.composeplayground.material
 
-import androidx.compose.foundation.Icon
-import androidx.compose.material.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Button
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.BottomNavigationItem
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -64,11 +61,16 @@ fun StandardBottomNavigation(bodyContent: @Composable() () -> Unit) {
     )
     Column {
         bodyContent()
-        Spacer(modifier = Modifier.preferredHeight(64.dp))
+        Spacer(modifier = Modifier.height(64.dp))
         BottomNavigation {
             items.forEachIndexed { index, item ->
                 BottomNavigationItem(
-                    icon = { Icon(imageVector = item.icon) },
+                    icon = {
+                        Icon(
+                            imageVector = item.icon,
+                            contentDescription = null
+                        )
+                    },
                     label = { Text(text = item.label) },
                     selected = selectedItem.value == index,
                     onClick = { selectedItem.value = index }
@@ -79,20 +81,20 @@ fun StandardBottomNavigation(bodyContent: @Composable() () -> Unit) {
 }
 
 @Composable
-fun StandardBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
+fun RowScope.StandardBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
     val selectedItem = remember { mutableStateOf(0) }
     BottomNavigationItem(
-        icon = { Icon(Icons.Filled.Call) },
+        icon = { Icon(Icons.Filled.Call, contentDescription = "Call") },
         selected = selectedItem.value == 0,
         onClick = { selectedItem.value = 0 }
     )
 }
 
 @Composable
-fun LabelBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
+fun RowScope.LabelBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
     val selectedItem = remember { mutableStateOf(0) }
     BottomNavigationItem(
-        icon = { Icon(Icons.Filled.Call) },
+        icon = { Icon(Icons.Filled.Call, contentDescription = "Call") },
         label = { Text(text = "Call") },
         selected = selectedItem.value == 0,
         onClick = { selectedItem.value = 0 }
@@ -100,22 +102,22 @@ fun LabelBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
 }
 
 @Composable
-fun AlwaysVisibleLabelBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
+fun RowScope.AlwaysVisibleLabelBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
     val selectedItem = remember { mutableStateOf(0) }
     BottomNavigationItem(
-        icon = { Icon(Icons.Filled.Call) },
+        icon = { Icon(Icons.Filled.Call, contentDescription = "Call") },
         label = { Text(text = "Call") },
-        alwaysShowLabels = true,
+        alwaysShowLabel = true,
         selected = selectedItem.value == 0,
         onClick = { selectedItem.value = 0 }
     )
 }
 
 @Composable
-fun SelectedColorBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
+fun RowScope.SelectedColorBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
     val selectedItem = remember { mutableStateOf(0) }
     BottomNavigationItem(
-        icon = { Icon(Icons.Filled.Call) },
+        icon = { Icon(Icons.Filled.Call, contentDescription = "Call") },
         selectedContentColor = Color.Red,
         selected = selectedItem.value == 0,
         onClick = { selectedItem.value = 0 }
@@ -123,10 +125,10 @@ fun SelectedColorBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
 }
 
 @Composable
-fun UnselectedColorBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
+fun RowScope.UnselectedColorBottomNavigationItem(bodyContent: @Composable() () -> Unit) {
     val selectedItem = remember { mutableStateOf(0) }
     BottomNavigationItem(
-        icon = { Icon(Icons.Filled.Call) },
+        icon = { Icon(Icons.Filled.Call, contentDescription = "Call") },
         unselectedContentColor = Color.LightGray,
         selected = selectedItem.value == 0,
         onClick = { selectedItem.value = 0 }
@@ -143,11 +145,16 @@ fun InteractionState(bodyContent: @Composable() () -> Unit) {
     )
     Column {
         bodyContent()
-        Spacer(modifier = Modifier.preferredHeight(64.dp))
+        Spacer(modifier = Modifier.height(64.dp))
         BottomNavigation {
             items.forEachIndexed { index, item ->
                 BottomNavigationItem(
-                    icon = { Icon(imageVector = item.icon) },
+                    icon = {
+                        Icon(
+                            imageVector = item.icon,
+                            contentDescription = null
+                        )
+                    },
                     label = { Text(text = item.label) },
                     selected = selectedItem.value == index,
                     onClick = { selectedItem.value = index }
@@ -167,15 +174,20 @@ fun BottomNavigationOnlySelectedLabels(bodyContent: @Composable() () -> Unit) {
     )
     Column {
         bodyContent()
-        Spacer(modifier = Modifier.preferredHeight(64.dp))
+        Spacer(modifier = Modifier.height(64.dp))
         BottomNavigation {
             items.forEachIndexed { index, item ->
                 BottomNavigationItem(
-                    icon = { Icon(imageVector = item.icon) },
+                    icon = {
+                        Icon(
+                            imageVector = item.icon,
+                            contentDescription = null
+                        )
+                    },
                     label = { Text(text = item.label) },
                     selected = selectedItem.value == index,
                     onClick = { selectedItem.value = index },
-                    alwaysShowLabels = false
+                    alwaysShowLabel = false
                 )
             }
         }
@@ -195,7 +207,12 @@ fun BackgroundColorBottomNavigation(bodyContent: @Composable() () -> Unit) {
     ) {
         items.forEachIndexed { index, item ->
             BottomNavigationItem(
-                icon = { Icon(imageVector = item.icon) },
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = null
+                    )
+                },
                 label = { Text(text = item.label) },
                 selected = selectedItem.value == index,
                 onClick = { selectedItem.value = index },
@@ -219,7 +236,12 @@ fun ContentColorBottomNavigation(bodyContent: @Composable() () -> Unit) {
     ) {
         items.forEachIndexed { index, item ->
             BottomNavigationItem(
-                icon = { Icon(imageVector = item.icon) },
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = null
+                    )
+                },
                 label = { Text(text = item.label) },
                 selected = selectedItem.value == index,
                 onClick = { selectedItem.value = index },
@@ -244,7 +266,12 @@ fun ElevationBottomNavigation(bodyContent: @Composable() () -> Unit) {
     ) {
         items.forEachIndexed { index, item ->
             BottomNavigationItem(
-                icon = { Icon(imageVector = item.icon) },
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = null
+                    )
+                },
                 label = { Text(text = item.label) },
                 selected = selectedItem.value == index,
                 onClick = { selectedItem.value = index },

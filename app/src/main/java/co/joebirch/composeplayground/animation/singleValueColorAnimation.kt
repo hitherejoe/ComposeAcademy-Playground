@@ -1,6 +1,6 @@
 package co.joebirch.composeplayground.animation
 
-import androidx.compose.animation.animate
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -34,7 +34,7 @@ object SingleAnimationColorView : ComposableLayout {
             Box(
                 Modifier.fillMaxSize().clickable(onClick = {
                     enabled.value = !enabled.value
-                }).background(animate(if (enabled.value) Color.Green else Color.Red)),
+                }).background(animateColorAsState(if (enabled.value) Color.Green else Color.Red).value),
             )
             Text(
                 text = "Click me to change color!",

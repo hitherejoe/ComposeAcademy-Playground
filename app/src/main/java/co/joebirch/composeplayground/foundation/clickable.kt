@@ -1,10 +1,10 @@
 package co.joebirch.composeplayground.foundation
 
-import androidx.compose.foundation.Indication
-import androidx.compose.foundation.InteractionState
 import androidx.compose.material.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.indication
+import androidx.compose.foundation.interaction.InteractionSource
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -59,7 +59,7 @@ fun Indication() {
             )
             .indication(
                 indication = rememberRipple(),
-                interactionState = InteractionState()
+                interactionSource = MutableInteractionSource()
             )
     )
 }
@@ -71,10 +71,6 @@ fun ClickableComponentWithListeners() {
         modifier = Modifier
             .padding(16.dp)
             .clickable(onClick = {
-
-            }, onLongClick = {
-
-            }, onDoubleClick = {
 
             })
     )

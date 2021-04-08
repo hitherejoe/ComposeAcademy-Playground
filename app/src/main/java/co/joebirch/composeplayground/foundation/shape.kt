@@ -29,7 +29,7 @@ object ShapeView : ComposableLayout {
             RoundedCornerShapeComponent()
             AlternateCutCornerShapeComponent()
             AlternateRoundedCornerShapeComponent()
-            CustomShapeComponent()
+            //CustomShapeComponent()
         }
     }
 
@@ -142,10 +142,12 @@ fun AlternateRoundedCornerShapeComponent() {
     }
 }
 
+/*
 @Composable
 fun CustomShapeComponent() {
     Box(
         modifier = Modifier.background(Color.Blue, shape = GenericShape(builder = {
+
             this.addOval(
                 Rect(
                     top = 0f,
@@ -157,3 +159,4 @@ fun CustomShapeComponent() {
         }))
     )
 }
+ */

@@ -1,10 +1,11 @@
 package co.joebirch.composeplayground.graphics
 
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.material.Text
 import androidx.compose.foundation.background
+import androidx.compose.material.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -19,8 +20,11 @@ object ColorView : ComposableLayout {
 
     @Composable
     override fun build() {
-        ScrollableColumn(
-            modifier = Modifier.fillMaxSize().padding(32.dp),
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(32.dp)
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -54,15 +58,17 @@ fun ColorObject() {
         Color.Unspecified
     )
     Column(
-        modifier = Modifier.fillMaxSize().clickable(onClick = {
-            if (selectedColor.value < colors.count() - 1) selectedColor.value =
-                selectedColor.value + 1 else selectedColor.value = 0
-        }),
+        modifier = Modifier
+            .fillMaxSize()
+            .clickable(onClick = {
+                if (selectedColor.value < colors.count() - 1) selectedColor.value =
+                    selectedColor.value + 1 else selectedColor.value = 0
+            }),
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Box(
-            modifier = Modifier.fillMaxWidth().preferredHeight(16.dp)
+            modifier = Modifier.fillMaxWidth().height(16.dp)
                 .background(colors[selectedColor.value])
         )
         Text(
@@ -78,7 +84,7 @@ fun ColorFromLong() {
     val color = Color(0xFF000080)
 
     Box(
-        modifier = Modifier.fillMaxWidth().preferredHeight(16.dp)
+        modifier = Modifier.fillMaxWidth().height(16.dp)
             .background(color = color)
     )
 }
@@ -93,7 +99,7 @@ fun ColorFromFloats() {
     )
 
     Box(
-        modifier = Modifier.fillMaxWidth().preferredHeight(16.dp)
+        modifier = Modifier.fillMaxWidth().height(16.dp)
             .background(color)
     )
 }
@@ -108,7 +114,7 @@ fun ColorFromIntRange() {
     )
 
     Box(
-        modifier = Modifier.fillMaxWidth().preferredHeight(16.dp)
+        modifier = Modifier.fillMaxWidth().height(16.dp)
             .background(color)
     )
 }
